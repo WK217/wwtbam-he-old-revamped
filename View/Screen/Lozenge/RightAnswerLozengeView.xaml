@@ -1,0 +1,117 @@
+﻿<rxui:ReactiveUserControl
+    x:Class="WwtbamOld.View.RightAnswerLozengeView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:rxui="http://reactiveui.net"
+    xmlns:vm="clr-namespace:WwtbamOld.ViewModel"
+    Width="683"
+    Height="59"
+    x:TypeArguments="vm:IAnswerLozengeViewModel"
+    mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/WWTBAM Home Edition;component/View/MainResourceDictionary.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <UserControl.Background>
+        <ImageBrush x:Name="imgBackground" Stretch="UniformToFill" />
+    </UserControl.Background>
+
+    <Grid>
+        <Grid.Style>
+            <Style TargetType="{x:Type Grid}">
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding IsShown, Mode=OneWay}" Value="False">
+                        <DataTrigger.EnterActions>
+                            <BeginStoryboard Storyboard="{StaticResource HideStoryboard}" />
+                        </DataTrigger.EnterActions>
+                        <DataTrigger.ExitActions>
+                            <BeginStoryboard Storyboard="{StaticResource ShowStoryboard}" />
+                        </DataTrigger.ExitActions>
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+        </Grid.Style>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="42*" />
+                <ColumnDefinition Width="18*" />
+                <ColumnDefinition Width="auto" SharedSizeGroup="columnID" />
+                <ColumnDefinition Width="395*" />
+                <ColumnDefinition Width="188*" />
+            </Grid.ColumnDefinitions>
+
+            <Image x:Name="imgRhomb" Grid.Column="1" />
+
+            <TextBlock
+                x:Name="idDefault"
+                Grid.Column="2"
+                Style="{StaticResource AnswerIDOrange}" />
+
+            <Viewbox Grid.Column="3" Style="{StaticResource AnswerTextPlaceholder}">
+                <TextBlock x:Name="txtDefault" Style="{StaticResource AnswerTextWhite}" />
+            </Viewbox>
+
+            <Grid ColumnSpan="5" Style="{StaticResource LockedGrid}">
+                <Grid.Background>
+                    <ImageBrush x:Name="imgLocked" Stretch="UniformToFill" />
+                </Grid.Background>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="42*" />
+                    <ColumnDefinition Width="18*" />
+                    <ColumnDefinition Width="auto" SharedSizeGroup="columnID" />
+                    <ColumnDefinition Width="395*" />
+                    <ColumnDefinition Width="188*" />
+                </Grid.ColumnDefinitions>
+
+                <Image x:Name="imgRhombLocked" Grid.Column="1" />
+
+                <TextBlock
+                    x:Name="idLocked"
+                    Grid.Column="2"
+                    Style="{StaticResource AnswerIDWhite}" />
+
+                <Viewbox Grid.Column="3" Style="{StaticResource AnswerTextPlaceholder}">
+                    <TextBlock x:Name="txtLocked" Style="{StaticResource AnswerTextBlack}" />
+                </Viewbox>
+            </Grid>
+
+            <Grid
+                x:Name="gridCorrect"
+                ColumnSpan="5"
+                Style="{StaticResource CorrectGrid}">
+
+                <Grid.Background>
+                    <ImageBrush x:Name="imgCorrect" Stretch="UniformToFill" />
+                </Grid.Background>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="42*" />
+                    <ColumnDefinition Width="18*" />
+                    <ColumnDefinition Width="auto" SharedSizeGroup="columnID" />
+                    <ColumnDefinition Width="395*" />
+                    <ColumnDefinition Width="188*" />
+                </Grid.ColumnDefinitions>
+
+                <Image x:Name="imgRhombCorrect" Grid.Column="1" />
+
+                <TextBlock
+                    x:Name="idCorrect"
+                    Grid.Column="2"
+                    Style="{StaticResource AnswerIDWhite}" />
+
+                <Viewbox Grid.Column="3" Style="{StaticResource AnswerTextPlaceholder}">
+                    <TextBlock x:Name="txtCorrect" Style="{StaticResource AnswerTextBlack}" />
+                </Viewbox>
+            </Grid>
+        </Grid>
+    </Grid>
+</rxui:ReactiveUserControl>

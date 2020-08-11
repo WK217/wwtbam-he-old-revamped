@@ -1,0 +1,77 @@
+﻿<rxui:ReactiveUserControl
+    x:Class="WwtbamOld.View.PhoneAFriendPanelView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:rxui="http://reactiveui.net"
+    xmlns:vm="clr-namespace:WwtbamOld.ViewModel"
+    x:TypeArguments="vm:PhoneAFriendViewModel"
+    mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/WWTBAM Home Edition;component/View/MainResourceDictionary.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <GroupBox x:Name="groupMain">
+        <Grid>
+            <Grid.Resources>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="VerticalAlignment" Value="Center" />
+                </Style>
+            </Grid.Resources>
+
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition Height="5" />
+                <RowDefinition />
+                <RowDefinition Height="5" />
+                <RowDefinition />
+                <RowDefinition Height="10" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Button
+                x:Name="btnInitiate"
+                Grid.ColumnSpan="2"
+                Margin="15,0,15,10">
+                Инициировать
+            </Button>
+
+            <CheckBox x:Name="checkTimerShown" Grid.Row="1">Показ таймера</CheckBox>
+
+            <TextBlock Grid.Row="3">Длительность:</TextBlock>
+            <TextBox
+                x:Name="txtDuration"
+                Grid.Row="3"
+                Grid.Column="1" />
+
+            <TextBlock Grid.Row="5">Отсчёт:</TextBlock>
+            <TextBox
+                x:Name="txtCountdown"
+                Grid.Row="5"
+                Grid.Column="1" />
+
+            <Grid ColumnSpan="2" Row="7">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="10" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <Button x:Name="btnActivate">Активировать</Button>
+                <Button x:Name="btnStop" Grid.Column="2">Остановить</Button>
+            </Grid>
+        </Grid>
+    </GroupBox>
+</rxui:ReactiveUserControl>

@@ -1,0 +1,59 @@
+﻿<rxui:ReactiveUserControl
+    x:Class="WwtbamOld.View.AskTheAudienceAnswerView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:m="clr-namespace:WwtbamOld.Model"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:rxui="http://reactiveui.net"
+    xmlns:vm="clr-namespace:WwtbamOld.ViewModel"
+    x:TypeArguments="m:AskTheAudienceAnswer"
+    mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/WWTBAM Home Edition;component/View/MainResourceDictionary.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid Width="57" HorizontalAlignment="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="51*" />
+            <RowDefinition x:Name="rowBar" Height="297*" />
+        </Grid.RowDefinitions>
+
+        <Viewbox
+            Name="Viewbox"
+            Margin="5,0"
+            HorizontalAlignment="Center"
+            Style="{StaticResource AnswerTextPlaceholder}">
+
+            <TextBlock
+                Name="txtValue"
+                FontFamily="{StaticResource PF DinDisplay Pro}"
+                Style="{StaticResource AnswerTextFont}"
+                TextAlignment="Center">
+                <!--<TextBlock.Style>
+                    <Style BasedOn="{StaticResource AnswerTextFont}" TargetType="TextBlock">
+                        <Setter Property="Text" Value="{Binding Votes}" />
+
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding DataType}" Value="Percentage">
+                                <Setter Property="Text" Value="{Binding Percentage, StringFormat={}{0:N0} %}" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>-->
+            </TextBlock>
+        </Viewbox>
+
+        <Image
+            x:Name="imgBar"
+            Grid.Row="1"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Bottom"
+            Stretch="Fill" />
+    </Grid>
+</rxui:ReactiveUserControl>

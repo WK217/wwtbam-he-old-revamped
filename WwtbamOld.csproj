@@ -1,0 +1,1473 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <Authors>WK217</Authors>
+    <Company />
+    <Product>WWTBAM Home Edition Old Revamped</Product>
+    <AssemblyName>WWTBAM Home Edition</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Model\Lifelines\Old\AskTheAudienceAnswerOld.cs" />
+    <Compile Remove="Model\Lifelines\Old\AskTheAudienceOld.cs" />
+    <Compile Remove="Model\Lifelines\Old\DoubleDipOld.cs" />
+    <Compile Remove="Model\Lifelines\Old\FiftyFiftyOld.cs" />
+    <Compile Remove="Model\Lifelines\Old\LifelineOld.cs" />
+    <Compile Remove="Model\Lifelines\Old\PhoneAFriendOld.cs" />
+    <Compile Remove="Model\Lifelines\Old\PhoneAFriendTimerOld.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="quizzes.xml" />
+    <None Remove="Resources\Audio\wwtbam ata pre.mp3" />
+    <None Remove="Resources\Audio\wwtbam ata show.mp3" />
+    <None Remove="Resources\Audio\wwtbam ata stop.mp3" />
+    <None Remove="Resources\Audio\wwtbam ata voting.mp3" />
+    <None Remove="Resources\Audio\wwtbam ath loop 10m.mp3" />
+    <None Remove="Resources\Audio\wwtbam ath loop.mp3" />
+    <None Remove="Resources\Audio\wwtbam ath stop.mp3" />
+    <None Remove="Resources\Audio\wwtbam background.mp3" />
+    <None Remove="Resources\Audio\wwtbam bg 1.mp3" />
+    <None Remove="Resources\Audio\wwtbam bg 10.mp3" />
+    <None Remove="Resources\Audio\wwtbam bg 11.mp3" />
+    <None Remove="Resources\Audio\wwtbam bg 12.mp3" />
+    <None Remove="Resources\Audio\wwtbam bg 13.mp3" />
+    <None Remove="Resources\Audio\wwtbam bg 14.mp3" />
+    <None Remove="Resources\Audio\wwtbam bg 15.mp3" />
+    <None Remove="Resources\Audio\wwtbam bg 6.mp3" />
+    <None Remove="Resources\Audio\wwtbam bg 7.mp3" />
+    <None Remove="Resources\Audio\wwtbam bg 8.mp3" />
+    <None Remove="Resources\Audio\wwtbam bg 9.mp3" />
+    <None Remove="Resources\Audio\wwtbam big walkaway 2.mp3" />
+    <None Remove="Resources\Audio\wwtbam big walkaway.mp3" />
+    <None Remove="Resources\Audio\wwtbam closing.mp3" />
+    <None Remove="Resources\Audio\wwtbam commercial in.mp3" />
+    <None Remove="Resources\Audio\wwtbam commercial out.mp3" />
+    <None Remove="Resources\Audio\wwtbam correct 1.mp3" />
+    <None Remove="Resources\Audio\wwtbam correct 10.mp3" />
+    <None Remove="Resources\Audio\wwtbam correct 11.mp3" />
+    <None Remove="Resources\Audio\wwtbam correct 12.mp3" />
+    <None Remove="Resources\Audio\wwtbam correct 13.mp3" />
+    <None Remove="Resources\Audio\wwtbam correct 14.mp3" />
+    <None Remove="Resources\Audio\wwtbam correct 15.mp3" />
+    <None Remove="Resources\Audio\wwtbam correct 5.mp3" />
+    <None Remove="Resources\Audio\wwtbam correct 6.mp3" />
+    <None Remove="Resources\Audio\wwtbam correct 7.mp3" />
+    <None Remove="Resources\Audio\wwtbam correct 8.mp3" />
+    <None Remove="Resources\Audio\wwtbam correct 9.mp3" />
+    <None Remove="Resources\Audio\wwtbam dd 1.mp3" />
+    <None Remove="Resources\Audio\wwtbam dd 2.mp3" />
+    <None Remove="Resources\Audio\wwtbam dd activate bg.mp3" />
+    <None Remove="Resources\Audio\wwtbam dd activate.mp3" />
+    <None Remove="Resources\Audio\wwtbam dd wrong bg.mp3" />
+    <None Remove="Resources\Audio\wwtbam dd wrong.mp3" />
+    <None Remove="Resources\Audio\wwtbam fifty.mp3" />
+    <None Remove="Resources\Audio\wwtbam final 10.mp3" />
+    <None Remove="Resources\Audio\wwtbam final 11.mp3" />
+    <None Remove="Resources\Audio\wwtbam final 12.mp3" />
+    <None Remove="Resources\Audio\wwtbam final 13.mp3" />
+    <None Remove="Resources\Audio\wwtbam final 14.mp3" />
+    <None Remove="Resources\Audio\wwtbam final 15.mp3" />
+    <None Remove="Resources\Audio\wwtbam final 6.mp3" />
+    <None Remove="Resources\Audio\wwtbam final 7.mp3" />
+    <None Remove="Resources\Audio\wwtbam final 8.mp3" />
+    <None Remove="Resources\Audio\wwtbam final 9.mp3" />
+    <None Remove="Resources\Audio\wwtbam goodbye.mp3" />
+    <None Remove="Resources\Audio\wwtbam ld 10.mp3" />
+    <None Remove="Resources\Audio\wwtbam ld 11.mp3" />
+    <None Remove="Resources\Audio\wwtbam ld 12.mp3" />
+    <None Remove="Resources\Audio\wwtbam ld 13.mp3" />
+    <None Remove="Resources\Audio\wwtbam ld 14.mp3" />
+    <None Remove="Resources\Audio\wwtbam ld 15.mp3" />
+    <None Remove="Resources\Audio\wwtbam ld 6.mp3" />
+    <None Remove="Resources\Audio\wwtbam ld 7.mp3" />
+    <None Remove="Resources\Audio\wwtbam ld 8.mp3" />
+    <None Remove="Resources\Audio\wwtbam ld 9.mp3" />
+    <None Remove="Resources\Audio\wwtbam lets play.mp3" />
+    <None Remove="Resources\Audio\wwtbam loop.mp3" />
+    <None Remove="Resources\Audio\wwtbam meeting.mp3" />
+    <None Remove="Resources\Audio\wwtbam opening.mp3" />
+    <None Remove="Resources\Audio\wwtbam phone pre.mp3" />
+    <None Remove="Resources\Audio\wwtbam phone stop.mp3" />
+    <None Remove="Resources\Audio\wwtbam phone timer.mp3" />
+    <None Remove="Resources\Audio\wwtbam rules end.mp3" />
+    <None Remove="Resources\Audio\wwtbam rules explanation.mp3" />
+    <None Remove="Resources\Audio\wwtbam rules lifeline 1.mp3" />
+    <None Remove="Resources\Audio\wwtbam rules lifeline 2.mp3" />
+    <None Remove="Resources\Audio\wwtbam rules lifeline 3.mp3" />
+    <None Remove="Resources\Audio\wwtbam rules lifeline 4.mp3" />
+    <None Remove="Resources\Audio\wwtbam rules lifeline 5.mp3" />
+    <None Remove="Resources\Audio\wwtbam silence.mp3" />
+    <None Remove="Resources\Audio\wwtbam siren.mp3" />
+    <None Remove="Resources\Audio\wwtbam small walkaway 2.mp3" />
+    <None Remove="Resources\Audio\wwtbam small walkaway.mp3" />
+    <None Remove="Resources\Audio\wwtbam twm pre.mp3" />
+    <None Remove="Resources\Audio\wwtbam twm stop.mp3" />
+    <None Remove="Resources\Audio\wwtbam twm timer loop.mp3" />
+    <None Remove="Resources\Audio\wwtbam twm timer.mp3" />
+    <None Remove="Resources\Audio\wwtbam wrong 1.mp3" />
+    <None Remove="Resources\Audio\wwtbam wrong 10.mp3" />
+    <None Remove="Resources\Audio\wwtbam wrong 11.mp3" />
+    <None Remove="Resources\Audio\wwtbam wrong 12.mp3" />
+    <None Remove="Resources\Audio\wwtbam wrong 13.mp3" />
+    <None Remove="Resources\Audio\wwtbam wrong 14.mp3" />
+    <None Remove="Resources\Audio\wwtbam wrong 15.mp3" />
+    <None Remove="Resources\Audio\wwtbam wrong 6.mp3" />
+    <None Remove="Resources\Audio\wwtbam wrong 7.mp3" />
+    <None Remove="Resources\Audio\wwtbam wrong 8.mp3" />
+    <None Remove="Resources\Audio\wwtbam wrong 9.mp3" />
+    <None Remove="Resources\Fonts\bloknot cyrillic.otf" />
+    <None Remove="Resources\Fonts\copperplate gothic thirty bc.ttf" />
+    <None Remove="Resources\Fonts\pf dindisplay pro.ttf" />
+    <None Remove="Resources\Fonts\vacansia cyrillic bold thirty bc.otf" />
+    <None Remove="Resources\Fonts\vacansia cyrillic.otf" />
+    <None Remove="Resources\Graphics\AtA\wwtbam ata bar.jpg" />
+    <None Remove="Resources\Graphics\AtA\wwtbam ata graph 2.jpg" />
+    <None Remove="Resources\Graphics\AtA\wwtbam ata graph.png" />
+    <None Remove="Resources\Graphics\Backgrounds\wwtbam bg logo.png" />
+    <None Remove="Resources\Graphics\Backgrounds\wwtbam bg main.jpg" />
+    <None Remove="Resources\Graphics\Backgrounds\wwtbam bg photo.jpg" />
+    <None Remove="Resources\Graphics\Double Dip\wwtbam double middle.png" />
+    <None Remove="Resources\Graphics\Lifelines\Medium\wwtbam ata activated medium.png" />
+    <None Remove="Resources\Graphics\Lifelines\Medium\wwtbam ata disabled medium.png" />
+    <None Remove="Resources\Graphics\Lifelines\Medium\wwtbam ata enabled medium.png" />
+    <None Remove="Resources\Graphics\Lifelines\Medium\wwtbam double activated medium.png" />
+    <None Remove="Resources\Graphics\Lifelines\Medium\wwtbam double disabled medium.png" />
+    <None Remove="Resources\Graphics\Lifelines\Medium\wwtbam double enabled medium.png" />
+    <None Remove="Resources\Graphics\Lifelines\Medium\wwtbam fifty activated medium.png" />
+    <None Remove="Resources\Graphics\Lifelines\Medium\wwtbam fifty disabled medium.png" />
+    <None Remove="Resources\Graphics\Lifelines\Medium\wwtbam fifty enabled medium.png" />
+    <None Remove="Resources\Graphics\Lifelines\Medium\wwtbam google activated medium.png" />
+    <None Remove="Resources\Graphics\Lifelines\Medium\wwtbam google disabled medium.png" />
+    <None Remove="Resources\Graphics\Lifelines\Medium\wwtbam google enabled medium.png" />
+    <None Remove="Resources\Graphics\Lifelines\Medium\wwtbam phone activated medium.png" />
+    <None Remove="Resources\Graphics\Lifelines\Medium\wwtbam phone disabled medium.png" />
+    <None Remove="Resources\Graphics\Lifelines\Medium\wwtbam phone enabled medium.png" />
+    <None Remove="Resources\Graphics\Lifelines\Medium\wwtbam secret medium.png" />
+    <None Remove="Resources\Graphics\Lifelines\Medium\wwtbam twm activated medium.png" />
+    <None Remove="Resources\Graphics\Lifelines\Medium\wwtbam twm disabled medium.png" />
+    <None Remove="Resources\Graphics\Lifelines\Medium\wwtbam twm enabled medium.png" />
+    <None Remove="Resources\Graphics\Lifelines\Small2\wwtbam ata activated small2.png" />
+    <None Remove="Resources\Graphics\Lifelines\Small2\wwtbam ata disabled small2.png" />
+    <None Remove="Resources\Graphics\Lifelines\Small2\wwtbam ata enabled small2.png" />
+    <None Remove="Resources\Graphics\Lifelines\Small2\wwtbam double activated small2.png" />
+    <None Remove="Resources\Graphics\Lifelines\Small2\wwtbam double disabled small2.png" />
+    <None Remove="Resources\Graphics\Lifelines\Small2\wwtbam double enabled small2.png" />
+    <None Remove="Resources\Graphics\Lifelines\Small2\wwtbam fifty activated small2.png" />
+    <None Remove="Resources\Graphics\Lifelines\Small2\wwtbam fifty disabled small2.png" />
+    <None Remove="Resources\Graphics\Lifelines\Small2\wwtbam fifty enabled small2.png" />
+    <None Remove="Resources\Graphics\Lifelines\Small2\wwtbam google activated small2.png" />
+    <None Remove="Resources\Graphics\Lifelines\Small2\wwtbam google disabled small2.png" />
+    <None Remove="Resources\Graphics\Lifelines\Small2\wwtbam google enabled small2.png" />
+    <None Remove="Resources\Graphics\Lifelines\Small2\wwtbam phone activated small2.png" />
+    <None Remove="Resources\Graphics\Lifelines\Small2\wwtbam phone disabled small2.png" />
+    <None Remove="Resources\Graphics\Lifelines\Small2\wwtbam phone enabled small2.png" />
+    <None Remove="Resources\Graphics\Lifelines\Small2\wwtbam secret small2.png" />
+    <None Remove="Resources\Graphics\Lifelines\Small2\wwtbam twm activated small2.png" />
+    <None Remove="Resources\Graphics\Lifelines\Small2\wwtbam twm disabled small2.png" />
+    <None Remove="Resources\Graphics\Lifelines\Small2\wwtbam twm enabled small2.png" />
+    <None Remove="Resources\Graphics\Lifelines\Small\wwtbam ata activated small.png" />
+    <None Remove="Resources\Graphics\Lifelines\Small\wwtbam ata disabled small.png" />
+    <None Remove="Resources\Graphics\Lifelines\Small\wwtbam ata enabled small.png" />
+    <None Remove="Resources\Graphics\Lifelines\Small\wwtbam double activated small.png" />
+    <None Remove="Resources\Graphics\Lifelines\Small\wwtbam double disabled small.png" />
+    <None Remove="Resources\Graphics\Lifelines\Small\wwtbam double enabled small.png" />
+    <None Remove="Resources\Graphics\Lifelines\Small\wwtbam fifty activated small.png" />
+    <None Remove="Resources\Graphics\Lifelines\Small\wwtbam fifty disabled small.png" />
+    <None Remove="Resources\Graphics\Lifelines\Small\wwtbam fifty enabled small.png" />
+    <None Remove="Resources\Graphics\Lifelines\Small\wwtbam google activated small.png" />
+    <None Remove="Resources\Graphics\Lifelines\Small\wwtbam google disabled small.png" />
+    <None Remove="Resources\Graphics\Lifelines\Small\wwtbam google enabled small.png" />
+    <None Remove="Resources\Graphics\Lifelines\Small\wwtbam phone activated small.png" />
+    <None Remove="Resources\Graphics\Lifelines\Small\wwtbam phone disabled small.png" />
+    <None Remove="Resources\Graphics\Lifelines\Small\wwtbam phone enabled small.png" />
+    <None Remove="Resources\Graphics\Lifelines\Small\wwtbam secret small.png" />
+    <None Remove="Resources\Graphics\Lifelines\Small\wwtbam twm activated small.png" />
+    <None Remove="Resources\Graphics\Lifelines\Small\wwtbam twm disabled small.png" />
+    <None Remove="Resources\Graphics\Lifelines\Small\wwtbam twm enabled small.png" />
+    <None Remove="Resources\Graphics\Lifelines\wwtbam ata activated.png" />
+    <None Remove="Resources\Graphics\Lifelines\wwtbam ata disabled.png" />
+    <None Remove="Resources\Graphics\Lifelines\wwtbam ata enabled.png" />
+    <None Remove="Resources\Graphics\Lifelines\wwtbam ath activated.png" />
+    <None Remove="Resources\Graphics\Lifelines\wwtbam ath disabled.png" />
+    <None Remove="Resources\Graphics\Lifelines\wwtbam ath enabled.png" />
+    <None Remove="Resources\Graphics\Lifelines\wwtbam dd activated.png" />
+    <None Remove="Resources\Graphics\Lifelines\wwtbam dd disabled.png" />
+    <None Remove="Resources\Graphics\Lifelines\wwtbam dd enabled.png" />
+    <None Remove="Resources\Graphics\Lifelines\wwtbam double activated.png" />
+    <None Remove="Resources\Graphics\Lifelines\wwtbam double disabled.png" />
+    <None Remove="Resources\Graphics\Lifelines\wwtbam double enabled.png" />
+    <None Remove="Resources\Graphics\Lifelines\wwtbam fifty activated.png" />
+    <None Remove="Resources\Graphics\Lifelines\wwtbam fifty disabled.png" />
+    <None Remove="Resources\Graphics\Lifelines\wwtbam fifty enabled.png" />
+    <None Remove="Resources\Graphics\Lifelines\wwtbam google activated.png" />
+    <None Remove="Resources\Graphics\Lifelines\wwtbam google disabled.png" />
+    <None Remove="Resources\Graphics\Lifelines\wwtbam google enabled.png" />
+    <None Remove="Resources\Graphics\Lifelines\wwtbam lifelines panel.png" />
+    <None Remove="Resources\Graphics\Lifelines\wwtbam phone activated.png" />
+    <None Remove="Resources\Graphics\Lifelines\wwtbam phone disabled.png" />
+    <None Remove="Resources\Graphics\Lifelines\wwtbam phone enabled.png" />
+    <None Remove="Resources\Graphics\Lifelines\wwtbam secret.png" />
+    <None Remove="Resources\Graphics\Lifelines\wwtbam twm activated.png" />
+    <None Remove="Resources\Graphics\Lifelines\wwtbam twm disabled.png" />
+    <None Remove="Resources\Graphics\Lifelines\wwtbam twm enabled.png" />
+    <None Remove="Resources\Graphics\Lozenge\wwtbam lozenge left correct.png" />
+    <None Remove="Resources\Graphics\Lozenge\wwtbam lozenge left locked.png" />
+    <None Remove="Resources\Graphics\Lozenge\wwtbam lozenge left.png" />
+    <None Remove="Resources\Graphics\Lozenge\wwtbam lozenge question.png" />
+    <None Remove="Resources\Graphics\Lozenge\wwtbam lozenge rhomb white.png" />
+    <None Remove="Resources\Graphics\Lozenge\wwtbam lozenge rhomb.png" />
+    <None Remove="Resources\Graphics\Lozenge\wwtbam lozenge right correct.png" />
+    <None Remove="Resources\Graphics\Lozenge\wwtbam lozenge right locked.png" />
+    <None Remove="Resources\Graphics\Lozenge\wwtbam lozenge right.png" />
+    <None Remove="Resources\Graphics\Money Trees\Big\wwtbam bmt 0.png" />
+    <None Remove="Resources\Graphics\Money Trees\Big\wwtbam bmt 1.png" />
+    <None Remove="Resources\Graphics\Money Trees\Big\wwtbam bmt 10.png" />
+    <None Remove="Resources\Graphics\Money Trees\Big\wwtbam bmt 11.png" />
+    <None Remove="Resources\Graphics\Money Trees\Big\wwtbam bmt 12.png" />
+    <None Remove="Resources\Graphics\Money Trees\Big\wwtbam bmt 13.png" />
+    <None Remove="Resources\Graphics\Money Trees\Big\wwtbam bmt 14.png" />
+    <None Remove="Resources\Graphics\Money Trees\Big\wwtbam bmt 15.png" />
+    <None Remove="Resources\Graphics\Money Trees\Big\wwtbam bmt 2.png" />
+    <None Remove="Resources\Graphics\Money Trees\Big\wwtbam bmt 3.png" />
+    <None Remove="Resources\Graphics\Money Trees\Big\wwtbam bmt 4.png" />
+    <None Remove="Resources\Graphics\Money Trees\Big\wwtbam bmt 5.png" />
+    <None Remove="Resources\Graphics\Money Trees\Big\wwtbam bmt 6.png" />
+    <None Remove="Resources\Graphics\Money Trees\Big\wwtbam bmt 7.png" />
+    <None Remove="Resources\Graphics\Money Trees\Big\wwtbam bmt 8.png" />
+    <None Remove="Resources\Graphics\Money Trees\Big\wwtbam bmt 9.png" />
+    <None Remove="Resources\Graphics\Money Trees\Small\wwtbam smt 0.png" />
+    <None Remove="Resources\Graphics\Money Trees\Small\wwtbam smt 1.png" />
+    <None Remove="Resources\Graphics\Money Trees\Small\wwtbam smt 10.png" />
+    <None Remove="Resources\Graphics\Money Trees\Small\wwtbam smt 11.png" />
+    <None Remove="Resources\Graphics\Money Trees\Small\wwtbam smt 12.png" />
+    <None Remove="Resources\Graphics\Money Trees\Small\wwtbam smt 13.png" />
+    <None Remove="Resources\Graphics\Money Trees\Small\wwtbam smt 14.png" />
+    <None Remove="Resources\Graphics\Money Trees\Small\wwtbam smt 15.png" />
+    <None Remove="Resources\Graphics\Money Trees\Small\wwtbam smt 2.png" />
+    <None Remove="Resources\Graphics\Money Trees\Small\wwtbam smt 3.png" />
+    <None Remove="Resources\Graphics\Money Trees\Small\wwtbam smt 4.png" />
+    <None Remove="Resources\Graphics\Money Trees\Small\wwtbam smt 5.png" />
+    <None Remove="Resources\Graphics\Money Trees\Small\wwtbam smt 6.png" />
+    <None Remove="Resources\Graphics\Money Trees\Small\wwtbam smt 7.png" />
+    <None Remove="Resources\Graphics\Money Trees\Small\wwtbam smt 8.png" />
+    <None Remove="Resources\Graphics\Money Trees\Small\wwtbam smt 9.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer graph 0.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer graph 10.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer graph 100.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer graph 105.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer graph 110.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer graph 115.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer graph 120.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer graph 125.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer graph 130.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer graph 135.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer graph 140.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer graph 145.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer graph 15.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer graph 150.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer graph 155.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer graph 160.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer graph 165.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer graph 170.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer graph 175.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer graph 180.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer graph 185.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer graph 190.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer graph 195.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer graph 20.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer graph 200.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer graph 205.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer graph 210.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer graph 215.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer graph 220.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer graph 225.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer graph 230.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer graph 235.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer graph 240.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer graph 245.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer graph 25.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer graph 250.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer graph 255.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer graph 260.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer graph 265.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer graph 270.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer graph 275.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer graph 280.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer graph 285.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer graph 290.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer graph 295.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer graph 30.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer graph 300.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer graph 35.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer graph 40.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer graph 45.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer graph 5.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer graph 50.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer graph 55.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer graph 60.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer graph 65.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer graph 70.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer graph 75.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer graph 80.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer graph 85.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer graph 90.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer graph 95.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer num 0.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer num 1.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer num 10.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer num 11.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer num 12.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer num 13.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer num 14.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer num 15.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer num 16.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer num 17.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer num 18.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer num 19.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer num 2.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer num 20.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer num 21.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer num 22.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer num 23.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer num 24.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer num 25.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer num 26.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer num 27.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer num 28.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer num 29.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer num 3.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer num 30.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer num 4.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer num 5.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer num 6.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer num 7.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer num 8.png" />
+    <None Remove="Resources\Graphics\Phone Timer\wwtbam timer num 9.png" />
+    <None Remove="Resources\Graphics\Sums\wwtbam sum 1.png" />
+    <None Remove="Resources\Graphics\Sums\wwtbam sum 10.png" />
+    <None Remove="Resources\Graphics\Sums\wwtbam sum 11.png" />
+    <None Remove="Resources\Graphics\Sums\wwtbam sum 12.png" />
+    <None Remove="Resources\Graphics\Sums\wwtbam sum 13.png" />
+    <None Remove="Resources\Graphics\Sums\wwtbam sum 14.png" />
+    <None Remove="Resources\Graphics\Sums\wwtbam sum 2.png" />
+    <None Remove="Resources\Graphics\Sums\wwtbam sum 3.png" />
+    <None Remove="Resources\Graphics\Sums\wwtbam sum 4.png" />
+    <None Remove="Resources\Graphics\Sums\wwtbam sum 5.png" />
+    <None Remove="Resources\Graphics\Sums\wwtbam sum 6.png" />
+    <None Remove="Resources\Graphics\Sums\wwtbam sum 7.png" />
+    <None Remove="Resources\Graphics\Sums\wwtbam sum 8.png" />
+    <None Remove="Resources\Graphics\Sums\wwtbam sum 9.png" />
+    <None Remove="Resources\Graphics\Winnings\wwtbam winnings 0.png" />
+    <None Remove="Resources\Graphics\Winnings\wwtbam winnings 1.png" />
+    <None Remove="Resources\Graphics\Winnings\wwtbam winnings 10.png" />
+    <None Remove="Resources\Graphics\Winnings\wwtbam winnings 11.png" />
+    <None Remove="Resources\Graphics\Winnings\wwtbam winnings 12.png" />
+    <None Remove="Resources\Graphics\Winnings\wwtbam winnings 13.png" />
+    <None Remove="Resources\Graphics\Winnings\wwtbam winnings 14.png" />
+    <None Remove="Resources\Graphics\Winnings\wwtbam winnings 15.png" />
+    <None Remove="Resources\Graphics\Winnings\wwtbam winnings 2.png" />
+    <None Remove="Resources\Graphics\Winnings\wwtbam winnings 3.png" />
+    <None Remove="Resources\Graphics\Winnings\wwtbam winnings 4.png" />
+    <None Remove="Resources\Graphics\Winnings\wwtbam winnings 5.png" />
+    <None Remove="Resources\Graphics\Winnings\wwtbam winnings 6.png" />
+    <None Remove="Resources\Graphics\Winnings\wwtbam winnings 7.png" />
+    <None Remove="Resources\Graphics\Winnings\wwtbam winnings 8.png" />
+    <None Remove="Resources\Graphics\Winnings\wwtbam winnings 9.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="quizzes.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam ata pre.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam ata show.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam ata stop.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam ata voting.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam ath loop 10m.mp3" />
+    <EmbeddedResource Include="Resources\Audio\wwtbam ath loop.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam ath stop.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam background.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam bg 1.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam bg 10.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam bg 11.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam bg 12.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam bg 13.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam bg 14.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam bg 15.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam bg 6.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam bg 7.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam bg 8.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam bg 9.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam big walkaway 2.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam big walkaway.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam closing.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam commercial out.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam commercial in.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam correct 1.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam correct 10.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam correct 11.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam correct 12.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam correct 13.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam correct 14.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam correct 15.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam correct 5.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam correct 6.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam correct 7.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam correct 8.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam correct 9.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam dd 1.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam dd 2.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam dd activate bg.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam dd activate.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam dd wrong bg.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam dd wrong.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam fifty.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam final 10.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam final 11.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam final 12.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam final 13.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam final 14.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam final 15.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam final 6.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam final 7.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam final 8.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam final 9.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam goodbye.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam ld 10.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam ld 11.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam ld 12.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam ld 13.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam ld 14.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam ld 15.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam ld 6.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam ld 7.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam ld 8.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam ld 9.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam lets play.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam loop.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam meeting.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam opening.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam phone pre.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam phone stop.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam phone timer.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam rules end.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam rules explanation.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam rules lifeline 1.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam rules lifeline 2.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam rules lifeline 3.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam rules lifeline 4.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam rules lifeline 5.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam silence.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam siren.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam small walkaway 2.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam small walkaway.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam twm pre.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam twm stop.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam twm timer loop.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam twm timer.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam wrong 1.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam wrong 10.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam wrong 11.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam wrong 12.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam wrong 13.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam wrong 14.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam wrong 15.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam wrong 6.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam wrong 7.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam wrong 8.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam wrong 9.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Backgrounds\wwtbam bg photo.jpg" />
+    <Resource Include="Resources\Fonts\bloknot cyrillic.otf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\copperplate gothic thirty bc.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\pf dindisplay pro.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\vacansia cyrillic bold thirty bc.otf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\vacansia cyrillic.otf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <EmbeddedResource Include="Resources\Graphics\AtA\wwtbam ata bar.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\AtA\wwtbam ata graph 2.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\AtA\wwtbam ata graph.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Backgrounds\wwtbam bg logo.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Backgrounds\wwtbam bg main.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Double Dip\wwtbam double middle.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\Medium\wwtbam ata activated medium.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\Medium\wwtbam ata disabled medium.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\Medium\wwtbam ata enabled medium.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\Medium\wwtbam double activated medium.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\Medium\wwtbam double disabled medium.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\Medium\wwtbam double enabled medium.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\Medium\wwtbam fifty activated medium.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\Medium\wwtbam fifty disabled medium.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\Medium\wwtbam fifty enabled medium.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\Medium\wwtbam google activated medium.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\Medium\wwtbam google disabled medium.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\Medium\wwtbam google enabled medium.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\Medium\wwtbam phone activated medium.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\Medium\wwtbam phone disabled medium.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\Medium\wwtbam phone enabled medium.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\Medium\wwtbam secret medium.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\Medium\wwtbam twm activated medium.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\Medium\wwtbam twm disabled medium.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\Medium\wwtbam twm enabled medium.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\Small2\wwtbam ata activated small2.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\Small2\wwtbam ata disabled small2.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\Small2\wwtbam ata enabled small2.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\Small2\wwtbam double activated small2.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\Small2\wwtbam double disabled small2.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\Small2\wwtbam double enabled small2.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\Small2\wwtbam fifty activated small2.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\Small2\wwtbam fifty disabled small2.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\Small2\wwtbam fifty enabled small2.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\Small2\wwtbam google activated small2.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\Small2\wwtbam google disabled small2.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\Small2\wwtbam google enabled small2.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\Small2\wwtbam phone activated small2.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\Small2\wwtbam phone disabled small2.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\Small2\wwtbam phone enabled small2.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\Small2\wwtbam secret small2.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\Small2\wwtbam twm activated small2.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\Small2\wwtbam twm disabled small2.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\Small2\wwtbam twm enabled small2.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\Small\wwtbam ata activated small.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\Small\wwtbam ata disabled small.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\Small\wwtbam ata enabled small.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\Small\wwtbam double activated small.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\Small\wwtbam double disabled small.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\Small\wwtbam double enabled small.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\Small\wwtbam fifty activated small.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\Small\wwtbam fifty disabled small.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\Small\wwtbam fifty enabled small.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\Small\wwtbam google activated small.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\Small\wwtbam google disabled small.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\Small\wwtbam google enabled small.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\Small\wwtbam phone activated small.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\Small\wwtbam phone disabled small.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\Small\wwtbam phone enabled small.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\Small\wwtbam secret small.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\Small\wwtbam twm activated small.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\Small\wwtbam twm disabled small.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\Small\wwtbam twm enabled small.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\wwtbam ata activated.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\wwtbam ata disabled.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\wwtbam ata enabled.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\wwtbam ath activated.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\wwtbam ath disabled.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\wwtbam ath enabled.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\wwtbam double activated.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\wwtbam double disabled.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\wwtbam double enabled.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\wwtbam fifty activated.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\wwtbam fifty disabled.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\wwtbam fifty enabled.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\wwtbam google activated.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\wwtbam google disabled.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\wwtbam google enabled.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\wwtbam lifelines panel.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\wwtbam phone activated.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\wwtbam phone disabled.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\wwtbam phone enabled.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\wwtbam secret.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\wwtbam twm activated.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\wwtbam twm disabled.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lifelines\wwtbam twm enabled.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lozenge\wwtbam lozenge left correct.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lozenge\wwtbam lozenge left locked.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lozenge\wwtbam lozenge left.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lozenge\wwtbam lozenge question.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lozenge\wwtbam lozenge rhomb white.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lozenge\wwtbam lozenge rhomb.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lozenge\wwtbam lozenge right correct.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lozenge\wwtbam lozenge right locked.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Lozenge\wwtbam lozenge right.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Money Trees\Big\wwtbam bmt 0.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Money Trees\Big\wwtbam bmt 1.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Money Trees\Big\wwtbam bmt 10.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Money Trees\Big\wwtbam bmt 11.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Money Trees\Big\wwtbam bmt 12.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Money Trees\Big\wwtbam bmt 13.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Money Trees\Big\wwtbam bmt 14.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Money Trees\Big\wwtbam bmt 15.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Money Trees\Big\wwtbam bmt 2.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Money Trees\Big\wwtbam bmt 3.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Money Trees\Big\wwtbam bmt 4.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Money Trees\Big\wwtbam bmt 5.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Money Trees\Big\wwtbam bmt 6.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Money Trees\Big\wwtbam bmt 7.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Money Trees\Big\wwtbam bmt 8.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Money Trees\Big\wwtbam bmt 9.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Money Trees\Small\wwtbam smt 0.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Money Trees\Small\wwtbam smt 1.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Money Trees\Small\wwtbam smt 10.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Money Trees\Small\wwtbam smt 11.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Money Trees\Small\wwtbam smt 12.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Money Trees\Small\wwtbam smt 13.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Money Trees\Small\wwtbam smt 14.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Money Trees\Small\wwtbam smt 15.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Money Trees\Small\wwtbam smt 2.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Money Trees\Small\wwtbam smt 3.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Money Trees\Small\wwtbam smt 4.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Money Trees\Small\wwtbam smt 5.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Money Trees\Small\wwtbam smt 6.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Money Trees\Small\wwtbam smt 7.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Money Trees\Small\wwtbam smt 8.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Money Trees\Small\wwtbam smt 9.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer graph 0.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer graph 10.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer graph 100.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer graph 105.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer graph 110.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer graph 115.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer graph 120.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer graph 125.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer graph 130.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer graph 135.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer graph 140.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer graph 145.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer graph 15.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer graph 150.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer graph 155.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer graph 160.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer graph 165.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer graph 170.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer graph 175.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer graph 180.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer graph 185.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer graph 190.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer graph 195.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer graph 20.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer graph 200.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer graph 205.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer graph 210.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer graph 215.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer graph 220.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer graph 225.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer graph 230.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer graph 235.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer graph 240.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer graph 245.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer graph 25.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer graph 250.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer graph 255.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer graph 260.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer graph 265.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer graph 270.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer graph 275.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer graph 280.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer graph 285.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer graph 290.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer graph 295.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer graph 30.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer graph 300.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer graph 35.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer graph 40.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer graph 45.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer graph 5.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer graph 50.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer graph 55.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer graph 60.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer graph 65.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer graph 70.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer graph 75.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer graph 80.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer graph 85.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer graph 90.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer graph 95.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer num 0.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer num 1.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer num 10.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer num 11.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer num 12.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer num 13.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer num 14.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer num 15.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer num 16.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer num 17.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer num 18.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer num 19.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer num 2.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer num 20.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer num 21.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer num 22.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer num 23.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer num 24.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer num 25.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer num 26.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer num 27.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer num 28.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer num 29.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer num 3.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer num 30.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer num 4.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer num 5.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer num 6.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer num 7.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer num 8.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Phone Timer\wwtbam timer num 9.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Sums\wwtbam sum 1.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Sums\wwtbam sum 10.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Sums\wwtbam sum 11.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Sums\wwtbam sum 12.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Sums\wwtbam sum 13.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Sums\wwtbam sum 14.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Sums\wwtbam sum 2.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Sums\wwtbam sum 3.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Sums\wwtbam sum 4.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Sums\wwtbam sum 5.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Sums\wwtbam sum 6.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Sums\wwtbam sum 7.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Sums\wwtbam sum 8.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Sums\wwtbam sum 9.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Winnings\wwtbam winnings 0.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Winnings\wwtbam winnings 1.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Winnings\wwtbam winnings 10.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Winnings\wwtbam winnings 11.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Winnings\wwtbam winnings 12.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Winnings\wwtbam winnings 13.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Winnings\wwtbam winnings 14.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Winnings\wwtbam winnings 15.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Winnings\wwtbam winnings 2.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Winnings\wwtbam winnings 3.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Winnings\wwtbam winnings 4.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Winnings\wwtbam winnings 5.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Winnings\wwtbam winnings 6.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Winnings\wwtbam winnings 7.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Winnings\wwtbam winnings 8.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Graphics\Winnings\wwtbam winnings 9.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CSCore" Version="1.2.1.2" />
+    <PackageReference Include="reactiveui" Version="11.4.17" />
+    <PackageReference Include="ReactiveUI.Events.WPF" Version="11.4.17" />
+    <PackageReference Include="ReactiveUI.Fody" Version="11.4.17" />
+    <PackageReference Include="ReactiveUI.WPF" Version="11.4.17" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Model\Lifelines\Old\AskTheAudienceAnswerOld.cs" />
+    <None Include="Model\Lifelines\Old\AskTheAudienceOld.cs" />
+    <None Include="Model\Lifelines\Old\DoubleDipOld.cs" />
+    <None Include="Model\Lifelines\Old\FiftyFiftyOld.cs" />
+    <None Include="Model\Lifelines\Old\LifelineOld.cs" />
+    <None Include="Model\Lifelines\Old\PhoneAFriendOld.cs" />
+    <None Include="Model\Lifelines\Old\PhoneAFriendTimerOld.cs" />
+  </ItemGroup>
+
+</Project>

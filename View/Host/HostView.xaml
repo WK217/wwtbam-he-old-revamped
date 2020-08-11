@@ -1,0 +1,557 @@
+﻿<rxui:ReactiveWindow
+    x:Class="WwtbamOld.View.HostView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:m="clr-namespace:WwtbamOld.Model"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:rxui="http://reactiveui.net"
+    xmlns:v="clr-namespace:WwtbamOld.View"
+    xmlns:vm="clr-namespace:WwtbamOld.ViewModel"
+    x:TypeArguments="vm:HostViewModel"
+    ResizeMode="NoResize"
+    SizeToContent="WidthAndHeight"
+    mc:Ignorable="d">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/WWTBAM Home Edition;component/View/MainResourceDictionary.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <StackPanel>
+        <Menu>
+            <MenuItem Header="Файл">
+                <MenuItem Header="Пакет вопросов">
+                    <MenuItem x:Name="menuDefaultQuizbase" Header="Стандартный" />
+                    <MenuItem x:Name="menuLoadQuizbase" Header="Загрузить…" />
+                </MenuItem>
+            </MenuItem>
+
+            <MenuItem Header="Оформление">
+                <MenuItem
+                    x:Name="menuSoundOut"
+                    DisplayMemberPath="Description"
+                    Header="Устройство вывода">
+                    <MenuItem.ItemContainerStyle>
+                        <Style TargetType="MenuItem">
+                            <Setter Property="Command" Value="{Binding SelectSoundOutCommand, Mode=OneWay}" />
+                            <Setter Property="IsChecked" Value="{Binding IsSelected, Mode=OneWay}" />
+                        </Style>
+                    </MenuItem.ItemContainerStyle>
+                </MenuItem>
+            </MenuItem>
+        </Menu>
+
+        <Grid>
+            <Grid.Resources>
+                <ResourceDictionary>
+                    <Style TargetType="Border">
+                        <Setter Property="Grid.Row" Value="1" />
+                        <Setter Property="BorderThickness" Value="1" />
+                        <Setter Property="BorderBrush" Value="#D9D9D9" />
+                    </Style>
+
+                    <Style x:Key="InnerGrid" TargetType="Grid">
+                        <Setter Property="Margin" Value="10,0,10,10" />
+                    </Style>
+
+                    <Style x:Key="Header" TargetType="TextBlock">
+                        <Setter Property="Margin" Value="0,0,0,10" />
+                        <Setter Property="HorizontalAlignment" Value="Center" />
+                        <Setter Property="TextWrapping" Value="WrapWithOverflow" />
+                        <Setter Property="TextAlignment" Value="Center" />
+                        <Setter Property="FontSize" Value="18" />
+                        <Setter Property="FontWeight" Value="Bold" />
+                    </Style>
+                </ResourceDictionary>
+            </Grid.Resources>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="280" />
+                <ColumnDefinition Width="220" />
+                <ColumnDefinition Width="220" />
+                <ColumnDefinition Width="220" />
+            </Grid.ColumnDefinitions>
+
+            <!--#region Редактирование текущего вопроса-->
+            <Border Background="#FAEEDD">
+                <Grid Style="{StaticResource InnerGrid}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Style="{StaticResource Header}">Редактирование текущего вопроса</TextBlock>
+                    <Grid Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock VerticalAlignment="Center" Text="Выбор из базы:" />
+                        <ComboBox
+                            x:Name="comboQuizzes"
+                            Grid.Column="1"
+                            Margin="10,0,0,0"
+                            DisplayMemberPath="Theme" />
+                    </Grid>
+
+                    <Grid Grid.Row="2" Margin="0,10,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+
+                        <Grid.Resources>
+                            <ResourceDictionary>
+                                <Style TargetType="TextBox">
+                                    <Setter Property="Padding" Value="3" />
+                                    <Setter Property="TextBox.TextWrapping" Value="WrapWithOverflow" />
+                                </Style>
+                            </ResourceDictionary>
+                        </Grid.Resources>
+
+                        <GroupBox Margin="0,0,0,10" Header="Фото">
+                            <Grid Margin="5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition Height="5" />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.ColumnSpan="2">URL:</TextBlock>
+                                <TextBox
+                                    x:Name="textPhotoUrl"
+                                    Grid.Row="1"
+                                    Grid.ColumnSpan="2"
+                                    TextWrapping="NoWrap" />
+
+                                <CheckBox x:Name="checkBigPhotoShown" Grid.Row="3">Большое</CheckBox>
+                                <CheckBox
+                                    x:Name="checkSmallPhotoShown"
+                                    Grid.Row="3"
+                                    Grid.Column="1">
+                                    Малое
+                                </CheckBox>
+                            </Grid>
+                        </GroupBox>
+
+                        <TextBox
+                            x:Name="textQuestion"
+                            Grid.Row="1"
+                            VerticalContentAlignment="Center"
+                            AcceptsReturn="True"
+                            MinLines="4"
+                            TextAlignment="Center" />
+
+                        <ItemsControl
+                            x:Name="itemsAnswers"
+                            Grid.Row="2"
+                            Margin="10">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Margin="0,2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="35" />
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
+
+                                        <RadioButton
+                                            Grid.Column="0"
+                                            VerticalAlignment="Center"
+                                            Content="{Binding ID, Mode=OneWay}"
+                                            ContentStringFormat="{}{0}:"
+                                            IsChecked="{Binding IsCorrect}" />
+
+                                        <TextBox
+                                            Grid.Column="3"
+                                            Padding="0"
+                                            Background="#00FFFFFF"
+                                            BorderThickness="0,0,0,1"
+                                            Text="{Binding Text, UpdateSourceTrigger=PropertyChanged}" />
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+
+                        <TextBox
+                            x:Name="textComment"
+                            Grid.Row="3"
+                            VerticalContentAlignment="Top"
+                            Background="#00FFFFFF"
+                            BorderThickness="0"
+                            FontStyle="Italic" />
+                    </Grid>
+                </Grid>
+            </Border>
+            <!--#endregion-->
+
+            <!--#region Управление игровым процессом-->
+            <Border Grid.Column="1" Background="#BDECB6">
+                <Grid Style="{StaticResource InnerGrid}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Style="{StaticResource Header}">Управление игровым процессом</TextBlock>
+
+                    <StackPanel Grid.Row="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="7" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock VerticalAlignment="Center">Уровень:</TextBlock>
+                            <ComboBox
+                                x:Name="comboLevels"
+                                Grid.Column="2"
+                                DisplayMemberPath="Description" />
+                        </Grid>
+
+                        <Separator Height="10" />
+
+                        <Button x:Name="btnLightsDown" Margin="0,3">Lights Down</Button>
+                        <Button x:Name="btnShowBigTree" Margin="0,3">Большое дерево</Button>
+                        <Button x:Name="btnAskQuestion" Margin="0,3">Вопрос</Button>
+                        <Button
+                            x:Name="btnShowAnswers"
+                            MaxWidth="100"
+                            Margin="0,3">
+                            <TextBlock FontSize="11">Варианты ответа</TextBlock>
+                        </Button>
+
+                        <Grid Margin="0,5,0,0" HorizontalAlignment="Center">
+                            <Grid.Resources>
+                                <Style TargetType="CheckBox">
+                                    <Setter Property="Content" Value="{Binding ID, Mode=OneWay}" />
+                                    <Setter Property="ContentStringFormat" Value="{}{0}:" />
+                                    <Setter Property="IsChecked" Value="{Binding IsShown}" />
+                                </Style>
+                            </Grid.Resources>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="10" />
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="10" />
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="10" />
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+
+                            <CheckBox x:Name="checkShowA" Grid.Column="1" />
+                            <CheckBox x:Name="checkShowB" Grid.Column="3" />
+                            <CheckBox x:Name="checkShowC" Grid.Column="5" />
+                            <CheckBox x:Name="checkShowD" Grid.Column="7" />
+                        </Grid>
+
+                        <Separator Height="10" />
+
+                        <TextBlock HorizontalAlignment="Center" Style="{StaticResource Header2}">Принять ответ</TextBlock>
+
+                        <Grid Margin="0,7">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="10" />
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="5" />
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="5" />
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="5" />
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="10" />
+                            </Grid.ColumnDefinitions>
+
+                            <Button x:Name="btnLockA" Grid.Column="1">A</Button>
+                            <Button x:Name="btnLockB" Grid.Column="3">B</Button>
+                            <Button x:Name="btnLockC" Grid.Column="5">C</Button>
+                            <Button x:Name="btnLockD" Grid.Column="7">D</Button>
+                        </Grid>
+
+                        <Border
+                            Height="40"
+                            BorderBrush="#707070"
+                            BorderThickness="1"
+                            Visibility="Collapsed">
+                            <Border.Style>
+                                <Style TargetType="Border">
+                                    <Setter Property="Background" Value="#FFFFFFFF" />
+                                </Style>
+                            </Border.Style>
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                FontSize="14"
+                                TextAlignment="Center">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Text" Value="Ответ не принят" />
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </Border>
+
+                        <Button
+                            x:Name="btnRevealCorrect"
+                            Margin="0,7"
+                            Padding="10">
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="FontSize" Value="14" />
+                                    <Setter Property="FontWeight" Value="Bold" />
+                                </Style>
+                            </Button.Style>
+                            Правильный ответ
+                        </Button>
+
+                        <Separator Height="10" />
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="5" />
+                                <ColumnDefinition Width="auto" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition Height="5" />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+
+                            <Button x:Name="btnWalkaway" Grid.RowSpan="3">Деньги</Button>
+                            <CheckBox x:Name="checkWalkedaway" Grid.Column="2">Деньги забраны</CheckBox>
+                            <CheckBox
+                                x:Name="checkWinningsShown"
+                                Grid.Row="2"
+                                Grid.Column="2">
+                                Показ выигрыша
+                            </CheckBox>
+                        </Grid>
+                    </StackPanel>
+                </Grid>
+            </Border>
+            <!--#endregion-->
+
+            <!--#region Управление подсказками-->
+            <Border Grid.Column="2" Background="#ABCDEF">
+                <Grid Style="{StaticResource InnerGrid}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Style="{StaticResource Header}">Управление подсказками</TextBlock>
+
+                    <StackPanel Grid.Row="1">
+                        <StackPanel Visibility="Collapsed">
+                            <TextBlock HorizontalAlignment="Center" Style="{StaticResource Header2}">Набор подсказок</TextBlock>
+
+                            <ItemsControl x:Name="itemsAllLifelineTypes">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding Description}" />
+                                            <Button Command="{Binding AddCommand}">+</Button>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </StackPanel>
+
+                        <StackPanel Grid.IsSharedSizeScope="True">
+                            <Grid Margin="0,0,0,5" HorizontalAlignment="Center">
+                                <Grid.Resources>
+                                    <Style x:Key="{x:Type TextBlock}" TargetType="{x:Type TextBlock}">
+                                        <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                                        <Setter Property="FontWeight" Value="Bold" />
+                                        <Setter Property="FontSize" Value="13" />
+                                    </Style>
+                                </Grid.Resources>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="15" SharedSizeGroup="LifelineArrow" />
+                                    <ColumnDefinition Width="130" SharedSizeGroup="LifelineName" />
+                                    <ColumnDefinition Width="10" SharedSizeGroup="LifelineSpace1" />
+                                    <ColumnDefinition Width="auto" SharedSizeGroup="LifelineEnabled" />
+                                    <ColumnDefinition Width="10" SharedSizeGroup="LifelineSpace2" />
+                                    <ColumnDefinition Width="auto" SharedSizeGroup="LifelineSecret" />
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="1" TextAlignment="Left">Подсказка</TextBlock>
+                                <TextBlock Grid.Column="3" ToolTip="Наличие">✓</TextBlock>
+                                <TextBlock Grid.Column="5" ToolTip="Засекреченность">?</TextBlock>
+                            </Grid>
+
+                            <ItemsControl x:Name="itemsLifelines">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid HorizontalAlignment="Center">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition SharedSizeGroup="LifelineArrow" />
+                                                <ColumnDefinition SharedSizeGroup="LifelineName" />
+                                                <ColumnDefinition SharedSizeGroup="LifelineSpace1" />
+                                                <ColumnDefinition SharedSizeGroup="LifelineEnabled" />
+                                                <ColumnDefinition SharedSizeGroup="LifelineSpace2" />
+                                                <ColumnDefinition SharedSizeGroup="LifelineSecret" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <TextBlock TextAlignment="Left">⮚</TextBlock>
+                                            <TextBlock Grid.Column="1" Text="{Binding Name}" />
+                                            <CheckBox
+                                                Grid.Column="3"
+                                                HorizontalAlignment="Center"
+                                                IsChecked="{Binding IsEnabled}" />
+                                            <CheckBox
+                                                Grid.Column="5"
+                                                HorizontalAlignment="Center"
+                                                IsChecked="{Binding IsSecret}" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </StackPanel>
+
+                        <Button
+                            x:Name="btnShowLifelinesPanel"
+                            Padding="5"
+                            TextBlock.FontSize="13">
+                            <Button.Style>
+                                <Style TargetType="{x:Type Button}">
+                                    <Setter Property="Content" Value="Панель подсказок" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding LifelinesPanel.IsShown}" Value="True">
+                                            <Setter Property="Background" Value="#EEE8AA" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+
+                        <Separator Height="10" />
+
+                        <TextBlock HorizontalAlignment="Center" Style="{StaticResource Header2}">Использование</TextBlock>
+
+                        <ComboBox x:Name="comboLifelines" DisplayMemberPath="Name" />
+
+                        <Grid Margin="0,7,0,0">
+                            <rxui:ViewModelViewHost
+                                x:Name="viewHostLifeline"
+                                HorizontalContentAlignment="Stretch"
+                                Transition="Drop"
+                                Duration="0:0:0" />
+                        </Grid>
+                    </StackPanel>
+                </Grid>
+            </Border>
+            <!--#endregion-->
+
+            <!--#region Управление оформлением-->
+            <Border Grid.Column="3" Background="#FADADD">
+                <Grid Style="{StaticResource InnerGrid}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Style="{StaticResource Header}">Управление оформлением</TextBlock>
+
+                    <StackPanel Grid.Row="1">
+                        <StackPanel.Resources>
+                            <Style x:Key="SoundButton" TargetType="Button">
+                                <Setter Property="Content" Value="{Binding Description}" />
+                                <Setter Property="Command" Value="{Binding PlayAudioCommand}" />
+                                <Setter Property="Margin" Value="0,0,0,7" />
+                            </Style>
+                        </StackPanel.Resources>
+
+                        <CheckBox x:Name="checkLogo" Margin="0,0,0,10">Показ логотипа</CheckBox>
+
+                        <Button x:Name="btnPreLoop" Style="{StaticResource SoundButton}" />
+                        <Button x:Name="btnOpening" Style="{StaticResource SoundButton}" />
+                        <Button x:Name="btnMeeting" Style="{StaticResource SoundButton}" />
+                        <Button x:Name="btnBackgroundGeneral" Style="{StaticResource SoundButton}" />
+
+                        <Button x:Name="btnRulesExplanation" Style="{StaticResource SoundButton}" />
+
+                        <ItemsControl x:Name="itemsPingLifelines" Margin="0,0,0,7">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Button
+                                        Padding="5,2"
+                                        Command="{Binding PingCommand}"
+                                        Content="{Binding Code}" />
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+
+                            <ItemsControl.ItemContainerStyle>
+                                <Style>
+                                    <Setter Property="FrameworkElement.Margin" Value="0" />
+                                </Style>
+                            </ItemsControl.ItemContainerStyle>
+
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel HorizontalAlignment="Center" Orientation="Horizontal" />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                        </ItemsControl>
+
+                        <Button x:Name="btnCommIn" Style="{StaticResource SoundButton}" />
+                        <Button x:Name="btnCommOut" Style="{StaticResource SoundButton}" />
+                        <Button x:Name="btnGoodbye" Style="{StaticResource SoundButton}" />
+
+                        <Button x:Name="btnFinalSiren" Style="{StaticResource SoundButton}" />
+                        <Button
+                            x:Name="btnClosing"
+                            Margin="0"
+                            Style="{StaticResource SoundButton}" />
+
+                        <Separator Height="10" />
+
+                        <StackPanel Margin="0,0,0,7">
+                            <TextBlock Margin="0,0,0,7" Style="{StaticResource Header2}">Координаты экрана</TextBlock>
+
+                            <Grid>
+                                <Grid.Resources>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                    </Style>
+                                </Grid.Resources>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="3*" />
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="3*" />
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock>X:</TextBlock>
+                                <TextBox x:Name="textCoordX" Grid.Column="1" />
+
+                                <TextBlock Grid.Column="3">Y:</TextBlock>
+                                <TextBox x:Name="textCoordY" Grid.Column="4" />
+                            </Grid>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </Border>
+            <!--#endregion-->
+        </Grid>
+    </StackPanel>
+</rxui:ReactiveWindow>

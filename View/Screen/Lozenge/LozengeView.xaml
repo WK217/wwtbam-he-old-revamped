@@ -1,0 +1,180 @@
+﻿<rxui:ReactiveUserControl
+    x:Class="WwtbamOld.View.LozengeView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:m="clr-namespace:WwtbamOld.Model"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:rxui="http://reactiveui.net"
+    xmlns:v="clr-namespace:WwtbamOld.View"
+    xmlns:vm="clr-namespace:WwtbamOld.ViewModel"
+    Width="1366"
+    Height="248"
+    x:TypeArguments="vm:LozengeViewModel"
+    mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/WWTBAM Home Edition;component/View/MainResourceDictionary.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="109*" />
+            <RowDefinition Height="12*" />
+            <RowDefinition Height="127*" />
+        </Grid.RowDefinitions>
+
+        <Grid Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="193*" />
+                <ColumnDefinition x:Name="gridColumnText" Width="980*" />
+                <ColumnDefinition Width="193*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid.Background>
+                <ImageBrush x:Name="imgBackground" />
+            </Grid.Background>
+
+            <TextBlock
+                x:Name="txtQuestion"
+                Grid.Column="1"
+                Style="{StaticResource QuestionTextFont}" />
+        </Grid>
+
+        <Grid Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="59*" />
+                <RowDefinition Height="9*" />
+                <RowDefinition Height="59*" />
+            </Grid.RowDefinitions>
+
+            <v:LeftAnswerLozengeView
+                x:Name="answerA"
+                Grid.Row="0"
+                Grid.Column="0" />
+
+            <v:RightAnswerLozengeView
+                x:Name="answerB"
+                Grid.Row="0"
+                Grid.Column="1" />
+
+            <v:LeftAnswerLozengeView
+                x:Name="answerC"
+                Grid.Row="2"
+                Grid.Column="0" />
+
+            <v:RightAnswerLozengeView
+                x:Name="answerD"
+                Grid.Row="2"
+                Grid.Column="1" />
+
+            <Viewbox
+                x:Name="lifelineIconMiddle"
+                Grid.RowSpan="3"
+                Grid.ColumnSpan="2"
+                Width="120"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                RenderOptions.BitmapScalingMode="Fant"
+                Stretch="Uniform">
+                <Viewbox.Style>
+                    <Style TargetType="Viewbox">
+                        <Setter Property="Opacity" Value="0" />
+
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsMidIconShown, Mode=OneWay}" Value="True">
+                                <DataTrigger.EnterActions>
+                                    <BeginStoryboard Storyboard="{StaticResource ShowStoryboard}" />
+                                </DataTrigger.EnterActions>
+
+                                <DataTrigger.ExitActions>
+                                    <BeginStoryboard Storyboard="{StaticResource HideStoryboard}" />
+                                </DataTrigger.ExitActions>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Viewbox.Style>
+
+                <Image Source="{Binding MiddleImage, Mode=OneWay}" />
+            </Viewbox>
+
+            <Grid
+                x:Name="gridLifelinesPanel"
+                Width="1165"
+                Height="133"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                ColumnSpan="2"
+                RowSpan="3">
+
+                <Grid.Background>
+                    <ImageBrush x:Name="imgLifelinesPanel" />
+                </Grid.Background>
+
+                <ItemsControl
+                    x:Name="itemsLifelinesPanel"
+                    Margin="136,0"
+                    VerticalAlignment="Center">
+
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Rows="1" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate DataType="{x:Type m:Lifeline}">
+                            <Viewbox
+                                Width="166"
+                                Height="100"
+                                RenderOptions.BitmapScalingMode="Fant"
+                                Stretch="UniformToFill">
+                                <Image Source="{Binding GeneralImage}" />
+                            </Viewbox>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
+                <Grid.Style>
+                    <Style TargetType="{x:Type Grid}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsShown}" Value="False">
+                                <DataTrigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ThicknessAnimation
+                                                Storyboard.TargetProperty="Margin"
+                                                To="1366,0,-1366,0"
+                                                Duration="0:0:1.5" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </DataTrigger.EnterActions>
+
+                                <DataTrigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ThicknessAnimation
+                                                Storyboard.TargetProperty="Margin"
+                                                From="-1366,0,1366,0"
+                                                To="0"
+                                                Duration="0:0:1.5" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </DataTrigger.ExitActions>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Style>
+            </Grid>
+        </Grid>
+    </Grid>
+</rxui:ReactiveUserControl>

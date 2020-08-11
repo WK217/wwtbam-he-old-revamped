@@ -1,0 +1,84 @@
+﻿<rxui:ReactiveUserControl
+    x:Class="WwtbamOld.View.PhoneAFriendView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:m="clr-namespace:WwtbamOld.Model"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:rxui="http://reactiveui.net"
+    xmlns:v="clr-namespace:WwtbamOld.View"
+    xmlns:vm="clr-namespace:WwtbamOld.ViewModel"
+    x:TypeArguments="m:PhoneAFriend"
+    mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/WWTBAM Home Edition;component/View/MainResourceDictionary.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid
+        x:Name="gridMain"
+        Width="304"
+        Height="304"
+        Margin="-304,100,0,0"
+        HorizontalAlignment="Left"
+        VerticalAlignment="Top">
+        <Image x:Name="imgPhone" />
+
+        <v:CircularProgress
+            x:Name="progressCountdown"
+            Width="252"
+            Height="252"
+            HorizontalAlignment="Center"
+            RenderTransformOrigin="0.5,0.5"
+            Stroke="#e19336"
+            StrokeThickness="13">
+            <UIElement.RenderTransform>
+                <ScaleTransform ScaleX="-1" />
+            </UIElement.RenderTransform>
+        </v:CircularProgress>
+
+        <v:OutlinedTextBlock
+            x:Name="txtTimer"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Fill="#FFFFFFFF"
+            FontFamily="{StaticResource Copperplate Gothic}"
+            FontSize="140"
+            Stroke="#FF000000"
+            StrokeThickness="5" />
+
+        <Grid.Style>
+            <Style TargetType="{x:Type Grid}">
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding IsTimerShown}" Value="True">
+                        <DataTrigger.EnterActions>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ThicknessAnimation
+                                        Storyboard.TargetProperty="Margin"
+                                        To="50,100,0,0"
+                                        Duration="0:0:0.7" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </DataTrigger.EnterActions>
+
+                        <TriggerBase.ExitActions>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ThicknessAnimation
+                                        Storyboard.TargetProperty="Margin"
+                                        To="-304,100,0,0"
+                                        Duration="0:0:0.7" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </TriggerBase.ExitActions>
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+        </Grid.Style>
+    </Grid>
+</rxui:ReactiveUserControl>
