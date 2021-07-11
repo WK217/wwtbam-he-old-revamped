@@ -58,7 +58,7 @@ namespace WwtbamOld.Model
         public override void Activate()
         {
             Execute();
-            AudioManager.Instance.Play(Audio.FiftyUse);
+            AudioManager.Play(Audio.FiftyUse);
 
             for (AnswerID id = 0; id <= AnswerID.D; id++)
                 _game.Lozenge[id].IsShown = id == _game.CurrentQuiz.Correct || id == Alternative;

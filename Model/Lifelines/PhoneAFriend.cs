@@ -70,17 +70,17 @@ namespace WwtbamOld.Model
         public void Initiate()
         {
             Execute();
-            AudioManager.Instance.Play(AudioUse);
+            AudioManager.Play(AudioUse);
 
-            Observable.Return(Duration)
-                      .ToProperty(this, nameof(RemainingTime), out _remainingTime, initialValue: Duration);
+            _remainingTime = Observable.Return(Duration)
+                                       .ToProperty(this, nameof(RemainingTime), initialValue: Duration);
         }
 
         public override void Activate()
         {
             Execute();
             IsTimerActive = true;
-            AudioManager.Instance.Play(AudioStart);
+            AudioManager.Play(AudioStart);
 
             _timerObservable = Observable.Interval(_interval, RxApp.MainThreadScheduler)
                                          .Select(x => Duration.Subtract(_interval.Multiply(x + 1)))
@@ -107,7 +107,7 @@ namespace WwtbamOld.Model
             if (ahead)
             {
                 _timerSubscription?.Dispose();
-                AudioManager.Instance.Play(AudioStop);
+                AudioManager.Play(AudioStop);
             }
         }
 

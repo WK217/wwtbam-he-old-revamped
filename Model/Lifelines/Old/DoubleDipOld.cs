@@ -20,7 +20,7 @@ namespace WwtbamOld.Model.Old
             _activateCommand = ReactiveCommand.Create(() =>
             {
                 Mode = DoubleDipMode.FirstAnswer;
-                AudioManager.Instance.Play(Audio.DDUse);
+                AudioManager.Play(Audio.DDUse);
                 State = LifelineState.Activated;
             });
 
@@ -29,7 +29,7 @@ namespace WwtbamOld.Model.Old
             DeactivateCommand = ReactiveCommand.Create(() =>
             {
                 Mode = DoubleDipMode.Deactivated;
-                AudioManager.Instance.Play(AudioManager.Instance.BackgroundAudio);
+                AudioManager.Play(AudioManager.Instance.BackgroundAudio);
                 State = LifelineState.Disabled;
             }, this.WhenAnyValue(dd => dd.Activated));
         }

@@ -37,7 +37,7 @@ namespace WwtbamOld.Model.Old
 
                 Secret = false;
                 State = LifelineState.Activated;
-                AudioManager.Instance.Play(PingSound);
+                AudioManager.Play(PingSound);
                 pingTimer.Start();
             });
 

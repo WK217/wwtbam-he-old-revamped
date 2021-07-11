@@ -1,12 +1,13 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
     <Authors>WK217</Authors>
     <Company />
     <Product>WWTBAM Home Edition Old Revamped</Product>
+    <RootNamespace>WwtbamOld</RootNamespace>
     <AssemblyName>WWTBAM Home Edition</AssemblyName>
   </PropertyGroup>
 
@@ -1438,11 +1439,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CSCore" Version="1.2.1.2" />
-    <PackageReference Include="reactiveui" Version="11.4.17" />
-    <PackageReference Include="ReactiveUI.Events.WPF" Version="11.4.17" />
-    <PackageReference Include="ReactiveUI.Fody" Version="11.4.17" />
-    <PackageReference Include="ReactiveUI.WPF" Version="11.4.17" />
+    <PackageReference Include="NAudio" Version="2.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="reactiveui" Version="14.1.1" />
+    <PackageReference Include="ReactiveUI.Events.WPF" Version="14.1.1" />
+    <PackageReference Include="ReactiveUI.Fody" Version="14.1.1" />
+    <PackageReference Include="ReactiveUI.WPF" Version="14.1.1" />
   </ItemGroup>
 
   <ItemGroup>

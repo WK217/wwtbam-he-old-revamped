@@ -34,7 +34,7 @@ namespace WwtbamOld.Model
                 var step1 = _interval.TotalMilliseconds / timeSpan.TotalMilliseconds;
                 var increment = MaxValue * step1;
 
-                AudioManager.Instance.Play(Audio.PhoneStart);
+                AudioManager.Play(Audio.PhoneStart);
 
                 return Observable.Interval(_interval, RxApp.MainThreadScheduler)
                   .TakeWhile(_ => Count < MaxValue)

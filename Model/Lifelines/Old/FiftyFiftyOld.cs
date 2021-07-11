@@ -33,7 +33,7 @@ namespace WwtbamOld.Model.Old
                 };
 
                 State = LifelineState.Activated;
-                AudioManager.Instance.Play(Audio.FiftyUse);
+                AudioManager.Play(Audio.FiftyUse);
                 pingTimer.Start();
             }, this.WhenAnyValue(fifty => fifty.Enabled, fifty => fifty.Alternative,
                                 (enabled, alternative) => enabled && alternative != null && !alternative.IsCorrect));

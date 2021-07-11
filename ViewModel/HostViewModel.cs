@@ -51,7 +51,7 @@ namespace WwtbamOld.ViewModel
             LockDCommand = ReactiveCommand.Create(() => _game.LockAnswer(AnswerID.D), this.WhenAnyValue(vm => vm.Lozenge.D.IsShown));
             RevealCorrectCommand = ReactiveCommand.Create(() => _game.RevealCorrect(), this.WhenAnyValue(vm => vm._game.Lozenge.Locked).Select(v => v != AnswerID.None));
 
-            PlayAudioCommand = ReactiveCommand.Create<Audio>(audio => AudioManager.Instance.Play(audio));
+            PlayAudioCommand = ReactiveCommand.Create<Audio>(audio => AudioManager.Play(audio));
 
             #endregion Commands
         }

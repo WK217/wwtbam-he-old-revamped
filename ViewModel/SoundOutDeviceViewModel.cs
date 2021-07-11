@@ -1,4 +1,4 @@
-﻿using CSCore.CoreAudioAPI;
+﻿using NAudio.CoreAudioApi;
 using ReactiveUI;
 using System.Reactive;
 using System.Reactive.Linq;
@@ -21,11 +21,11 @@ namespace WwtbamOld.ViewModel
             _audioManager = AudioManager.Instance;
             _device = device;
 
-            _isSelected = this.WhenAnyValue(x => x._audioManager.SelectedSoundOut)
+            _isSelected = this.WhenAnyValue(x => x._audioManager.SelectedSoundOutDevice)
                               .Select(device => device == _device)
                               .ToProperty(this, nameof(IsSelected));
 
-            SelectSoundOutCommand = ReactiveCommand.Create(() => { _audioManager.SelectedSoundOut = _device; });
+            SelectSoundOutCommand = ReactiveCommand.Create(() => { _audioManager.SelectedSoundOutDevice = _device; });
         }
 
         #region Properties

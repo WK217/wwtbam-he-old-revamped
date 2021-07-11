@@ -139,7 +139,7 @@ namespace WwtbamOld.Model
                 bool isDoubleDip = Lifelines.IsDoubleDipActivated(out DoubleDip doubleDip);
 
                 if (isDoubleDip)
-                    AudioManager.Instance.Play(doubleDip.FinalAnswerAudio);
+                    AudioManager.Play(doubleDip.FinalAnswerAudio);
                 else if (!IsFirstStage)
                     AudioManager.Instance.PlayFinalAnswer();
             }
@@ -177,7 +177,7 @@ namespace WwtbamOld.Model
                         Lozenge[Lozenge.Locked].IsShown = false;
                         Lozenge.Locked = AnswerID.None;
 
-                        AudioManager.Instance.Play(Audio.DDWrong);
+                        AudioManager.Play(Audio.DDWrong);
                     }
                     else
                     {

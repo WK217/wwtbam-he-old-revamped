@@ -29,7 +29,7 @@ namespace WwtbamOld.Model.Old
                 Shown = true;
                 State = LifelineState.Activated;
                 Timer.Percentage = 100.0;
-                AudioManager.Instance.Play(Audio.TWMUse);
+                AudioManager.Play(Audio.TWMUse);
             });
 
             _activateCommand = ReactiveCommand.Create(() =>
@@ -37,7 +37,7 @@ namespace WwtbamOld.Model.Old
                 Shown = true;
                 State = LifelineState.Activated;
                 Timer.Start();
-                AudioManager.Instance.Play(Audio.TWMStart);
+                AudioManager.Play(Audio.TWMStart);
             });
 
             StopCommand = ReactiveCommand.Create(() =>
@@ -49,7 +49,7 @@ namespace WwtbamOld.Model.Old
 
         private void TimerCountdownCompleted(object sender, EventArgs eventArgs)
         {
-            AudioManager.Instance.Play(Audio.TWMStop);
+            AudioManager.Play(Audio.TWMStop);
 
             Timer hideTimer = new Timer(4000.0);
             hideTimer.Elapsed += delegate (object s, ElapsedEventArgs e)

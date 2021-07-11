@@ -101,13 +101,13 @@ namespace WwtbamOld.Model
         public void Initiate()
         {
             Execute();
-            AudioManager.Instance.Play(Audio.AtAUse);
+            AudioManager.Play(Audio.AtAUse);
         }
 
         public override void Activate()
         {
             Execute();
-            AudioManager.Instance.Play(Audio.AtAStart);
+            AudioManager.Play(Audio.AtAStart);
 
             _voteTimerObservable = Observable.Timer(TimeSpan.FromSeconds(60), RxApp.MainThreadScheduler);
             _voteTimerSubscription?.Dispose();
@@ -122,7 +122,7 @@ namespace WwtbamOld.Model
             if (ahead)
             {
                 _voteTimerSubscription?.Dispose();
-                AudioManager.Instance.Play(Audio.AtAShow);
+                AudioManager.Play(Audio.AtAShow);
             }
         }
 

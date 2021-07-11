@@ -38,13 +38,13 @@ namespace WwtbamOld.Model
         public override void Activate()
         {
             Execute();
-            AudioManager.Instance.Play(Audio.AtHStart);
+            AudioManager.Play(Audio.AtHStart);
         }
 
         public void Deactivate()
         {
             Execute(false);
-            AudioManager.Instance.Play(Audio.AtHStop);
+            AudioManager.Play(Audio.AtHStop);
 
             _timerBackgroundMusicSubscription?.Dispose();
             _timerBackgroundMusicSubscription = Observable.Timer(TimeSpan.FromMilliseconds(4000))

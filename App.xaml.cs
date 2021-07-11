@@ -74,7 +74,7 @@ namespace WwtbamOld
 
         private void WindowClosed(object sender, EventArgs e)
         {
-            AudioManager.Instance.CleanupPlayback();
+            AudioManager.Instance.Dispose();
             Shutdown();
         }
     }

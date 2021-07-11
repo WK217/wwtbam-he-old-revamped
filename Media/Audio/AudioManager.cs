@@ -1,9 +1,10 @@
-﻿using CSCore.CoreAudioAPI;
-using ReactiveUI;
+﻿using NAudio.CoreAudioApi;
 using ReactiveUI.Fody.Helpers;
-using System.Collections.Generic;
-using WwtbamOld.Model;
 using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using WwtbamOld.Model;
 
 namespace WwtbamOld.Media.Audio
 {
@@ -12,46 +13,39 @@ namespace WwtbamOld.Media.Audio
         #region Singleton
 
         private static AudioManager _instance;
-
-        public static AudioManager Instance
-        {
-            get
-            {
-                if (_instance is null)
-                    _instance = new AudioManager();
-
-                return _instance;
-            }
-        }
+        public static AudioManager Instance => _instance ??= new AudioManager();
 
         private AudioManager()
         {
-            using MMDeviceEnumerator deviceEnumerator = new MMDeviceEnumerator();
-            using MMDeviceCollection deviceCollection = deviceEnumerator.EnumAudioEndpoints(DataFlow.Render, DeviceState.Active);
+            List<MMDevice> devicesList = new();
+            SoundOutDevices = new ReadOnlyCollection<MMDevice>(devicesList);
+
+            using MMDeviceEnumerator deviceEnumerator = new();
+            MMDeviceCollection deviceCollection = deviceEnumerator.EnumerateAudioEndPoints(DataFlow.Render, DeviceState.Active);
             foreach (MMDevice device in deviceCollection)
-                _collection.Add(device);
+                devicesList.Add(device);
 
-            SelectedSoundOut = _collection[0];
+            if (deviceEnumerator.HasDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia))
+            {
+                string defaultDeviceId = deviceEnumerator.GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia).ID;
+                SelectedSoundOutDevice = devicesList.FirstOrDefault(d => d.ID == defaultDeviceId);
+            }
 
-            Player1 = new AudioPlayer();
-            Player2 = new AudioPlayer();
-
-            this.WhenAnyValue(x => x.SelectedSoundOut)
-                .Subscribe(x =>
-                {
-                    Player1.SelectedSoundOut = x;
-                    Player2.SelectedSoundOut = x;
-                });
+            Players = new ReadOnlyCollection<AudioPlayer>(new List<AudioPlayer>()
+            {
+                new AudioPlayer("Player #1"),
+                new AudioPlayer("Player #2")
+            });
         }
 
         #endregion Singleton
 
         #region Properties
 
-        [Reactive] public MMDevice SelectedSoundOut { get; set; }
+        public ReadOnlyCollection<MMDevice> SoundOutDevices { get; }
+        [Reactive] public MMDevice SelectedSoundOutDevice { get; set; }
 
-        private AudioPlayer Player1 { get; }
-        private AudioPlayer Player2 { get; }
+        public ReadOnlyCollection<AudioPlayer> Players { get; }
 
         public Audio LightsDownAudio { get; set; }
         public Audio BackgroundAudio { get; set; }
@@ -77,26 +71,25 @@ namespace WwtbamOld.Media.Audio
 
         #region Methods
 
-        public void Play(Audio audio)
+        private static Audio SelectRandom(Audio[] audio)
         {
-            AudioPropertiesAttribute props = GetProperties(audio);
-            AudioPlayer player = (props.PlayerNumber == 2) ? Player2 : Player1;
-
-            /*string fileName = Path.GetFullPath($"Resources\\Audio\\{properties.FileName}");
-            audioPlayer.OpenFromFile(fileName, properties.Loop);*/
-
-            player.OpenFromResource(ResourceManager.GetResourceAudioName(props.FileName), props.Loop);
-            player.Play();
+            int length = audio.Length;
+            return length > 0 ? audio[new Random().Next(0, length)] : 0;
         }
 
-        private AudioPropertiesAttribute GetProperties(Audio audio)
+        public static void PlayRandom(FadeParameters fadeOutParams, params Audio[] audio) => Play(SelectRandom(audio), fadeOutParams);
+
+        public static void PlayRandom(params Audio[] audio) => Play(SelectRandom(audio));
+
+        public static void Play(Audio audio, FadeParameters? fadeOutParams = null)
+        {
+            AudioPropertiesAttribute props = AudioPropertiesAttribute.Get(audio);
+            props.Player.Load(props, fadeOutParams);
+            props.Player.Play();
+        }
+
+        public static AudioPropertiesAttribute GetProperties(Audio audio)
             => (AudioPropertiesAttribute)audio.GetType().GetMember(audio.ToString())[0].GetCustomAttributes(typeof(AudioPropertiesAttribute), false)[0];
-
-        public void CleanupPlayback()
-        {
-            Player1.CleanupPlayback();
-            Player2.CleanupPlayback();
-        }
 
         public void PlayLightsDown() => Play(LightsDownAudio);
 
@@ -109,6 +102,12 @@ namespace WwtbamOld.Media.Audio
         public void PlayWrong() => Play(WrongAudio);
 
         public void PlayWalkaway() => Play(WalkawayAudio);
+
+        public void Dispose()
+        {
+            foreach (var player in Players)
+                player.Dispose();
+        }
 
         #endregion Methods
 
@@ -254,5 +253,7 @@ namespace WwtbamOld.Media.Audio
         }
 
         #endregion Collections
+
+        ~AudioManager() => Dispose();
     }
 }

@@ -26,7 +26,7 @@ namespace WwtbamOld.Model.Old
             {
                 Shown = true;
                 ResultsShown = false;
-                AudioManager.Instance.Play(Audio.AtAUse);
+                AudioManager.Play(Audio.AtAUse);
                 State = LifelineState.Activated;
             });
 
@@ -62,7 +62,7 @@ namespace WwtbamOld.Model.Old
             Shown = true;
             ResultsShown = false;
             State = LifelineState.Activated;
-            AudioManager.Instance.Play(Audio.AtAStart);
+            AudioManager.Play(Audio.AtAStart);
             VotingOpened = true;
         }
 
@@ -70,7 +70,7 @@ namespace WwtbamOld.Model.Old
         {
             Shown = true;
             ResultsShown = true;
-            AudioManager.Instance.Play(Audio.AtAShow);
+            AudioManager.Play(Audio.AtAShow);
             VotingOpened = false;
         }
 

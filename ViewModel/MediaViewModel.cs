@@ -43,7 +43,7 @@ namespace WwtbamOld.ViewModel
                 {
                     case RulesExplanationState.Begin:
                         RulesExplanation.Description = "Демонстрация дерева";
-                        AudioManager.Instance.Play(Audio.RulesExplanation);
+                        AudioManager.Play(Audio.RulesExplanation);
                         hostViewModel.IsLogoShown = false;
                         hostViewModel.BigMoneyTree.IsShown = true;
                         break;
@@ -56,7 +56,7 @@ namespace WwtbamOld.ViewModel
                         break;
 
                     case RulesExplanationState.End:
-                        AudioManager.Instance.Play(Audio.RulesEnd);
+                        AudioManager.Play(Audio.RulesEnd);
                         hostViewModel.IsLogoShown = false;
                         hostViewModel.BigMoneyTree.IsShown = false;
                         hostViewModel.BigMoneyTree.StopDemo();
@@ -130,7 +130,7 @@ namespace WwtbamOld.ViewModel
             PlayAudioCommand = ReactiveCommand.Create(() =>
             {
                 if (Audio != null)
-                    AudioManager.Instance.Play((Audio)Audio);
+                    AudioManager.Play((Audio)Audio);
             });
         }
 

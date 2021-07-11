@@ -115,7 +115,7 @@ namespace WwtbamOld.Model
         {
             IsSecret = false;
             State = LifelineState.Activated;
-            AudioManager.Instance.Play(PingSound);
+            AudioManager.Play(PingSound);
 
             _pingTimerObservable = Observable.Timer(TimeSpan.FromMilliseconds(300), RxApp.MainThreadScheduler);
             _pingTimerObservable.Subscribe(v => { State = LifelineState.Enabled; });

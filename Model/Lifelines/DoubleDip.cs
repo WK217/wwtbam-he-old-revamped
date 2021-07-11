@@ -88,7 +88,7 @@ namespace WwtbamOld.Model
         {
             Mode = DoubleDipMode.FirstAnswer;
             Execute();
-            AudioManager.Instance.Play(Audio.DDUse);
+            AudioManager.Play(Audio.DDUse);
         }
 
         public void SetMode(DoubleDipMode mode)
