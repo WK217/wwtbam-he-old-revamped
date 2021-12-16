@@ -25,20 +25,20 @@ namespace WwtbamOld.Media.Audio
         RulesExplanation,
 
         [AudioProperties("wwtbam rules lifeline 1.mp3", playerNumber: 2)]
-        [Description("Демо «50 на 50»")]
-        PingFifty,
+        [Description("Пинг подсказки #1")]
+        Ping1,
 
         [AudioProperties("wwtbam rules lifeline 2.mp3", playerNumber: 2)]
-        [Description("Демо «Помощь друга»")]
-        PingPhone,
+        [Description("Пинг подсказки #2")]
+        Ping2,
 
         [AudioProperties("wwtbam rules lifeline 3.mp3", playerNumber: 2)]
-        [Description("Демо «Помощь зала»")]
-        PingAtA,
+        [Description("Пинг подсказки #3")]
+        Ping3,
 
         [AudioProperties("wwtbam rules lifeline 4.mp3", playerNumber: 2)]
-        [Description("Демо «Двойной ответ»")]
-        PingDoubleDip,
+        [Description("Пинг подсказки #4")]
+        Ping4,
 
         [AudioProperties("wwtbam rules end.mp3")]
         [Description("Окончание объяснения правил")]
@@ -285,6 +285,10 @@ namespace WwtbamOld.Media.Audio
         TWMUse,
 
         [AudioProperties("wwtbam twm timer loop.mp3", loop: true)]
+        [Description("«Три мудреца»: фон отсчёта")]
+        TWMCountdown,
+
+        [AudioProperties("wwtbam twm timer start.mp3", playerNumber: 2)]
         [Description("«Три мудреца»: начало отсчёта")]
         TWMStart,
 
@@ -295,6 +299,10 @@ namespace WwtbamOld.Media.Audio
         [AudioProperties("wwtbam ath loop.mp3", loop: true)]
         [Description("«Помощь ведущего»: начало")]
         AtHStart,
+
+        [AudioProperties("wwtbam ath execute.mp3", playerNumber: 2)]
+        [Description("«Помощь ведущего»: применение")]
+        AtHExecute,
 
         [AudioProperties("wwtbam ath stop.mp3")]
         [Description("«Помощь ведущего»: конец")]

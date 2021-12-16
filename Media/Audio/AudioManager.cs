@@ -1,4 +1,5 @@
 ﻿using NAudio.CoreAudioApi;
+using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using WwtbamOld.Model;
 
 namespace WwtbamOld.Media.Audio
 {
-    public sealed class AudioManager : ReadOnlyReactiveCollection<MMDevice>
+    public sealed class AudioManager : ReactiveObject
     {
         #region Singleton
 
@@ -124,10 +125,10 @@ namespace WwtbamOld.Media.Audio
         public IEnumerable<Audio> GetRulesMusic()
         {
             yield return Audio.RulesExplanation;
-            yield return Audio.PingFifty;
-            yield return Audio.PingPhone;
-            yield return Audio.PingAtA;
-            yield return Audio.PingDoubleDip;
+            yield return Audio.Ping1;
+            yield return Audio.Ping2;
+            yield return Audio.Ping3;
+            yield return Audio.Ping4;
             yield return Audio.RulesEnd;
         }
 
