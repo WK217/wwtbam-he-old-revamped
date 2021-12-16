@@ -15,7 +15,6 @@ namespace WwtbamOld.Model
         public override byte ID => 1;
         public override string Code => "fifty";
         public override string Name => "«50 на 50»";
-        public override Audio PingSound => Audio.PingFifty;
 
         #endregion Basic Properties
 
@@ -28,7 +27,8 @@ namespace WwtbamOld.Model
 
         #endregion Fields
 
-        public FiftyFifty(Game game) : base(game)
+        public FiftyFifty(Game game)
+            : base(game)
         {
             _correctID = this.WhenAnyValue(fifty => fifty._game.CurrentQuiz.Correct)
                              .ToProperty(this, nameof(CorrectID));

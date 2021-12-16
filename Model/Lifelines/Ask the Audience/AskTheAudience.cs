@@ -17,7 +17,6 @@ namespace WwtbamOld.Model
         public override byte ID => 3;
         public override string Code => "ata";
         public override string Name => "«Помощь зала»";
-        public override Audio PingSound => Audio.PingAtA;
 
         #endregion Basic Properties
 

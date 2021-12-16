@@ -13,7 +13,6 @@ namespace WwtbamOld.Model
         public override byte ID => 4;
         public override string Code => "double";
         public override string Name => "«Двойной ответ»";
-        public override Audio PingSound => Audio.PingDoubleDip;
 
         #endregion Basic Properties
 
