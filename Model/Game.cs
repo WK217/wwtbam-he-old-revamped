@@ -27,7 +27,8 @@ namespace WwtbamOld.Model
                 new PhoneAFriend(this),
                 new AskTheAudience(this),
                 new DoubleDip(this),
-                //new AskTheHost(this)
+                new Google(this),
+                new AskTheHost(this)
             });
 
             Levels = new Levels();

@@ -15,7 +15,7 @@ namespace WwtbamOld.Model
         public abstract byte ID { get; }
         public abstract string Code { get; }
         public abstract string Name { get; }
-        public abstract Audio PingSound { get; }
+        public virtual Audio PingSound => (Audio)((byte)Audio.Ping1 + Math.Max(Math.Min(_game.Lifelines.Collection.IndexOf(this), 3), 0));
 
         #endregion Abstract Properties
 
@@ -142,8 +142,7 @@ namespace WwtbamOld.Model
                 fileName = $"{(state == LifelineState.Secret ? "secret" : $"{Code.ToLower()} {state.ToString().ToLower()}")} {type.ToString().ToLower()}";
             }
 
-            var result = ResourceManager.GetImageSource(fileName, extension, folders);
-            return result;
+            return ResourceManager.GetImageSource(fileName, extension, folders);
         }
 
         #endregion Methods
