@@ -2,7 +2,6 @@
 using ReactiveUI.Fody.Helpers;
 using System;
 using System.Reactive.Linq;
-using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
@@ -28,14 +27,6 @@ namespace WwtbamOld.Model
                               .Select(url => (ImageSource)new BitmapImage(new Uri(url)))
                               .ObserveOn(RxApp.MainThreadScheduler)
                               .ToProperty(this, nameof(PhotoImage));
-
-            /*Image myImage3 = new Image();
-            BitmapImage bi3 = new BitmapImage();
-            bi3.BeginInit();
-            bi3.UriSource = new Uri("smiley_stackpanel.PNG", UriKind.Relative);
-            bi3.EndInit();
-            myImage3.Stretch = Stretch.Fill;
-            myImage3.Source = bi3;*/
 
             _canShowImage = this.WhenAnyValue(x => x.PhotoImage)
                                 .Select(image => image != null)

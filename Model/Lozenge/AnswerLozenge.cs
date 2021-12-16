@@ -1,9 +1,6 @@
 ﻿using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
-using System;
-using System.Reactive;
 using System.Reactive.Linq;
-using System.Windows.Documents;
 using WwtbamOld.ViewModel;
 
 namespace WwtbamOld.Model
