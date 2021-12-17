@@ -1,5 +1,4 @@
 ﻿using ReactiveUI;
-using System.Windows.Controls;
 using System.Windows.Input;
 using WwtbamOld.ViewModel;
 

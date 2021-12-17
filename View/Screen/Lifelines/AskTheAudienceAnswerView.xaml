@@ -6,7 +6,6 @@
     xmlns:m="clr-namespace:WwtbamOld.Model"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:rxui="http://reactiveui.net"
-    xmlns:vm="clr-namespace:WwtbamOld.ViewModel"
     x:TypeArguments="m:AskTheAudienceAnswer"
     mc:Ignorable="d">
 
@@ -35,17 +34,6 @@
                 FontFamily="{StaticResource PF DinDisplay Pro}"
                 Style="{StaticResource AnswerTextFont}"
                 TextAlignment="Center">
-                <!--<TextBlock.Style>
-                    <Style BasedOn="{StaticResource AnswerTextFont}" TargetType="TextBlock">
-                        <Setter Property="Text" Value="{Binding Votes}" />
-
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding DataType}" Value="Percentage">
-                                <Setter Property="Text" Value="{Binding Percentage, StringFormat={}{0:N0} %}" />
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </TextBlock.Style>-->
             </TextBlock>
         </Viewbox>
 
