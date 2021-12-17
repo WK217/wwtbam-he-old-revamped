@@ -6,6 +6,7 @@ using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reactive.Linq;
+using System.Reactive.Subjects;
 using WwtbamOld.Model;
 
 namespace WwtbamOld.ViewModel
@@ -16,15 +17,21 @@ namespace WwtbamOld.ViewModel
 
         private readonly Lifelines _lifelines;
 
+        private readonly ObservableAsPropertyHelper<bool> _isNotEmpty;
+
         #endregion Fields
 
         public LifelinesViewModel(Lifelines lifelines)
         {
             _lifelines = lifelines;
-            _lifelines.Collection.ToObservableChangeSet()
-                                 .Transform(x => CreateLifelineViewModel(x))
-                                 .Bind(_collection)
-                                 .Subscribe();
+            IConnectableObservable<IChangeSet<Lifeline>> collectionObservable = _lifelines.Collection.ToObservableChangeSet().Publish();
+            collectionObservable.Transform(x => CreateLifelineViewModel(x))
+                                .Bind(_collection)
+                                .Subscribe();
+            _isNotEmpty = collectionObservable.ToCollection()
+                                              .Select(x => x.Count > 0)
+                                              .ToProperty(this, nameof(IsNotEmpty));
+            collectionObservable.Connect();
 
             this.WhenAnyValue(vm => vm.Selected)
                 .Select(x => x?.Model)
@@ -40,6 +47,8 @@ namespace WwtbamOld.ViewModel
         public ReadOnlyObservableCollection<ILifelineViewModel> ViewModels => _readOnlyCollection;
         [Reactive] public ILifelineViewModel Selected { get; set; }
 
+        public bool IsNotEmpty => _isNotEmpty.Value;
+
         #endregion Properties
 
         #region Methods
@@ -49,9 +58,10 @@ namespace WwtbamOld.ViewModel
             return lifeline switch
             {
                 FiftyFifty fifty => new FiftyFiftyViewModel(this, fifty),
-                PhoneAFriend phone => new PhoneAFriendViewModel(this, phone),
+                PhoneAFriend phone => new TimerLifelineViewModel(this, phone),
                 AskTheAudience ata => new AskTheAudienceViewModel(this, ata),
                 DoubleDip dd => new DoubleDipViewModel(this, dd),
+                Google google => new TimerLifelineViewModel(this, google),
                 _ => new AskTheHostViewModel(this, (AskTheHost)lifeline),
             };
         }

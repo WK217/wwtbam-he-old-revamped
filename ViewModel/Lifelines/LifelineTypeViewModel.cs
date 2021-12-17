@@ -27,6 +27,11 @@ namespace WwtbamOld.ViewModel
                 Lifeline newLifeline = (Lifeline)Activator.CreateInstance(_type, _game);
                 _game.Lifelines.Add(newLifeline);
             });
+
+            RemoveCommand = ReactiveCommand.Create(() =>
+            {
+                _game.Lifelines.Remove(_type);
+            });
         }
 
         #region Properties
@@ -48,6 +53,7 @@ namespace WwtbamOld.ViewModel
         #region Commands
 
         public ReactiveCommand<Unit, Unit> AddCommand { get; }
+        public ReactiveCommand<Unit, Unit> RemoveCommand { get; }
 
         #endregion Commands
     }

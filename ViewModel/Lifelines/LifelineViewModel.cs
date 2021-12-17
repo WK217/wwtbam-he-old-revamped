@@ -1,8 +1,10 @@
 ﻿using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
+using System;
 using System.ComponentModel;
 using System.Reactive;
 using System.Windows;
+using System.Windows.Media;
 using WwtbamOld.Model;
 
 namespace WwtbamOld.ViewModel
@@ -40,6 +42,8 @@ namespace WwtbamOld.ViewModel
             this.WhenAnyValue(vm => vm._model.IsSecret).BindTo(this, x => x.IsSecret);
             this.WhenAnyValue(vm => vm.IsSecret).BindTo(this, x => x._model.IsSecret);
 
+            this.WhenAnyValue(vm => vm._model.GeneralImage).Subscribe(_ => this.RaisePropertyChanged(nameof(GeneralImage)));
+
             #region Commands
 
             PingCommand = ReactiveCommand.Create(() => _model.Ping());
@@ -60,6 +64,8 @@ namespace WwtbamOld.ViewModel
 
         [Reactive] public bool IsEnabled { get; set; }
         [Reactive] public bool IsSecret { get; set; }
+
+        public ImageSource GeneralImage => _model.GeneralImage;
 
         #endregion Properties
 
