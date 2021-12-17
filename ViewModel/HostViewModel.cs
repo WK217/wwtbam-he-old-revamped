@@ -101,6 +101,8 @@ namespace WwtbamOld.ViewModel
         [Reactive] public double ScreenX { get; set; }
         [Reactive] public double ScreenY { get; set; }
 
+        [Reactive] public bool SpoilerFree { get; set; }
+
         #endregion Properties
 
         #region Methods

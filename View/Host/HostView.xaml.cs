@@ -25,6 +25,8 @@ namespace WwtbamOld.View
 
                 d(this.OneWayBind(ViewModel, vm => vm.SoundOutDevices.Collection, v => v.menuSoundOut.ItemsSource));
 
+                d(this.Bind(ViewModel, vm => vm.SpoilerFree, v => v.menuSpoilerFree.IsChecked));
+
                 #endregion Общее
 
                 #region Редактирование текущего вопроса
@@ -76,11 +78,14 @@ namespace WwtbamOld.View
                 d(this.OneWayBind(ViewModel, vm => vm.LifelineTypes.Collection, v => v.itemsAllLifelineTypes.ItemsSource));
                 d(this.OneWayBind(ViewModel, vm => vm.Lifelines.Collection, v => v.itemsLifelines.ItemsSource));
 
+                d(this.OneWayBind(ViewModel, vm => vm.Lifelines.IsNotEmpty, v => v.panelLifelines.Visibility));
+                d(this.OneWayBind(ViewModel, vm => vm.Lifelines.IsNotEmpty, v => v.panelLifelinesApplication.Visibility));
+
                 d(this.BindCommand(ViewModel, vm => vm.Lozenge.ShowLifelinesPanelCommand, v => v.btnShowLifelinesPanel));
 
                 d(this.OneWayBind(ViewModel, vm => vm.Lifelines.Collection, v => v.comboLifelines.ItemsSource));
                 d(this.Bind(ViewModel, vm => vm.Lifelines.Selected, v => v.comboLifelines.SelectedItem));
-                d(this.OneWayBind(ViewModel, vm => vm.Lifelines.Selected, v => v.viewHostLifeline.ViewModel));
+                d(this.OneWayBind(ViewModel, vm => vm.Lifelines.Selected, v => v.viewHostLifeline.Content));
 
                 #endregion Управление подсказками
 
@@ -94,6 +99,7 @@ namespace WwtbamOld.View
                 d(this.OneWayBind(ViewModel, vm => vm.Media.BackgroundGeneral, v => v.btnBackgroundGeneral.DataContext));
                 d(this.OneWayBind(ViewModel, vm => vm.Media.RulesExplanation, v => v.btnRulesExplanation.DataContext));
 
+                d(this.OneWayBind(ViewModel, vm => vm.Lifelines.IsNotEmpty, v => v.itemsPingLifelines.Visibility));
                 d(this.OneWayBind(ViewModel, vm => vm.Lifelines.Collection, v => v.itemsPingLifelines.ItemsSource));
 
                 d(this.OneWayBind(ViewModel, vm => vm.Media.CommercialIn, v => v.btnCommIn.DataContext));
