@@ -1,7 +1,5 @@
-﻿using DynamicData;
-using DynamicData.Binding;
+﻿using DynamicData.Binding;
 using ReactiveUI;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -19,10 +17,7 @@ namespace WwtbamOld
 
         public ReadOnlyReactiveCollection()
         {
-            _collection = new ObservableCollectionExtended<T>();
-            _collection.ToObservableChangeSet()
-                       .Bind(out _readOnlyCollection)
-                       .Subscribe();
+            _readOnlyCollection = new ReadOnlyObservableCollection<T>(_collection = new ObservableCollectionExtended<T>());
         }
 
         #region Properties

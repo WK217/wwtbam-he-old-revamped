@@ -6,7 +6,6 @@ using System.Reactive;
 using System.Reactive.Linq;
 using System.Reflection;
 using WwtbamOld.Media.Audio;
-using WwtbamOld.View;
 
 namespace WwtbamOld.ViewModel
 {

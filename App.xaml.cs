@@ -2,7 +2,6 @@
 using ReactiveUI;
 using Splat;
 using System;
-using System.Diagnostics;
 using System.IO;
 using System.Reactive;
 using System.Reflection;
@@ -29,14 +28,14 @@ namespace WwtbamOld
             Locator.CurrentMutable.RegisterConstant(new UriToImageSourceTypeConverter(), typeof(IBindingTypeConverter));
             Locator.CurrentMutable.RegisterConstant(new ObjectToDescriptionTypeConverter(), typeof(IBindingTypeConverter));
 
-            Game game = new Game();
-            MainViewModel mainViewModel = new MainViewModel(game);
+            Game game = new();
+            MainViewModel mainViewModel = new(game);
 
-            HostView hostView = new HostView { ViewModel = mainViewModel.Host };
+            HostView hostView = new() { ViewModel = mainViewModel.Host };
             hostView.Closed += WindowClosed;
             hostView.Show();
 
-            ScreenView screenView = new ScreenView { ViewModel = mainViewModel.Screen };
+            ScreenView screenView = new() { ViewModel = mainViewModel.Screen };
             screenView.Closed += WindowClosed;
             screenView.Show();
 
@@ -57,14 +56,14 @@ namespace WwtbamOld
             // Открытие файла с пакетом вопросов
             DialogWindowInteractions.ShowOpenQuizbaseDialog.RegisterHandler(context =>
             {
-                OpenFileDialog openFileDialog = new OpenFileDialog
+                OpenFileDialog openFileDialog = new()
                 {
                     DefaultExt = ".xml",
                     Filter = "XML-файлы (.xml)|*.xml",
                     Title = "Выбор файла пакета вопросов",
                     AddExtension = true,
                     CheckFileExists = true,
-                    InitialDirectory = Path.GetFullPath(Process.GetCurrentProcess().MainModule.FileName)
+                    InitialDirectory = Path.GetFullPath(Environment.ProcessPath)
                 };
 
                 if (openFileDialog.ShowDialog() == true)

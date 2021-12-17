@@ -1,8 +1,4 @@
-﻿using DynamicData;
-using DynamicData.Binding;
-using ReactiveUI;
-using System;
-using System.Reactive.Linq;
+﻿using NAudio.CoreAudioApi;
 using WwtbamOld.Media.Audio;
 
 namespace WwtbamOld.ViewModel
@@ -10,11 +6,10 @@ namespace WwtbamOld.ViewModel
     public sealed class SoundOutDevicesViewModel : ReadOnlyReactiveCollection<SoundOutDeviceViewModel>
     {
         public SoundOutDevicesViewModel()
+            : base()
         {
-            AudioManager.Instance.Collection.ToObservableChangeSet()
-                                            .Transform(device => new SoundOutDeviceViewModel(device))
-                                            .Bind(_collection)
-                                            .Subscribe();
+            foreach (MMDevice device in AudioManager.Instance.SoundOutDevices)
+                _collection.Add(new SoundOutDeviceViewModel(device));
         }
     }
 }

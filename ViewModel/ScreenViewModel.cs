@@ -41,7 +41,7 @@ namespace WwtbamOld.ViewModel
         public LevelObject CurrentSum => _game.CurrentSum;
         public LevelObject Winnings => _game.Winnings;
 
-        public Lifelines Lifelines => _game.Lifelines;
+        public LifelinesViewModel Lifelines => _mainViewModel.Host.Lifelines;
 
         public bool IsLogoShown => _isLogoShown.Value;
 

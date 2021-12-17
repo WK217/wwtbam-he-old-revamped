@@ -16,7 +16,8 @@ namespace WwtbamOld.ViewModel
 
         #endregion Fields
 
-        public AskTheAudienceViewModel(LifelinesViewModel lifelinesViewModel, AskTheAudience lifeline) : base(lifelinesViewModel, lifeline)
+        public AskTheAudienceViewModel(LifelinesViewModel lifelinesViewModel, AskTheAudience lifeline)
+            : base(lifelinesViewModel, lifeline)
         {
             InitiateCommand = ReactiveCommand.Create(() => _model.Initiate());
             DeactivateCommand = ReactiveCommand.Create(() => _model.Deactivate());

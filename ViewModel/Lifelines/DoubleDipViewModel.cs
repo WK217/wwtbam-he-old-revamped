@@ -18,7 +18,8 @@ namespace WwtbamOld.ViewModel
 
         #endregion Fields
 
-        public DoubleDipViewModel(LifelinesViewModel lifelinesViewModel, DoubleDip lifeline) : base(lifelinesViewModel, lifeline)
+        public DoubleDipViewModel(LifelinesViewModel lifelinesViewModel, DoubleDip lifeline)
+            : base(lifelinesViewModel, lifeline)
         {
             _modesCollection = new ObservableCollectionExtended<DoubleDipModeViewModel>();
             _modesCollection.ToObservableChangeSet()

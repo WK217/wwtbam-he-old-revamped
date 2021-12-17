@@ -5,7 +5,6 @@ using ReactiveUI.Fody.Helpers;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Reactive;
 using System.Reactive.Linq;
 using WwtbamOld.Model;
 
@@ -23,7 +22,8 @@ namespace WwtbamOld.ViewModel
 
         #endregion Fields
 
-        public FiftyFiftyViewModel(LifelinesViewModel lifelinesViewModel, FiftyFifty lifeline) : base(lifelinesViewModel, lifeline)
+        public FiftyFiftyViewModel(LifelinesViewModel lifelinesViewModel, FiftyFifty lifeline)
+            : base(lifelinesViewModel, lifeline)
         {
             _alternatives = new ObservableCollectionExtended<AnswerID>();
             _alternatives.AddRange(new[] { AnswerID.A, AnswerID.B, AnswerID.C, AnswerID.D });
@@ -58,20 +58,5 @@ namespace WwtbamOld.ViewModel
         public ReadOnlyObservableCollection<AnswerID> Alternatives => _readOnlyAlternatives;
 
         #endregion Properties
-    }
-
-    [Description("«Помощь ведущего»")]
-    public sealed class AskTheHostViewModel : LifelineViewModel<AskTheHost>
-    {
-        public AskTheHostViewModel(LifelinesViewModel lifelinesViewModel, AskTheHost lifeline) : base(lifelinesViewModel, lifeline)
-        {
-            DeactivateCommand = ReactiveCommand.Create(() => _model.Deactivate());
-        }
-
-        #region Commands
-
-        public ReactiveCommand<Unit, Unit> DeactivateCommand { get; }
-
-        #endregion Commands
     }
 }

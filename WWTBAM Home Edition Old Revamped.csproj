@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net5.0-windows</TargetFramework>
+    <TargetFramework>net6.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
     <Authors>WK217</Authors>
     <Company />
@@ -12,13 +12,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Model\Lifelines\Old\AskTheAudienceAnswerOld.cs" />
-    <Compile Remove="Model\Lifelines\Old\AskTheAudienceOld.cs" />
-    <Compile Remove="Model\Lifelines\Old\DoubleDipOld.cs" />
-    <Compile Remove="Model\Lifelines\Old\FiftyFiftyOld.cs" />
-    <Compile Remove="Model\Lifelines\Old\LifelineOld.cs" />
-    <Compile Remove="Model\Lifelines\Old\PhoneAFriendOld.cs" />
-    <Compile Remove="Model\Lifelines\Old\PhoneAFriendTimerOld.cs" />
+    <Compile Remove="View\Host\Lifelines\AskTheAudiencePanelView.xaml.cs" />
+    <Compile Remove="View\Host\Lifelines\AskTheHostPanelView.xaml.cs" />
+    <Compile Remove="View\Host\Lifelines\DoubleDipPanelView.xaml.cs" />
+    <Compile Remove="View\Host\Lifelines\FiftyFiftyPanelView.xaml.cs" />
+    <Compile Remove="View\Host\Lifelines\TimerLifelinePanelView.xaml.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -27,6 +25,7 @@
     <None Remove="Resources\Audio\wwtbam ata show.mp3" />
     <None Remove="Resources\Audio\wwtbam ata stop.mp3" />
     <None Remove="Resources\Audio\wwtbam ata voting.mp3" />
+    <None Remove="Resources\Audio\wwtbam ath execute.mp3" />
     <None Remove="Resources\Audio\wwtbam ath loop 10m.mp3" />
     <None Remove="Resources\Audio\wwtbam ath loop.mp3" />
     <None Remove="Resources\Audio\wwtbam ath stop.mp3" />
@@ -108,6 +107,7 @@
     <None Remove="Resources\Audio\wwtbam twm pre.mp3" />
     <None Remove="Resources\Audio\wwtbam twm stop.mp3" />
     <None Remove="Resources\Audio\wwtbam twm timer loop.mp3" />
+    <None Remove="Resources\Audio\wwtbam twm timer start.mp3" />
     <None Remove="Resources\Audio\wwtbam twm timer.mp3" />
     <None Remove="Resources\Audio\wwtbam wrong 1.mp3" />
     <None Remove="Resources\Audio\wwtbam wrong 10.mp3" />
@@ -381,6 +381,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Page Remove="View\Host\Lifelines\AskTheAudiencePanelView.xaml" />
+    <Page Remove="View\Host\Lifelines\AskTheHostPanelView.xaml" />
+    <Page Remove="View\Host\Lifelines\DoubleDipPanelView.xaml" />
+    <Page Remove="View\Host\Lifelines\FiftyFiftyPanelView.xaml" />
+    <Page Remove="View\Host\Lifelines\TimerLifelinePanelView.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <EmbeddedResource Include="quizzes.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -396,6 +404,7 @@
     <EmbeddedResource Include="Resources\Audio\wwtbam ata voting.mp3">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam ath execute.mp3" />
     <EmbeddedResource Include="Resources\Audio\wwtbam ath loop 10m.mp3" />
     <EmbeddedResource Include="Resources\Audio\wwtbam ath loop.mp3">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
@@ -637,6 +646,7 @@
     <EmbeddedResource Include="Resources\Audio\wwtbam twm timer loop.mp3">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio\wwtbam twm timer start.mp3" />
     <EmbeddedResource Include="Resources\Audio\wwtbam twm timer.mp3">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -1441,10 +1451,11 @@
   <ItemGroup>
     <PackageReference Include="NAudio" Version="2.0.1" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="reactiveui" Version="14.1.1" />
-    <PackageReference Include="ReactiveUI.Events.WPF" Version="14.1.1" />
-    <PackageReference Include="ReactiveUI.Fody" Version="14.1.1" />
-    <PackageReference Include="ReactiveUI.WPF" Version="14.1.1" />
+    <PackageReference Include="reactiveui" Version="17.1.9" />
+    <PackageReference Include="ReactiveUI.Events.WPF" Version="15.1.1" />
+    <PackageReference Include="ReactiveUI.Fody" Version="17.1.9" />
+    <PackageReference Include="ReactiveUI.WPF" Version="17.1.9" />
+    <PackageReference Include="System.Management" Version="6.0.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -1463,13 +1474,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Model\Lifelines\Old\AskTheAudienceAnswerOld.cs" />
-    <None Include="Model\Lifelines\Old\AskTheAudienceOld.cs" />
-    <None Include="Model\Lifelines\Old\DoubleDipOld.cs" />
-    <None Include="Model\Lifelines\Old\FiftyFiftyOld.cs" />
-    <None Include="Model\Lifelines\Old\LifelineOld.cs" />
-    <None Include="Model\Lifelines\Old\PhoneAFriendOld.cs" />
-    <None Include="Model\Lifelines\Old\PhoneAFriendTimerOld.cs" />
+    <None Include="View\Host\Lifelines\AskTheAudiencePanelView.xaml" />
+    <None Include="View\Host\Lifelines\AskTheAudiencePanelView.xaml.cs" />
+    <None Include="View\Host\Lifelines\AskTheHostPanelView.xaml" />
+    <None Include="View\Host\Lifelines\AskTheHostPanelView.xaml.cs" />
+    <None Include="View\Host\Lifelines\DoubleDipPanelView.xaml" />
+    <None Include="View\Host\Lifelines\DoubleDipPanelView.xaml.cs" />
+    <None Include="View\Host\Lifelines\FiftyFiftyPanelView.xaml" />
+    <None Include="View\Host\Lifelines\FiftyFiftyPanelView.xaml.cs" />
+    <None Include="View\Host\Lifelines\TimerLifelinePanelView.xaml" />
+    <None Include="View\Host\Lifelines\TimerLifelinePanelView.xaml.cs" />
   </ItemGroup>
 
 </Project>
