@@ -6,9 +6,9 @@ namespace WwtbamOld.View
     /// <summary>
     /// Логика взаимодействия для PhoneAFriendView.xaml
     /// </summary>
-    public partial class PhoneAFriendPanelView : ReactiveUserControl<PhoneAFriendViewModel>
+    public partial class TimerLifelinePanelView : ReactiveUserControl<TimerLifelineViewModel>
     {
-        public PhoneAFriendPanelView()
+        public TimerLifelinePanelView()
         {
             InitializeComponent();
 

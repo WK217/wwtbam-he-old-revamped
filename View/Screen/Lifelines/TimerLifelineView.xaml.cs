@@ -1,14 +1,14 @@
 ﻿using ReactiveUI;
-using WwtbamOld.Model;
+using WwtbamOld.ViewModel;
 
 namespace WwtbamOld.View
 {
     /// <summary>
     /// Логика взаимодействия для PhoneAFriendView.xaml
     /// </summary>
-    public partial class PhoneAFriendView : ReactiveUserControl<PhoneAFriend>
+    public partial class TimerLifelineView : ReactiveUserControl<TimerLifelineViewModel>
     {
-        public PhoneAFriendView()
+        public TimerLifelineView()
         {
             InitializeComponent();
 
