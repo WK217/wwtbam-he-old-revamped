@@ -3,7 +3,6 @@ using ReactiveUI.Fody.Helpers;
 using System;
 using System.ComponentModel;
 using System.Reactive;
-using System.Windows;
 using System.Windows.Media;
 using WwtbamOld.Model;
 
@@ -13,8 +12,6 @@ namespace WwtbamOld.ViewModel;
 public abstract class LifelineViewModel<T> : ViewModelBase, ILifelineViewModel
     where T : Lifeline
 {
-    public string WindowTitle => string.Join(" :: ", ((App)Application.Current).AppName, _model.Name);
-
     #region Fields
 
     protected readonly LifelinesViewModel _lifelinesViewModel;
@@ -53,6 +50,8 @@ public abstract class LifelineViewModel<T> : ViewModelBase, ILifelineViewModel
     }
 
     #region Properties
+
+    public string WindowTitle => App.GetWindowTitle(_model.Name);
 
     public Lifeline Model => _model;
 

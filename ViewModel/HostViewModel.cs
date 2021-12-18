@@ -3,7 +3,6 @@ using ReactiveUI.Fody.Helpers;
 using System.Collections.ObjectModel;
 using System.Reactive;
 using System.Reactive.Linq;
-using System.Windows;
 using WwtbamOld.Media.Audio;
 using WwtbamOld.Model;
 
@@ -11,8 +10,6 @@ namespace WwtbamOld.ViewModel;
 
 public sealed class HostViewModel : ViewModelBase
 {
-    public string WindowTitle => string.Join(" :: ", ((App)Application.Current).AppName, "Ведущий");
-
     #region Fields
 
     private readonly Game _game;
@@ -57,6 +54,8 @@ public sealed class HostViewModel : ViewModelBase
     }
 
     #region Properties
+
+    public string WindowTitle => App.GetWindowTitle("Ведущий");
 
     public ReadOnlyObservableCollection<Level> Levels => _game.Levels.Collection;
 

@@ -1,14 +1,11 @@
 ﻿using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
-using System.Windows;
 using WwtbamOld.Model;
 
 namespace WwtbamOld.ViewModel;
 
 public sealed class ScreenViewModel : ViewModelBase
 {
-    public string WindowTitle => string.Join(" :: ", ((App)Application.Current).AppName, "Экран");
-
     #region Fields
 
     private readonly Game _game;
@@ -35,6 +32,8 @@ public sealed class ScreenViewModel : ViewModelBase
     }
 
     #region Properties
+
+    public string WindowTitle => App.GetWindowTitle("Экран");
 
     public LevelObject SmallMoneyTree => _game.SmallMoneyTree;
     public LevelObject BigMoneyTree => _game.BigMoneyTree;

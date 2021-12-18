@@ -19,7 +19,38 @@ namespace WwtbamOld;
 /// </summary>
 public partial class App : Application
 {
-    public string AppName => @"«Кто хочет стать миллионером?» Home Edition Old Revamped";
+    public static string GetWindowTitle(string name) => $"«Кто хочет стать миллионером?» Home Edition Old Revamped :: {name}";
+
+    private static void InitializeInteractions()
+    {
+        // Показ тестового сообщения
+        MessageInteractions.ShowMessage.RegisterHandler(context =>
+        {
+            MessageBox.Show(context.Input);
+            context.SetOutput(Unit.Default);
+        });
+
+        // Открытие файла с пакетом вопросов
+        DialogWindowInteractions.ShowOpenQuizbaseDialog.RegisterHandler(context =>
+        {
+            OpenFileDialog openFileDialog = new()
+            {
+                DefaultExt = ".xml",
+                Filter = "XML-файлы (*.xml)|*.xml|Все файлы (*.*)|*.*",
+                Title = "Выбор файла пакета вопросов",
+                AddExtension = true,
+                CheckFileExists = true,
+#if NET6_0_OR_GREATER
+                InitialDirectory = Path.GetFullPath(Environment.ProcessPath)
+#else
+                InitialDirectory = Path.GetFullPath(Process.GetCurrentProcess().MainModule.FileName)
+#endif
+            };
+
+            if (openFileDialog.ShowDialog() == true)
+                context.SetOutput(ResourceManager.LoadQuizzesFromFile(openFileDialog.FileName));
+        });
+    }
 
     private void AppStartup(object sender, StartupEventArgs e)
     {
@@ -42,37 +73,6 @@ public partial class App : Application
         hostView.Activate();
         hostView.Topmost = true;
         hostView.Topmost = false;
-    }
-
-    private void InitializeInteractions()
-    {
-        // Показ тестового сообщения
-        MessageInteractions.ShowMessage.RegisterHandler(context =>
-        {
-            MessageBox.Show(context.Input);
-            context.SetOutput(Unit.Default);
-        });
-
-        // Открытие файла с пакетом вопросов
-        DialogWindowInteractions.ShowOpenQuizbaseDialog.RegisterHandler(context =>
-        {
-            OpenFileDialog openFileDialog = new()
-            {
-                DefaultExt = ".xml",
-                Filter = "XML-файлы (*.xml)|*.xml|Все файлы (*.*)|*.*",
-                Title = "Выбор файла пакета вопросов",
-                AddExtension = true,
-                CheckFileExists = true,
-#if NET6_0_OR_GREATER
-                InitialDirectory = Path.GetFullPath(Environment.ProcessPath)
-#else
-                    InitialDirectory = Path.GetFullPath(Process.GetCurrentProcess().MainModule.FileName)
-#endif
-            };
-
-            if (openFileDialog.ShowDialog() == true)
-                context.SetOutput(ResourceManager.LoadQuizzesFromFile(openFileDialog.FileName));
-        });
     }
 
     private void WindowClosed(object sender, EventArgs e)

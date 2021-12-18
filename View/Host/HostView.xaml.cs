@@ -14,9 +14,9 @@ public partial class HostView : ReactiveWindow<HostViewModel>
 
         this.WhenActivated(d =>
         {
-                #region Общее
+            #region Общее
 
-                d(this.WhenAnyValue(v => v.ViewModel).BindTo(this, v => v.DataContext));
+            d(this.WhenAnyValue(v => v.ViewModel).BindTo(this, v => v.DataContext));
 
             d(this.OneWayBind(ViewModel, vm => vm.WindowTitle, v => v.Title));
 
@@ -27,11 +27,11 @@ public partial class HostView : ReactiveWindow<HostViewModel>
 
             d(this.Bind(ViewModel, vm => vm.SpoilerFree, v => v.menuSpoilerFree.IsChecked));
 
-                #endregion Общее
+            #endregion Общее
 
-                #region Редактирование текущего вопроса
+            #region Редактирование текущего вопроса
 
-                d(this.OneWayBind(ViewModel, vm => vm.Quizbase.Quizbase, v => v.comboQuizzes.ItemsSource));
+            d(this.OneWayBind(ViewModel, vm => vm.Quizbase.Quizbase, v => v.comboQuizzes.ItemsSource));
             d(this.Bind(ViewModel, vm => vm.Quizbase.SelectedQuiz, v => v.comboQuizzes.SelectedItem));
             d(this.Bind(ViewModel, vm => vm.CurrentQuiz.Question.Text, v => v.textQuestion.Text));
             d(this.OneWayBind(ViewModel, vm => vm.CurrentQuiz, v => v.itemsAnswers.ItemsSource));
@@ -43,11 +43,11 @@ public partial class HostView : ReactiveWindow<HostViewModel>
             d(this.Bind(ViewModel, vm => vm.Photo.CanShowImage, v => v.checkBigPhotoShown.IsEnabled));
             d(this.Bind(ViewModel, vm => vm.Photo.CanShowImage, v => v.checkSmallPhotoShown.IsEnabled));
 
-                #endregion Редактирование текущего вопроса
+            #endregion Редактирование текущего вопроса
 
-                #region Управление игровым процессом
+            #region Управление игровым процессом
 
-                d(this.OneWayBind(ViewModel, vm => vm.Levels, v => v.comboLevels.ItemsSource));
+            d(this.OneWayBind(ViewModel, vm => vm.Levels, v => v.comboLevels.ItemsSource));
             d(this.Bind(ViewModel, vm => vm.CurrentLevel, v => v.comboLevels.SelectedItem));
 
             d(this.OneWayBind(ViewModel, vm => vm.Lozenge.A, v => v.checkShowA.DataContext));
@@ -71,11 +71,11 @@ public partial class HostView : ReactiveWindow<HostViewModel>
             d(this.Bind(ViewModel, vm => vm.HasWalkedAway, v => v.checkWalkedaway.IsChecked));
             d(this.Bind(ViewModel, vm => vm.Winnings.IsShown, v => v.checkWinningsShown.IsChecked));
 
-                #endregion Управление игровым процессом
+            #endregion Управление игровым процессом
 
-                #region Управление подсказками
+            #region Управление подсказками
 
-                d(this.OneWayBind(ViewModel, vm => vm.LifelineTypes.Collection, v => v.itemsAllLifelineTypes.ItemsSource));
+            d(this.OneWayBind(ViewModel, vm => vm.LifelineTypes.Collection, v => v.itemsAllLifelineTypes.ItemsSource));
             d(this.OneWayBind(ViewModel, vm => vm.Lifelines.Collection, v => v.itemsLifelines.ItemsSource));
 
             d(this.OneWayBind(ViewModel, vm => vm.Lifelines.IsNotEmpty, v => v.panelLifelines.Visibility));
@@ -87,11 +87,11 @@ public partial class HostView : ReactiveWindow<HostViewModel>
             d(this.Bind(ViewModel, vm => vm.Lifelines.Selected, v => v.comboLifelines.SelectedItem));
             d(this.OneWayBind(ViewModel, vm => vm.Lifelines.Selected, v => v.viewHostLifeline.Content));
 
-                #endregion Управление подсказками
+            #endregion Управление подсказками
 
-                #region Управление оформлением
+            #region Управление оформлением
 
-                d(this.Bind(ViewModel, vm => vm.IsLogoShown, v => v.checkLogo.IsChecked));
+            d(this.Bind(ViewModel, vm => vm.IsLogoShown, v => v.checkLogo.IsChecked));
 
             d(this.OneWayBind(ViewModel, vm => vm.Media.PreLoop, v => v.btnPreLoop.DataContext));
             d(this.OneWayBind(ViewModel, vm => vm.Media.Opening, v => v.btnOpening.DataContext));
@@ -111,7 +111,7 @@ public partial class HostView : ReactiveWindow<HostViewModel>
             d(this.Bind(ViewModel, vm => vm.ScreenX, v => v.textCoordX.Text));
             d(this.Bind(ViewModel, vm => vm.ScreenY, v => v.textCoordY.Text));
 
-                #endregion Управление оформлением
-            });
+            #endregion Управление оформлением
+        });
     }
 }
