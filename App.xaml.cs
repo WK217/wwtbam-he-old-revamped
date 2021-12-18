@@ -23,13 +23,6 @@ public partial class App : Application
 
     private static void InitializeInteractions()
     {
-        // Показ тестового сообщения
-        MessageInteractions.ShowMessage.RegisterHandler(context =>
-        {
-            MessageBox.Show(context.Input);
-            context.SetOutput(Unit.Default);
-        });
-
         // Открытие файла с пакетом вопросов
         DialogWindowInteractions.ShowOpenQuizbaseDialog.RegisterHandler(context =>
         {
