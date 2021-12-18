@@ -37,7 +37,7 @@ namespace WwtbamOld.View
                 d(this.OneWayBind(ViewModel, vm => vm.CurrentQuiz, v => v.itemsAnswers.ItemsSource));
                 d(this.Bind(ViewModel, vm => vm.CurrentQuiz.Comment.Text, v => v.textComment.Text));
 
-                d(this.Bind(ViewModel, vm => vm.Photo.PhotoUrl, v => v.textPhotoUrl.Text));
+                d(this.Bind(ViewModel, vm => vm.Photo.PhotoUrlString, v => v.textPhotoUrl.Text));
                 d(this.Bind(ViewModel, vm => vm.Photo.IsBigShown, v => v.checkBigPhotoShown.IsChecked));
                 d(this.Bind(ViewModel, vm => vm.Photo.IsSmallShown, v => v.checkSmallPhotoShown.IsChecked));
                 d(this.Bind(ViewModel, vm => vm.Photo.CanShowImage, v => v.checkBigPhotoShown.IsEnabled));

@@ -2,8 +2,6 @@
 using ReactiveUI.Fody.Helpers;
 using System;
 using System.Reactive.Linq;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 
 namespace WwtbamOld.Model
 {
@@ -12,7 +10,7 @@ namespace WwtbamOld.Model
         #region Fields
 
         private readonly Game _game;
-        private readonly ObservableAsPropertyHelper<ImageSource> _photoImage;
+        private readonly ObservableAsPropertyHelper<Uri> _photoUrl;
         private readonly ObservableAsPropertyHelper<bool> _canShowImage;
 
         #endregion Fields
@@ -21,26 +19,36 @@ namespace WwtbamOld.Model
         {
             _game = game;
 
-            _photoImage = this.WhenAnyValue(x => x.PhotoUrl)
-                              .Throttle(TimeSpan.FromMilliseconds(300))
-                              .Where(url => !string.IsNullOrWhiteSpace(url))
-                              .Select(url => (ImageSource)new BitmapImage(new Uri(url)))
-                              .ObserveOn(RxApp.MainThreadScheduler)
-                              .ToProperty(this, nameof(PhotoImage));
+            this.WhenAnyValue(x => x._game.CurrentQuiz.Question.Photo)
+                .ObserveOn(RxApp.MainThreadScheduler)
+                .BindTo(this, x => x.PhotoUrlString);
 
-            _canShowImage = this.WhenAnyValue(x => x.PhotoImage)
-                                .Select(image => image != null)
+            _photoUrl = this.WhenAnyValue(x => x.PhotoUrlString)
+                            .Select(url => string.IsNullOrWhiteSpace(url) ? null : new Uri(url))
+                            .ObserveOn(RxApp.MainThreadScheduler)
+                            .ToProperty(this, nameof(PhotoUrl));
+
+            _canShowImage = this.WhenAnyValue(x => x.PhotoUrl)
+                                .Select(url => url is not null)
                                 .ObserveOn(RxApp.MainThreadScheduler)
                                 .ToProperty(this, nameof(CanShowImage));
 
-            this.WhenAnyValue(x => x._game.CurrentQuiz.Question.Photo)
-                .BindTo(this, x => x.PhotoUrl);
+            this.WhenAnyValue(x => x.CanShowImage)
+                .ObserveOn(RxApp.MainThreadScheduler)
+                .Subscribe(x =>
+                {
+                    if (!x)
+                    {
+                        IsBigShown = false;
+                        IsSmallShown = false;
+                    }
+                });
         }
 
         #region Properties
 
-        [Reactive] public string PhotoUrl { get; set; }
-        public ImageSource PhotoImage => _photoImage.Value;
+        [Reactive] public string PhotoUrlString { get; set; }
+        public Uri PhotoUrl => _photoUrl.Value;
 
         public bool CanShowImage => _canShowImage.Value;
 

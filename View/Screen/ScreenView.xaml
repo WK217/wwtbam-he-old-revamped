@@ -197,7 +197,6 @@
                 x:Name="imgPhotoBig"
                 Grid.Row="1"
                 Grid.Column="1"
-                Source="{Binding Photo.PhotoUrl}"
                 Stretch="Uniform"
                 StretchDirection="DownOnly" />
         </Grid>
@@ -221,7 +220,7 @@
                 Margin="50,20"
                 Stretch="Uniform"
                 StretchDirection="DownOnly">
-                <Image x:Name="imgPhotoSmall" Source="{Binding Photo.PhotoUrl}" />
+                <Image x:Name="imgPhotoSmall" />
             </Viewbox>
         </Grid>
         <!--#endregion-->

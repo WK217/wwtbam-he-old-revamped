@@ -1,5 +1,7 @@
 ﻿using ReactiveUI;
+using System;
 using System.Windows.Input;
+using System.Windows.Media.Imaging;
 using WwtbamOld.ViewModel;
 
 namespace WwtbamOld.View
@@ -75,14 +77,16 @@ namespace WwtbamOld.View
                 #region Big Photo
 
                 d(this.OneWayBind(ViewModel, vm => vm.Photo.IsBigShown, v => v.gridPhotoBig.Visibility));
+                d(this.OneWayBind(ViewModel, vm => vm.Photo.PhotoUrl, v => v.imgPhotoBig.Source, url => GetBitmapImageFromUrl(imgPhotoBig, url)));
 
                 #endregion Big Photo
 
-                #region Big Photo
+                #region Small Photo
 
                 d(this.OneWayBind(ViewModel, vm => vm.Photo.IsSmallShown, v => v.gridPhotoSmall.Visibility));
+                d(this.OneWayBind(ViewModel, vm => vm.Photo.PhotoUrl, v => v.imgPhotoSmall.Source, url => GetBitmapImageFromUrl(imgPhotoSmall, url)));
 
-                #endregion Big Photo
+                #endregion Small Photo
 
                 #region Logo
 
@@ -90,6 +94,13 @@ namespace WwtbamOld.View
 
                 #endregion Logo
             });
+        }
+
+        private static BitmapImage GetBitmapImageFromUrl(System.Windows.Controls.Image imageControl, Uri url)
+        {
+            imageControl.Source = null;
+            imageControl.UpdateLayout();
+            return url is null ? null : new BitmapImage(url);
         }
 
         private void OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
