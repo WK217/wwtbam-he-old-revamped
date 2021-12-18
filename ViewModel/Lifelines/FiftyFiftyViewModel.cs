@@ -53,7 +53,7 @@ namespace WwtbamOld.ViewModel
 
         #region Properties
 
-        public AnswerID CorrectID => _correctID != null ? _correctID.Value : AnswerID.None;
+        public AnswerID CorrectID => _correctID is not null ? _correctID.Value : AnswerID.None;
         [Reactive] public AnswerID Alternative { get; set; }
         public ReadOnlyObservableCollection<AnswerID> Alternatives => _readOnlyAlternatives;
 

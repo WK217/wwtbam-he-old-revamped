@@ -41,8 +41,8 @@ namespace WwtbamOld.Model
 
         public AnswerID ID { get; }
         [Reactive] public bool IsShown { get; set; }
-        public string Text => _text != null ? _text.Value : string.Empty;
-        public bool IsLocked => _isLocked != null && _isLocked.Value;
+        public string Text => _text is not null ? _text.Value : string.Empty;
+        public bool IsLocked => _isLocked is not null && _isLocked.Value;
 
         [Reactive] public RevealCorrectType RevealCorrectType { get; set; }
 

@@ -122,13 +122,13 @@ namespace WwtbamOld.ViewModel
         public AudioViewModel()
         {
             this.WhenAnyValue(vm => vm.Audio)
-                .Where(audio => audio != null)
+                .Where(audio => audio is not null)
                 .Select(audio => GetDescription(audio))
                 .BindTo(this, x => x.Description);
 
             PlayAudioCommand = ReactiveCommand.Create(() =>
             {
-                if (Audio != null)
+                if (Audio is not null)
                     AudioManager.Play((Audio)Audio);
             });
         }
@@ -143,10 +143,10 @@ namespace WwtbamOld.ViewModel
         {
             MemberInfo[] member = obj.GetType().GetMember(obj.ToString());
 
-            if (member != null && member.Length != 0)
+            if (member is not null && member.Length != 0)
             {
                 object[] customAttributes = member[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
-                if (customAttributes != null && customAttributes.Length != 0)
+                if (customAttributes is not null && customAttributes.Length != 0)
                     return ((DescriptionAttribute)customAttributes[0]).Description;
             }
 

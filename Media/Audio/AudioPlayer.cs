@@ -35,10 +35,10 @@ namespace WwtbamOld.Media.Audio
 
         public double Position
         {
-            get => _fileStream != null ? Convert.ToDouble(1000 * _fileStream.Position / _fileStream.Length) : 0;
+            get => _fileStream is not null ? Convert.ToDouble(1000 * _fileStream.Position / _fileStream.Length) : 0;
             set
             {
-                if (_fileStream != null)
+                if (_fileStream is not null)
                     _fileStream.Position = Convert.ToInt64(value * _fileStream.Length / 1000);
             }
         }
@@ -114,7 +114,7 @@ namespace WwtbamOld.Media.Audio
 
         public void Stop()
         {
-            if (_outputDevice != null & _fileStream != null)
+            if (_outputDevice is not null & _fileStream is not null)
             {
                 _outputDevice.Stop();
                 _fileStream.Position = 0;
@@ -123,7 +123,7 @@ namespace WwtbamOld.Media.Audio
 
         private void CloseFile()
         {
-            if (_fileStream != null)
+            if (_fileStream is not null)
             {
                 _fileStream.Dispose();
                 _fileStream = null;
@@ -132,7 +132,7 @@ namespace WwtbamOld.Media.Audio
 
         private void EnsureDeviceCreated()
         {
-            if (_outputDevice == null)
+            if (_outputDevice is null)
                 CreateOutputDevice();
         }
 

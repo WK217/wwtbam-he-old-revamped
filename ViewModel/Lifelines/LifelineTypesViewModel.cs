@@ -7,7 +7,7 @@ namespace WwtbamOld.ViewModel
     {
         public LifelineTypesViewModel(Game game)
         {
-            foreach (Type lifelineType in game.Lifelines.GetAllLifelineTypes())
+            foreach (Type lifelineType in Lifelines.GetAllLifelineTypes())
                 _collection.Add(new LifelineTypeViewModel(game, lifelineType));
         }
     }

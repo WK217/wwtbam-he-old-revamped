@@ -47,7 +47,7 @@ namespace WwtbamOld.Model
             D = new AskTheAudienceAnswer(this);
 
             this.WhenAnyValue(ata => ata._game.CurrentQuiz)
-                .Where(q => q != null)
+                .Where(q => q is not null)
                 .Subscribe(q =>
                 {
                     A.Model = q.A;

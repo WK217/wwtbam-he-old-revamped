@@ -40,14 +40,14 @@ namespace WwtbamOld.Model
             _collection.AddRange(collection);
         }
 
-        public IEnumerable<Type> GetAllLifelineTypes()
+        public static IEnumerable<Type> GetAllLifelineTypes()
         {
-            /*Type lifelineType = typeof(Lifeline);
-            return Assembly.GetAssembly(lifelineType)
-                           .GetTypes()
-                           .Where(type => type.IsSubclassOf(lifelineType));*/
-
-            return _collection.Select(lifeline => lifeline.GetType());
+            yield return typeof(FiftyFifty);
+            yield return typeof(PhoneAFriend);
+            yield return typeof(AskTheAudience);
+            yield return typeof(DoubleDip);
+            yield return typeof(Google);
+            yield return typeof(AskTheHost);
         }
 
         public void Add(Lifeline lifeline) => _collection.Add(lifeline);
@@ -59,7 +59,7 @@ namespace WwtbamOld.Model
         public bool IsDoubleDipActivated(out DoubleDip lifeline)
         {
             lifeline = Collection.FirstOrDefault(x => x is DoubleDip && (x as DoubleDip).Mode > DoubleDipMode.Deactivated) as DoubleDip;
-            return lifeline != null;
+            return lifeline is not null;
         }
 
         #endregion Methods

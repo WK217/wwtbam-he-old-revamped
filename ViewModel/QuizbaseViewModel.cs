@@ -23,10 +23,10 @@ namespace WwtbamOld.ViewModel
             _quizbase = quizbase;
             SelectedQuiz = _quizbase.SelectedQuiz;
             this.WhenAnyValue(vm => vm._quizbase.SelectedQuiz)
-                .Where(quiz => quiz != null)
+                .Where(quiz => quiz is not null)
                 .BindTo(this, quizbase => quizbase.SelectedQuiz);
             this.WhenAnyValue(vm => vm.SelectedQuiz)
-                .Where(quiz => quiz != null)
+                .Where(quiz => quiz is not null)
                 .BindTo(_quizbase, quizbase => quizbase.SelectedQuiz);
 
             #region Commands

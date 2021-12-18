@@ -32,7 +32,7 @@ namespace WwtbamOld.ViewModel
 
         [Reactive] public bool IsShown { get; set; }
 
-        public string QuestionText => _questionText != null ? _questionText.Value : string.Empty;
+        public string QuestionText => _questionText is not null ? _questionText.Value : string.Empty;
 
         public AnswerLozenge A => _lozenge.A;
         public AnswerLozenge B => _lozenge.B;

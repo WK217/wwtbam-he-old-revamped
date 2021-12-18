@@ -37,7 +37,7 @@ namespace WwtbamOld.ViewModel
         #region Properties
 
         [Reactive] public uint Duration { get; set; }
-        public uint Countdown => _countdown != null ? _countdown.Value : 0;
+        public uint Countdown => _countdown is not null ? _countdown.Value : 0;
 
         [Reactive] public bool IsTimerShown { get; set; }
 

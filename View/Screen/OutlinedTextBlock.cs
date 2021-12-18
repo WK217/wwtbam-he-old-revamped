@@ -248,7 +248,7 @@ namespace WwtbamOld.View
 
         private void EnsureFormattedText()
         {
-            if (_formattedText != null)
+            if (_formattedText is not null)
                 return;
 
             _formattedText = new FormattedText(Text ?? "",
@@ -264,7 +264,7 @@ namespace WwtbamOld.View
 
         private void UpdateFormattedText()
         {
-            if (_formattedText == null)
+            if (_formattedText is null)
                 return;
 
             _formattedText.MaxLineCount = TextWrapping == TextWrapping.NoWrap ? 1 : int.MaxValue;
@@ -281,7 +281,7 @@ namespace WwtbamOld.View
 
         private void EnsureGeometry()
         {
-            if (_TextGeometry != null)
+            if (_TextGeometry is not null)
                 return;
 
             EnsureFormattedText();

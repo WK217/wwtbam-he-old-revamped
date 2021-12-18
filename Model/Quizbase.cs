@@ -11,7 +11,7 @@ namespace WwtbamOld.Model
         {
             Initialize(ResourceManager.LoadQuizzesDefault());
             this.WhenAnyValue(qb => qb.SelectedQuiz)
-                .Where(q => q != null)
+                .Where(q => q is not null)
                 .BindTo(game, game => game.CurrentQuiz);
         }
 

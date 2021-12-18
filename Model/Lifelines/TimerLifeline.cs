@@ -52,9 +52,9 @@ namespace WwtbamOld.Model
         [Reactive] public bool IsTimerActive { get; set; }
 
         [Reactive] public TimeSpan Duration { get; set; }
-        public TimeSpan RemainingTime => _remainingTime != null ? _remainingTime.Value : TimeSpan.Zero;
+        public TimeSpan RemainingTime => _remainingTime is not null ? _remainingTime.Value : TimeSpan.Zero;
 
-        public float Progress => _progress != null ? _progress.Value : 0;
+        public float Progress => _progress is not null ? _progress.Value : 0;
 
         protected abstract Audio AudioUse { get; }
         protected abstract Audio AudioStart { get; }

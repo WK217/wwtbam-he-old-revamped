@@ -56,8 +56,8 @@ namespace WwtbamOld.ViewModel
 
         public Lifeline Model => _model;
 
-        public bool IsUsable => _isUsable != null && _isUsable.Value;
-        public bool IsExecuting => _isExecuting != null && _isExecuting.Value;
+        public bool IsUsable => _isUsable is not null && _isUsable.Value;
+        public bool IsExecuting => _isExecuting is not null && _isExecuting.Value;
 
         public string Code => _model.Code;
         public string Name => _model.Name;

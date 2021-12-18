@@ -39,7 +39,7 @@ namespace WwtbamOld.View
                 double num6 = num4 / 2.0 * Math.Sin(num * 3.1415926535897931 / 180.0);
                 double num7 = num3 / 2.0 * Math.Cos(num2 * 3.1415926535897931 / 180.0);
                 double num8 = num4 / 2.0 * Math.Sin(num2 * 3.1415926535897931 / 180.0);
-                StreamGeometry streamGeometry = new StreamGeometry();
+                StreamGeometry streamGeometry = new();
                 using (StreamGeometryContext streamGeometryContext = streamGeometry.Open())
                 {
                     streamGeometryContext.BeginFigure(new Point(RenderSize.Width / 2.0 + num5, RenderSize.Height / 2.0 - num6), true, false);
@@ -49,7 +49,7 @@ namespace WwtbamOld.View
             }
         }
 
-        private static readonly FrameworkPropertyMetadata valueMetadata = new FrameworkPropertyMetadata(0.0, FrameworkPropertyMetadataOptions.AffectsRender, null, new CoerceValueCallback(CoerceValue));
+        private static readonly FrameworkPropertyMetadata valueMetadata = new(0.0, FrameworkPropertyMetadataOptions.AffectsRender, null, new CoerceValueCallback(CoerceValue));
         public static readonly DependencyProperty ValueProperty = DependencyProperty.Register("Value", typeof(double), typeof(CircularProgress), valueMetadata);
     }
 }

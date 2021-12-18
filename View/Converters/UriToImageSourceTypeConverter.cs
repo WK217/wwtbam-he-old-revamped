@@ -23,9 +23,9 @@ namespace WwtbamOld.View
         {
             if (toType == typeof(ImageSource))
             {
-                //result = FileManager.GetImageSource(from.ToString());
-                result = ResourceManager.GetImageSource(from.ToString());
-                return result != null;
+                string uri = from.ToString();
+                result = string.IsNullOrWhiteSpace(uri) ? null : ResourceManager.GetImageSource(from.ToString());
+                return result is not null;
             }
             else
             {

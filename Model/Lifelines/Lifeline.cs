@@ -40,7 +40,7 @@ namespace WwtbamOld.Model
             _midIconVisibility = midIconVisibility;
 
             _isUsable = this.WhenAnyValue(lifeline => lifeline._game.Lifelines.Selected)
-                            .Select(selected => selected == this || selected == null)
+                            .Select(selected => selected == this || selected is null)
                             .ToProperty(this, nameof(IsUsable));
 
             _isMidIconShown = this.WhenAnyValue(lifeline => lifeline.IsExecuting, lifeline => lifeline.State, (flag, state) => flag && _midIconVisibility)
@@ -53,7 +53,7 @@ namespace WwtbamOld.Model
 
         #region Properties
 
-        public bool IsUsable => _isUsable != null && _isUsable.Value;
+        public bool IsUsable => _isUsable is not null && _isUsable.Value;
 
         public virtual bool IsEnabled
         {
@@ -126,7 +126,7 @@ namespace WwtbamOld.Model
         private ImageSource GetImage(LifelineImageType type, LifelineState state)
         {
             string folders = "Lifelines";
-            string fileName = "";
+            string fileName = string.Empty;
             string extension = "png";
 
             if (type == LifelineImageType.General)
