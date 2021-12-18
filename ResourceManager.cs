@@ -23,7 +23,15 @@ namespace WwtbamOld
 
         public static IEnumerable<Quiz> LoadQuizzesDefault() => LoadQuizzes(GetResourceFileContents("quizzes", "xml"));
 
-        public static IEnumerable<Quiz> LoadQuizzes(string xml)
+        public static IEnumerable<Quiz> LoadQuizzes(string text)
+        {
+            if (text.IsXml())
+                return LoadQuizzesXml(text);
+
+            return null;
+        }
+
+        private static IEnumerable<Quiz> LoadQuizzesXml(string xml)
         {
             List<Quiz> quizzes = new();
 
@@ -33,6 +41,12 @@ namespace WwtbamOld
                 quizzes.Add(new Quiz(quizNode));
 
             return quizzes;
+        }
+
+        private static bool IsXml(this string text)
+        {
+            string trimmed = text.Trim();
+            return trimmed.StartsWith('<') && trimmed.EndsWith('>');
         }
 
         #endregion Вопросы

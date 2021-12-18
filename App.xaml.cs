@@ -59,11 +59,15 @@ namespace WwtbamOld
                 OpenFileDialog openFileDialog = new()
                 {
                     DefaultExt = ".xml",
-                    Filter = "XML-файлы (.xml)|*.xml",
+                    Filter = "XML-файлы (*.xml)|*.xml|Все файлы (*.*)|*.*",
                     Title = "Выбор файла пакета вопросов",
                     AddExtension = true,
                     CheckFileExists = true,
+#if NET6_0_OR_GREATER
                     InitialDirectory = Path.GetFullPath(Environment.ProcessPath)
+#else
+                    InitialDirectory = Path.GetFullPath(Process.GetCurrentProcess().MainModule.FileName)
+#endif
                 };
 
                 if (openFileDialog.ShowDialog() == true)
