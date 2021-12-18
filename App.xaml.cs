@@ -49,7 +49,6 @@ public partial class App : Application
     {
         InitializeInteractions();
         Locator.CurrentMutable.RegisterViewsForViewModels(Assembly.GetExecutingAssembly());
-        Locator.CurrentMutable.RegisterConstant(new UriToImageSourceTypeConverter(), typeof(IBindingTypeConverter));
         Locator.CurrentMutable.RegisterConstant(new ObjectToDescriptionTypeConverter(), typeof(IBindingTypeConverter));
 
         Game game = new();
