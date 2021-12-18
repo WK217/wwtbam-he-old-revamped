@@ -1,6 +1,5 @@
-﻿namespace WwtbamOld
+﻿namespace WwtbamOld;
+
+public abstract class ViewModelBase : AdvancedReactiveObject
 {
-    public abstract class ViewModelBase : AdvancedReactiveObject
-    {
-    }
 }

@@ -1,12 +1,11 @@
 ﻿using WwtbamOld.Model;
 
-namespace WwtbamOld.ViewModel
+namespace WwtbamOld.ViewModel;
+
+public sealed class GoogleViewModel : TimerLifelineViewModel
 {
-    public sealed class GoogleViewModel : TimerLifelineViewModel
+    public GoogleViewModel(LifelinesViewModel lifelinesViewModel, Google lifeline)
+        : base(lifelinesViewModel, lifeline)
     {
-        public GoogleViewModel(LifelinesViewModel lifelinesViewModel, Google lifeline)
-            : base(lifelinesViewModel, lifeline)
-        {
-        }
     }
 }

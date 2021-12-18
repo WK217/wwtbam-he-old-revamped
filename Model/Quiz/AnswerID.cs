@@ -1,11 +1,10 @@
-﻿namespace WwtbamOld.Model
+﻿namespace WwtbamOld.Model;
+
+public enum AnswerID : byte
 {
-    public enum AnswerID : byte
-    {
-        None,
-        A,
-        B,
-        C,
-        D
-    }
+    None,
+    A,
+    B,
+    C,
+    D
 }

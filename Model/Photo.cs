@@ -3,58 +3,57 @@ using ReactiveUI.Fody.Helpers;
 using System;
 using System.Reactive.Linq;
 
-namespace WwtbamOld.Model
+namespace WwtbamOld.Model;
+
+public sealed class Photo : ReactiveObject
 {
-    public sealed class Photo : ReactiveObject
+    #region Fields
+
+    private readonly Game _game;
+    private readonly ObservableAsPropertyHelper<Uri> _photoUrl;
+    private readonly ObservableAsPropertyHelper<bool> _canShowImage;
+
+    #endregion Fields
+
+    public Photo(Game game)
     {
-        #region Fields
+        _game = game;
 
-        private readonly Game _game;
-        private readonly ObservableAsPropertyHelper<Uri> _photoUrl;
-        private readonly ObservableAsPropertyHelper<bool> _canShowImage;
+        this.WhenAnyValue(x => x._game.CurrentQuiz.Question.Photo)
+            .ObserveOn(RxApp.MainThreadScheduler)
+            .BindTo(this, x => x.PhotoUrlString);
 
-        #endregion Fields
+        _photoUrl = this.WhenAnyValue(x => x.PhotoUrlString)
+                        .Select(url => string.IsNullOrWhiteSpace(url) ? null : new Uri(url))
+                        .ObserveOn(RxApp.MainThreadScheduler)
+                        .ToProperty(this, nameof(PhotoUrl));
 
-        public Photo(Game game)
-        {
-            _game = game;
-
-            this.WhenAnyValue(x => x._game.CurrentQuiz.Question.Photo)
-                .ObserveOn(RxApp.MainThreadScheduler)
-                .BindTo(this, x => x.PhotoUrlString);
-
-            _photoUrl = this.WhenAnyValue(x => x.PhotoUrlString)
-                            .Select(url => string.IsNullOrWhiteSpace(url) ? null : new Uri(url))
+        _canShowImage = this.WhenAnyValue(x => x.PhotoUrl)
+                            .Select(url => url is not null)
                             .ObserveOn(RxApp.MainThreadScheduler)
-                            .ToProperty(this, nameof(PhotoUrl));
+                            .ToProperty(this, nameof(CanShowImage));
 
-            _canShowImage = this.WhenAnyValue(x => x.PhotoUrl)
-                                .Select(url => url is not null)
-                                .ObserveOn(RxApp.MainThreadScheduler)
-                                .ToProperty(this, nameof(CanShowImage));
-
-            this.WhenAnyValue(x => x.CanShowImage)
-                .ObserveOn(RxApp.MainThreadScheduler)
-                .Subscribe(x =>
+        this.WhenAnyValue(x => x.CanShowImage)
+            .ObserveOn(RxApp.MainThreadScheduler)
+            .Subscribe(x =>
+            {
+                if (!x)
                 {
-                    if (!x)
-                    {
-                        IsBigShown = false;
-                        IsSmallShown = false;
-                    }
-                });
-        }
-
-        #region Properties
-
-        [Reactive] public string PhotoUrlString { get; set; }
-        public Uri PhotoUrl => _photoUrl.Value;
-
-        public bool CanShowImage => _canShowImage.Value;
-
-        [Reactive] public bool IsBigShown { get; set; }
-        [Reactive] public bool IsSmallShown { get; set; }
-
-        #endregion Properties
+                    IsBigShown = false;
+                    IsSmallShown = false;
+                }
+            });
     }
+
+    #region Properties
+
+    [Reactive] public string PhotoUrlString { get; set; }
+    public Uri PhotoUrl => _photoUrl.Value;
+
+    public bool CanShowImage => _canShowImage.Value;
+
+    [Reactive] public bool IsBigShown { get; set; }
+    [Reactive] public bool IsSmallShown { get; set; }
+
+    #endregion Properties
 }

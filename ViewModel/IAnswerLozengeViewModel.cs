@@ -1,13 +1,12 @@
 ﻿using ReactiveUI;
 using WwtbamOld.Model;
 
-namespace WwtbamOld.ViewModel
+namespace WwtbamOld.ViewModel;
+
+public interface IAnswerLozengeViewModel : IReactiveObject
 {
-    public interface IAnswerLozengeViewModel : IReactiveObject
-    {
-        public AnswerID ID { get; }
-        public bool IsShown { get; }
-        public string Text { get; }
-        public bool IsLocked { get; }
-    }
+    public AnswerID ID { get; }
+    public bool IsShown { get; }
+    public string Text { get; }
+    public bool IsLocked { get; }
 }

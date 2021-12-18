@@ -1,10 +1,9 @@
-﻿namespace WwtbamOld.Model
+﻿namespace WwtbamOld.Model;
+
+public enum RevealCorrectType : byte
 {
-    public enum RevealCorrectType : byte
-    {
-        None,
-        Quick,
-        Medium,
-        Slow
-    }
+    None,
+    Quick,
+    Medium,
+    Slow
 }

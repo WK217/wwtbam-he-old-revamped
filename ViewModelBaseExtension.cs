@@ -1,16 +1,15 @@
 ﻿using ReactiveUI;
 using Splat;
 
-namespace WwtbamOld
+namespace WwtbamOld;
+
+public static class ViewModelBaseExtension
 {
-    public static class ViewModelBaseExtension
+    public static ReactiveWindow<T> GetView<T>(this T viewModel)
+        where T : ViewModelBase
     {
-        public static ReactiveWindow<T> GetView<T>(this T viewModel)
-            where T : ViewModelBase
-        {
-            var view = Locator.Current.GetService<IViewFor<T>>();
-            view.ViewModel = viewModel;
-            return view as ReactiveWindow<T>;
-        }
+        var view = Locator.Current.GetService<IViewFor<T>>();
+        view.ViewModel = viewModel;
+        return view as ReactiveWindow<T>;
     }
 }

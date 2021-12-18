@@ -1,10 +1,9 @@
-﻿namespace WwtbamOld.Model
+﻿namespace WwtbamOld.Model;
+
+public enum LifelineImageType : byte
 {
-    public enum LifelineImageType : byte
-    {
-        General,
-        Small,
-        Small2,
-        Medium
-    }
+    General,
+    Small,
+    Small2,
+    Medium
 }

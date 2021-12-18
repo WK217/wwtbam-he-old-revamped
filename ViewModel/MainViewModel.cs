@@ -3,81 +3,80 @@ using System;
 using System.Collections.ObjectModel;
 using WwtbamOld.Model;
 
-namespace WwtbamOld.ViewModel
+namespace WwtbamOld.ViewModel;
+
+public sealed class MainViewModel : ReactiveObject
 {
-    public sealed class MainViewModel : ReactiveObject
+    #region Fields
+
+    private readonly Game _game;
+
+    #endregion Fields
+
+    public MainViewModel(Game game)
     {
-        #region Fields
+        _game = game;
 
-        private readonly Game _game;
+        Lozenge = new LozengeViewModel(_game.Lozenge);
+        Host = new HostViewModel(_game, this);
+        Screen = new ScreenViewModel(_game, this);
 
-        #endregion Fields
-
-        public MainViewModel(Game game)
+        this.WhenAnyValue(vm => vm._game.CurrentLevel).Subscribe(lvl =>
         {
-            _game = game;
+            this.RaisePropertyChanged(nameof(CurrentLevel));
+            Host.RaisePropertyChanged(nameof(Host.CurrentLevel));
+        });
 
-            Lozenge = new LozengeViewModel(_game.Lozenge);
-            Host = new HostViewModel(_game, this);
-            Screen = new ScreenViewModel(_game, this);
-
-            this.WhenAnyValue(vm => vm._game.CurrentLevel).Subscribe(lvl =>
-            {
-                this.RaisePropertyChanged(nameof(CurrentLevel));
-                Host.RaisePropertyChanged(nameof(Host.CurrentLevel));
-            });
-
-            this.WhenAnyValue(vm => vm._game.CurrentQuiz).Subscribe(quiz =>
-            {
-                this.RaisePropertyChanged(nameof(CurrentQuiz));
-                Host.RaisePropertyChanged(nameof(HostViewModel.CurrentQuiz));
-
-                Lozenge.RaisePropertyChanged(nameof(LozengeViewModel.QuestionText));
-            });
-
-            CurrentLevel = Levels[0];
-        }
-
-        #region Properties
-
-        public ReadOnlyObservableCollection<Level> Levels => _game.Levels.Collection;
-
-        public Level CurrentLevel
+        this.WhenAnyValue(vm => vm._game.CurrentQuiz).Subscribe(quiz =>
         {
-            get => _game.CurrentLevel;
-            set
-            {
-                if (value != _game.CurrentLevel)
-                {
-                    _game.CurrentLevel = value;
-                    this.RaisePropertyChanged(nameof(CurrentLevel));
-                }
-            }
-        }
+            this.RaisePropertyChanged(nameof(CurrentQuiz));
+            Host.RaisePropertyChanged(nameof(HostViewModel.CurrentQuiz));
 
-        public ReadOnlyObservableCollection<Lifeline> Lifelines => _game.Lifelines.Collection;
+            Lozenge.RaisePropertyChanged(nameof(LozengeViewModel.QuestionText));
+        });
 
-        public Quiz CurrentQuiz
-        {
-            get => _game.CurrentQuiz;
-            set
-            {
-                if (value != _game.CurrentQuiz)
-                {
-                    _game.CurrentQuiz = value;
-                    this.RaisePropertyChanged(nameof(CurrentQuiz));
-                }
-            }
-        }
-
-        #endregion Properties
-
-        #region View Models
-
-        public HostViewModel Host { get; }
-        public ScreenViewModel Screen { get; }
-        public LozengeViewModel Lozenge { get; }
-
-        #endregion View Models
+        CurrentLevel = Levels[0];
     }
+
+    #region Properties
+
+    public ReadOnlyObservableCollection<Level> Levels => _game.Levels.Collection;
+
+    public Level CurrentLevel
+    {
+        get => _game.CurrentLevel;
+        set
+        {
+            if (value != _game.CurrentLevel)
+            {
+                _game.CurrentLevel = value;
+                this.RaisePropertyChanged(nameof(CurrentLevel));
+            }
+        }
+    }
+
+    public ReadOnlyObservableCollection<Lifeline> Lifelines => _game.Lifelines.Collection;
+
+    public Quiz CurrentQuiz
+    {
+        get => _game.CurrentQuiz;
+        set
+        {
+            if (value != _game.CurrentQuiz)
+            {
+                _game.CurrentQuiz = value;
+                this.RaisePropertyChanged(nameof(CurrentQuiz));
+            }
+        }
+    }
+
+    #endregion Properties
+
+    #region View Models
+
+    public HostViewModel Host { get; }
+    public ScreenViewModel Screen { get; }
+    public LozengeViewModel Lozenge { get; }
+
+    #endregion View Models
 }

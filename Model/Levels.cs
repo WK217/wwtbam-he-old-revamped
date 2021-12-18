@@ -1,13 +1,12 @@
 ﻿using System.Collections.Generic;
 
-namespace WwtbamOld.Model
+namespace WwtbamOld.Model;
+
+public sealed class Levels : ReadOnlyReactiveCollection<Level>
 {
-    public sealed class Levels : ReadOnlyReactiveCollection<Level>
+    public void Initialize(IEnumerable<Level> collection)
     {
-        public void Initialize(IEnumerable<Level> collection)
-        {
-            _collection.Clear();
-            _collection.AddRange(collection);
-        }
+        _collection.Clear();
+        _collection.AddRange(collection);
     }
 }

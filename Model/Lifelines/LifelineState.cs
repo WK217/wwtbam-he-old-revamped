@@ -1,10 +1,9 @@
-﻿namespace WwtbamOld.Model
+﻿namespace WwtbamOld.Model;
+
+public enum LifelineState : byte
 {
-    public enum LifelineState : byte
-    {
-        Enabled,
-        Activated,
-        Disabled,
-        Secret
-    }
+    Enabled,
+    Activated,
+    Disabled,
+    Secret
 }

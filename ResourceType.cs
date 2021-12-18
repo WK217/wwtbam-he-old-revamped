@@ -1,10 +1,9 @@
-﻿namespace WwtbamOld
+﻿namespace WwtbamOld;
+
+internal enum ResourceType : byte
 {
-    internal enum ResourceType : byte
-    {
-        None,
-        Audio,
-        Fonts,
-        Graphics,
-    }
+    None,
+    Audio,
+    Fonts,
+    Graphics,
 }

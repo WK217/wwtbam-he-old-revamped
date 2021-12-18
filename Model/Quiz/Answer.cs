@@ -2,37 +2,36 @@
 using ReactiveUI.Fody.Helpers;
 using System;
 
-namespace WwtbamOld.Model
+namespace WwtbamOld.Model;
+
+public sealed class Answer : ReactiveObject
 {
-    public sealed class Answer : ReactiveObject
+    #region Fields
+
+    private readonly Quiz _quiz;
+
+    #endregion Fields
+
+    public Answer(Quiz quiz, AnswerID id, string text)
     {
-        #region Fields
+        _quiz = quiz;
+        ID = id;
+        Text = text;
 
-        private readonly Quiz _quiz;
-
-        #endregion Fields
-
-        public Answer(Quiz quiz, AnswerID id, string text)
+        this.WhenAnyValue(answer => answer.IsCorrect).Subscribe(f =>
         {
-            _quiz = quiz;
-            ID = id;
-            Text = text;
-
-            this.WhenAnyValue(answer => answer.IsCorrect).Subscribe(f =>
-            {
-                if (f)
-                    _quiz.Correct = ID;
-            });
-        }
-
-        #region Properties
-
-        public AnswerID ID { get; }
-        [Reactive] public string Text { get; set; }
-        [Reactive] public bool IsCorrect { get; set; }
-
-        #endregion Properties
-
-        public override string ToString() => $"{ID}: {Text}";
+            if (f)
+                _quiz.Correct = ID;
+        });
     }
+
+    #region Properties
+
+    public AnswerID ID { get; }
+    [Reactive] public string Text { get; set; }
+    [Reactive] public bool IsCorrect { get; set; }
+
+    #endregion Properties
+
+    public override string ToString() => $"{ID}: {Text}";
 }

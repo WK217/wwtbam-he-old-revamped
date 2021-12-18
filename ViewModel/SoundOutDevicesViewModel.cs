@@ -1,15 +1,14 @@
 ﻿using NAudio.CoreAudioApi;
 using WwtbamOld.Media.Audio;
 
-namespace WwtbamOld.ViewModel
+namespace WwtbamOld.ViewModel;
+
+public sealed class SoundOutDevicesViewModel : ReadOnlyReactiveCollection<SoundOutDeviceViewModel>
 {
-    public sealed class SoundOutDevicesViewModel : ReadOnlyReactiveCollection<SoundOutDeviceViewModel>
+    public SoundOutDevicesViewModel()
+        : base()
     {
-        public SoundOutDevicesViewModel()
-            : base()
-        {
-            foreach (MMDevice device in AudioManager.Instance.SoundOutDevices)
-                _collection.Add(new SoundOutDeviceViewModel(device));
-        }
+        foreach (MMDevice device in AudioManager.Instance.SoundOutDevices)
+            _collection.Add(new SoundOutDeviceViewModel(device));
     }
 }
