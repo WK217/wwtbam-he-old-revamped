@@ -33,7 +33,7 @@ public sealed class DoubleDip : Lifeline
         get => _mode;
         set
         {
-            var oldValue = _mode;
+            DoubleDipMode oldValue = _mode;
             this.RaiseAndSetIfChanged(ref _mode, value);
 
             if (_mode != oldValue)

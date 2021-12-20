@@ -228,7 +228,7 @@ public sealed class OutlinedTextBlock : FrameworkElement
 
     private static void OnFormattedTextInvalidated(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs e)
     {
-        var outlinedTextBlock = (OutlinedTextBlock)dependencyObject;
+        OutlinedTextBlock outlinedTextBlock = (OutlinedTextBlock)dependencyObject;
         outlinedTextBlock._formattedText = null;
         outlinedTextBlock._TextGeometry = null;
 
@@ -238,7 +238,7 @@ public sealed class OutlinedTextBlock : FrameworkElement
 
     private static void OnFormattedTextUpdated(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs e)
     {
-        var outlinedTextBlock = (OutlinedTextBlock)dependencyObject;
+        OutlinedTextBlock outlinedTextBlock = (OutlinedTextBlock)dependencyObject;
         outlinedTextBlock.UpdateFormattedText();
         outlinedTextBlock._TextGeometry = null;
 

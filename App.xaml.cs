@@ -18,6 +18,8 @@ namespace WwtbamOld;
 /// </summary>
 public partial class App : Application
 {
+    #region Methods
+
     public static string GetWindowTitle(string name) => $"«Кто хочет стать миллионером?» Home Edition Old Revamped :: {name}";
 
     private static void InitializeInteractions()
@@ -41,6 +43,8 @@ public partial class App : Application
 
             if (openFileDialog.ShowDialog() == true)
                 context.SetOutput(ResourceManager.LoadQuizzesFromFile(openFileDialog.FileName));
+            else
+                context.SetOutput(null);
         });
     }
 
@@ -60,10 +64,6 @@ public partial class App : Application
         ScreenView screenView = new() { ViewModel = mainViewModel.Screen };
         screenView.Closed += WindowClosed;
         screenView.Show();
-
-        hostView.Activate();
-        hostView.Topmost = true;
-        hostView.Topmost = false;
     }
 
     private void WindowClosed(object sender, EventArgs e)
@@ -71,4 +71,6 @@ public partial class App : Application
         AudioManager.Instance.Dispose();
         Shutdown();
     }
+
+    #endregion Methods
 }

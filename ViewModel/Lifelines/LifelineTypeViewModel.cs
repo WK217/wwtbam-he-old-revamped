@@ -44,7 +44,7 @@ public sealed class LifelineTypeViewModel : ReactiveObject
 
     private string GetDescription(Type type)
     {
-        var descriptions = (DescriptionAttribute[])type.GetCustomAttributes(typeof(DescriptionAttribute), false);
+        DescriptionAttribute[] descriptions = (DescriptionAttribute[])type.GetCustomAttributes(typeof(DescriptionAttribute), false);
         return descriptions.Length != 0 ? descriptions[0].Description : string.Empty;
     }
 

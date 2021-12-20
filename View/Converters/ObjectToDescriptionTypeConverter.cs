@@ -76,7 +76,7 @@ public sealed class ObjectToDescriptionTypeConverter : IValueConverter, IBinding
 
     private string GetDescription(Type type)
     {
-        var descriptions = (DescriptionAttribute[])type.GetCustomAttributes(typeof(DescriptionAttribute), false);
+        DescriptionAttribute[] descriptions = (DescriptionAttribute[])type.GetCustomAttributes(typeof(DescriptionAttribute), false);
         return descriptions.Length == 0 ? string.Empty : descriptions[0].Description;
     }
 }

@@ -106,7 +106,7 @@ public sealed class AudioManager : ReactiveObject
 
     public void Dispose()
     {
-        foreach (var player in Players)
+        foreach (AudioPlayer player in Players)
             player.Dispose();
     }
 

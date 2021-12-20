@@ -179,7 +179,7 @@ public sealed class Lozenge : ReactiveObject
 
     public RevealCorrectType RevealCorrect(bool walkaway = false)
     {
-        var correct = this[_game.Lozenge.Correct];
+        AnswerLozenge correct = this[_game.Lozenge.Correct];
         correct.RevealCorrect(walkaway);
         return correct.RevealCorrectType;
     }
@@ -189,7 +189,7 @@ public sealed class Lozenge : ReactiveObject
         IsShown = false;
         Locked = AnswerID.None;
 
-        foreach (var answer in Answers)
+        foreach (AnswerLozenge answer in Answers)
         {
             answer.IsShown = false;
             answer.RevealCorrectType = RevealCorrectType.None;

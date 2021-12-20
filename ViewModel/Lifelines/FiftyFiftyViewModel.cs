@@ -28,9 +28,9 @@ public sealed class FiftyFiftyViewModel : LifelineViewModel<FiftyFifty>
         _alternatives = new ObservableCollectionExtended<AnswerID>();
         _alternatives.AddRange(new[] { AnswerID.A, AnswerID.B, AnswerID.C, AnswerID.D });
 
-        var alternativeFilter = this.WhenAnyValue(vm => vm.CorrectID, vm => vm.Alternative)
+        IObservable<Func<AnswerID, bool>> alternativeFilter = this.WhenAnyValue(vm => vm.CorrectID, vm => vm.Alternative)
                                     .Select(AlternativeFilter);
-        var comparer = SortExpressionComparer<AnswerID>.Ascending(id => id);
+        SortExpressionComparer<AnswerID> comparer = SortExpressionComparer<AnswerID>.Ascending(id => id);
         _alternatives.ToObservableChangeSet()
                      .Filter(alternativeFilter)
                      .Sort(comparer)
