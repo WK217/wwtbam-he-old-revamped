@@ -27,14 +27,6 @@ public sealed class MainViewModel : ReactiveObject
             Host.RaisePropertyChanged(nameof(Host.CurrentLevel));
         });
 
-        this.WhenAnyValue(vm => vm._game.CurrentQuiz).Subscribe(quiz =>
-        {
-            this.RaisePropertyChanged(nameof(CurrentQuiz));
-            Host.RaisePropertyChanged(nameof(HostViewModel.CurrentQuiz));
-
-            Lozenge.RaisePropertyChanged(nameof(LozengeViewModel.QuestionText));
-        });
-
         CurrentLevel = Levels[0];
     }
 
@@ -56,8 +48,6 @@ public sealed class MainViewModel : ReactiveObject
     }
 
     public ReadOnlyObservableCollection<Lifeline> Lifelines => _game.Lifelines.Collection;
-
-    public Quiz CurrentQuiz => _game.CurrentQuiz;
 
     #endregion Properties
 

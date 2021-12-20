@@ -3,7 +3,6 @@ using ReactiveUI.Fody.Helpers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Reactive.Linq;
 using WwtbamOld.Media.Audio;
 
@@ -22,9 +21,6 @@ public sealed class AskTheAudience : Lifeline
 
     #region Fields
 
-    /*private readonly ObservableCollectionExtended<AskTheAudienceAnswer> _collection;
-    private readonly ReadOnlyObservableCollection<AskTheAudienceAnswer> _readOnlyCollection;*/
-
     private readonly ObservableAsPropertyHelper<uint> _votesSum;
 
     private IObservable<long> _voteTimerObservable;
@@ -41,18 +37,18 @@ public sealed class AskTheAudience : Lifeline
                                       (a, b, c, d) => a + b + c + d)
                         .ToProperty(this, nameof(VotesSum));
 
-        A = new AskTheAudienceAnswer(this) { Model = game.CurrentQuiz.A };
-        B = new AskTheAudienceAnswer(this) { Model = game.CurrentQuiz.B };
-        C = new AskTheAudienceAnswer(this) { Model = game.CurrentQuiz.C };
-        D = new AskTheAudienceAnswer(this) { Model = game.CurrentQuiz.D };
+        A = new AskTheAudienceAnswer(this) { Model = game.Lozenge.A };
+        B = new AskTheAudienceAnswer(this) { Model = game.Lozenge.B };
+        C = new AskTheAudienceAnswer(this) { Model = game.Lozenge.C };
+        D = new AskTheAudienceAnswer(this) { Model = game.Lozenge.D };
     }
 
     #region Properties
 
-    [Reactive] public AskTheAudienceAnswer A { get; private set; }
-    [Reactive] public AskTheAudienceAnswer B { get; private set; }
-    [Reactive] public AskTheAudienceAnswer C { get; private set; }
-    [Reactive] public AskTheAudienceAnswer D { get; private set; }
+    public AskTheAudienceAnswer A { get; }
+    public AskTheAudienceAnswer B { get; }
+    public AskTheAudienceAnswer C { get; }
+    public AskTheAudienceAnswer D { get; }
 
     public IEnumerable<AskTheAudienceAnswer> Answers
     {

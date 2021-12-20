@@ -19,7 +19,7 @@ public partial class LozengeView : ReactiveUserControl<LozengeViewModel>
         {
             d(this.WhenAnyValue(v => v.ViewModel).BindTo(this, v => v.DataContext));
 
-            d(this.OneWayBind(ViewModel, vm => vm.QuestionText, v => v.txtQuestion.Text));
+            d(this.OneWayBind(ViewModel, vm => vm.Model.Question, v => v.txtQuestion.Text));
 
             d(this.OneWayBind(ViewModel, vm => vm.LifelinesPanel, v => v.gridLifelinesPanel.DataContext));
             d(this.OneWayBind(ViewModel, vm => vm.LifelinesPanel.Lifelines, v => v.itemsLifelinesPanel.ItemsSource));

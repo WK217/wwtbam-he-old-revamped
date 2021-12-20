@@ -30,10 +30,10 @@ public sealed class FiftyFifty : Lifeline
     public FiftyFifty(Game game)
         : base(game)
     {
-        _correctID = this.WhenAnyValue(fifty => fifty._game.CurrentQuiz.Correct)
+        _correctID = this.WhenAnyValue(fifty => fifty._game.Lozenge.Correct)
                          .ToProperty(this, nameof(CorrectID));
 
-        this.WhenAnyValue(fifty => fifty._game.CurrentQuiz.Alternative)
+        this.WhenAnyValue(fifty => fifty._game.Lozenge.Alternative)
             .BindTo(this, fifty => fifty.Alternative);
     }
 
@@ -43,7 +43,7 @@ public sealed class FiftyFifty : Lifeline
     [Reactive] public AnswerID Alternative { get; set; }
 
     public override IObservable<bool> CanActivate => this.WhenAnyValue(fifty => fifty.IsEnabled, fifty => fifty.Alternative,
-        (enabled, alternative) => enabled && alternative != AnswerID.None && !_game.CurrentQuiz[alternative].IsCorrect);
+        (enabled, alternative) => enabled && alternative != AnswerID.None && !_game.Lozenge[alternative].IsCorrect);
 
     #endregion Properties
 
@@ -61,7 +61,7 @@ public sealed class FiftyFifty : Lifeline
         AudioManager.Play(Audio.FiftyUse);
 
         for (AnswerID id = 0; id <= AnswerID.D; id++)
-            _game.Lozenge[id].IsShown = id == _game.CurrentQuiz.Correct || id == Alternative;
+            _game.Lozenge[id].IsShown = id == _game.Lozenge.Correct || id == Alternative;
 
         Alternative = AnswerID.None;
 

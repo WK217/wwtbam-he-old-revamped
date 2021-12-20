@@ -15,18 +15,18 @@ internal static class ResourceManager
 {
     #region Вопросы
 
-    private static readonly XmlSerializer _xmlSerializer = new(type: typeof(List<QuizInfo>), root: new XmlRootAttribute("quizzes"));
+    private static readonly XmlSerializer _xmlSerializer = new(type: typeof(List<Quiz>), root: new XmlRootAttribute("quizzes"));
 
-    public static IEnumerable<QuizInfo> LoadQuizzesFromFile(string fileName)
+    public static IEnumerable<Quiz> LoadQuizzesFromFile(string fileName)
     {
         using FileStream stream = File.Open(fileName, FileMode.Open);
         using StreamReader streamReader = new(stream);
         return LoadQuizzes(streamReader.ReadToEnd());
     }
 
-    public static IEnumerable<QuizInfo> LoadQuizzesDefault() => LoadQuizzes(GetResourceFileContents("quizzes", "xml"));
+    public static IEnumerable<Quiz> LoadQuizzesDefault() => LoadQuizzes(GetResourceFileContents("quizzes", "xml"));
 
-    public static IEnumerable<QuizInfo> LoadQuizzes(string text)
+    public static IEnumerable<Quiz> LoadQuizzes(string text)
     {
         if (text.IsXml())
             return LoadQuizzesXml(text);
@@ -34,10 +34,10 @@ internal static class ResourceManager
         return null;
     }
 
-    private static IEnumerable<QuizInfo> LoadQuizzesXml(string xml)
+    private static IEnumerable<Quiz> LoadQuizzesXml(string xml)
     {
         using (XmlReader reader = XmlReader.Create(new StringReader(xml)))
-            if (_xmlSerializer.Deserialize(reader) is List<QuizInfo> list)
+            if (_xmlSerializer.Deserialize(reader) is List<Quiz> list)
                 return list;
 
         return null;

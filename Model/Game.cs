@@ -18,17 +18,17 @@ public sealed class Game : ReactiveObject
 
     public Game()
     {
-        CurrentQuiz = new Quiz();
-
-        Quizbase = new Quizbase(this);
-
         Lifelines = new Lifelines();
+        Lozenge = new Lozenge(this);
+
         Lifelines.Initialize(new Lifeline[]
         {
                 new FiftyFifty(this),
                 new PhoneAFriend(this),
                 new AskTheAudience(this)
         });
+
+        Quizbase = new Quizbase(this);
 
         Levels = new Levels();
         Levels.Initialize(new Level[]
@@ -49,8 +49,6 @@ public sealed class Game : ReactiveObject
                 new Level(14, 1500000),
                 new Level(15, 3000000)
         });
-
-        Lozenge = new Lozenge(this);
 
         CurrentLevel = Levels[0];
 
@@ -75,7 +73,6 @@ public sealed class Game : ReactiveObject
     #region Properties
 
     public Quizbase Quizbase { get; }
-    public Quiz CurrentQuiz { get; }
 
     public Lozenge Lozenge { get; }
 
@@ -155,7 +152,7 @@ public sealed class Game : ReactiveObject
         }
         else
         {
-            bool isCorrect = Lozenge.Locked == CurrentQuiz.Correct;
+            bool isCorrect = Lozenge.Locked == Lozenge.Correct;
             bool isDoubleDip = Lifelines.IsDoubleDipActivated(out DoubleDip doubleDip);
 
             if (isCorrect)

@@ -72,8 +72,6 @@ public sealed class HostViewModel : ViewModelBase
         }
     }
 
-    public Quiz CurrentQuiz => _mainViewModel.CurrentQuiz;
-
     public LevelObject BigMoneyTree => _game.BigMoneyTree;
 
     [Reactive] public bool HasWalkedAway { get; set; }

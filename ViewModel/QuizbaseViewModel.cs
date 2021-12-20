@@ -34,28 +34,29 @@ public sealed class QuizbaseViewModel : ReactiveObject
         LoadDefaultQuizbaseCommand = ReactiveCommand.Create(() => LoadQuizbase(ResourceManager.LoadQuizzesDefault()));
 
         LoadQuizbaseFileCommand = ReactiveCommand.CreateFromObservable(() => DialogWindowInteractions.ShowOpenQuizbaseDialog.Handle(Unit.Default));
-        LoadQuizbaseFileCommand.Subscribe(value => LoadQuizbase(value));
+        LoadQuizbaseFileCommand.WhereNotNull()
+                               .Subscribe(value => LoadQuizbase(value));
 
         #endregion Commands
     }
 
     #region Properties
 
-    public ReadOnlyObservableCollection<QuizInfo> Quizbase => _quizbase.Collection;
-    [Reactive] public QuizInfo SelectedQuiz { get; set; }
+    public ReadOnlyObservableCollection<Quiz> Quizbase => _quizbase.Collection;
+    [Reactive] public Quiz SelectedQuiz { get; set; }
 
     #endregion Properties
 
     #region Methods
 
-    private void LoadQuizbase(IEnumerable<QuizInfo> quizzes)
+    private void LoadQuizbase(IEnumerable<Quiz> quizzes)
     {
         _quizbase.Initialize(quizzes);
         if (_quizbase.Collection.Count > 0)
             SelectedQuiz = _quizbase[0];
     }
 
-    private void LoadQuizbase(QuizInfo quiz)
+    private void LoadQuizbase(Quiz quiz)
     {
         _quizbase.Initialize(quiz);
         if (_quizbase.Collection.Count > 0)
@@ -67,7 +68,7 @@ public sealed class QuizbaseViewModel : ReactiveObject
     #region Commands
 
     public ReactiveCommand<Unit, Unit> LoadDefaultQuizbaseCommand { get; }
-    public ReactiveCommand<Unit, IEnumerable<QuizInfo>> LoadQuizbaseFileCommand { get; }
+    public ReactiveCommand<Unit, IEnumerable<Quiz>> LoadQuizbaseFileCommand { get; }
 
     #endregion Commands
 }

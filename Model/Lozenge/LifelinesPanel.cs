@@ -8,7 +8,7 @@ public sealed class LifelinesPanel : ReactiveObject
 {
     #region Fields
 
-    private readonly Model.Lifelines _lifelines;
+    private readonly Lifelines _lifelines;
 
     #endregion Fields
 

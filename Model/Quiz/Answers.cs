@@ -5,14 +5,29 @@ using System.Xml.Serialization;
 namespace WwtbamOld.Model;
 
 [XmlRoot(ElementName = "answers")]
-public sealed class AnswersInfo : PropertyChangedBase
+public sealed class Answers : PropertyChangedBase
 {
+    #region Fields
+
     private string _a;
     private string _b;
     private string _c;
     private string _d;
     private AnswerID _correct;
     private AnswerID _alternative;
+
+    #endregion Fields
+
+    public Answers()
+    {
+    }
+
+    public Answers(string a, string b, string c, string d)
+    {
+        (A, B, C, D) = (a, b, c, d);
+    }
+
+    #region Properties
 
     [XmlElement(ElementName = "a")]
     public string A { get => _a; set => RaiseAndSetIfChanged(ref _a, value); }
@@ -32,14 +47,7 @@ public sealed class AnswersInfo : PropertyChangedBase
     [XmlAttribute(AttributeName = "fifty")]
     [Reactive] public AnswerID Alternative { get => _alternative; set => RaiseAndSetIfChanged(ref _alternative, value); }
 
-    public AnswersInfo()
-    {
-    }
-
-    public AnswersInfo(string a, string b, string c, string d)
-    {
-        (A, B, C, D) = (a, b, c, d);
-    }
+    #endregion Properties
 
     public string this[AnswerID id]
     {
@@ -81,13 +89,5 @@ public sealed class AnswersInfo : PropertyChangedBase
         }
     }
 
-    /*public IEnumerator<string> GetEnumerator()
-    {
-        yield return A;
-        yield return B;
-        yield return C;
-        yield return D;
-    }
-
-    IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();*/
+    public override string ToString() => $"A: {A}. B: {B}. C: {C}. D: {D}.";
 }

@@ -7,5 +7,5 @@ namespace WwtbamOld.Interactions;
 
 public static class DialogWindowInteractions
 {
-    public static Interaction<Unit, IEnumerable<QuizInfo>> ShowOpenQuizbaseDialog { get; } = new Interaction<Unit, IEnumerable<QuizInfo>>();
+    public static Interaction<Unit, IEnumerable<Quiz>> ShowOpenQuizbaseDialog { get; } = new Interaction<Unit, IEnumerable<Quiz>>();
 }

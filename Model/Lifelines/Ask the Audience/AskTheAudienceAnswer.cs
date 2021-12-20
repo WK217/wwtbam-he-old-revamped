@@ -36,7 +36,7 @@ public sealed class AskTheAudienceAnswer : ReactiveObject
 
     #region Properties
 
-    [Reactive] public Answer Model { get; set; }
+    [Reactive] public IAnswer Model { get; set; }
 
     public AnswerID ID => Model is null ? AnswerID.None : Model.ID;
 

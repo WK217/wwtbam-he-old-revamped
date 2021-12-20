@@ -41,7 +41,7 @@ public sealed class AskTheHost : Lifeline
                                                                          ath => ath.PlayerAnswer2,
                                                                          (ans1, ans2) => ans1 != AnswerID.None && ans2 != AnswerID.None && ans1 != ans2);
 
-    public IObservable<bool> CanVerifyHostAnswer => this.WhenAnyValue(ath => ath._game.CurrentQuiz.Correct,
+    public IObservable<bool> CanVerifyHostAnswer => this.WhenAnyValue(ath => ath._game.Lozenge.Correct,
                                                                 ath => ath.HostAnswer,
                                                                 (correct, ans) => ans != AnswerID.None && correct != ans);
 
@@ -73,7 +73,7 @@ public sealed class AskTheHost : Lifeline
 
     public void VerifyAnswers(bool player = true)
     {
-        bool correct = player ? FindCorrect(_game.CurrentQuiz.Correct, PlayerAnswer1, PlayerAnswer2) : FindCorrect(_game.CurrentQuiz.Correct, HostAnswer);
+        bool correct = player ? FindCorrect(_game.Lozenge.Correct, PlayerAnswer1, PlayerAnswer2) : FindCorrect(_game.Lozenge.Correct, HostAnswer);
 
         if (player)
         {

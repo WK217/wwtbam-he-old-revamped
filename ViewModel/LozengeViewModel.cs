@@ -9,35 +9,32 @@ public sealed class LozengeViewModel : ReactiveObject
 {
     #region Fields
 
-    private readonly Lozenge _lozenge;
-    private readonly ObservableAsPropertyHelper<string> _questionText;
     private readonly ObservableAsPropertyHelper<Lifeline> _activatedLifeline;
 
     #endregion Fields
 
     public LozengeViewModel(Lozenge lozenge)
     {
-        _lozenge = lozenge;
+        Model = lozenge;
 
-        _questionText = this.WhenAnyValue(vm => vm._lozenge.QuestionText).ToProperty(this, nameof(QuestionText));
-        _activatedLifeline = this.WhenAnyValue(vm => vm._lozenge.ActivatedLifeline).ToProperty(this, nameof(ActivatedLifeline));
-        this.WhenAnyValue(lvm => lvm._lozenge.IsShown).BindTo(this, lvm => lvm.IsShown);
-        this.WhenAnyValue(lvm => lvm.IsShown).BindTo(this, lvm => lvm._lozenge.IsShown);
+        _activatedLifeline = this.WhenAnyValue(vm => vm.Model.ActivatedLifeline).ToProperty(this, nameof(ActivatedLifeline));
+        this.WhenAnyValue(lvm => lvm.Model.IsShown).BindTo(this, lvm => lvm.IsShown);
+        this.WhenAnyValue(lvm => lvm.IsShown).BindTo(this, lvm => lvm.Model.IsShown);
 
         ShowLifelinesPanelCommand = ReactiveCommand.Create(() => { LifelinesPanel.IsShown = !LifelinesPanel.IsShown; });
-        RevealCorrectCommand = ReactiveCommand.Create(() => { return _lozenge.RevealCorrect(); });
+        RevealCorrectCommand = ReactiveCommand.Create(() => { return Model.RevealCorrect(); });
     }
 
     #region Properties
 
+    public Lozenge Model { get; }
+
     [Reactive] public bool IsShown { get; set; }
 
-    public string QuestionText => _questionText is not null ? _questionText.Value : string.Empty;
-
-    public AnswerLozenge A => _lozenge.A;
-    public AnswerLozenge B => _lozenge.B;
-    public AnswerLozenge C => _lozenge.C;
-    public AnswerLozenge D => _lozenge.D;
+    public AnswerLozenge A => Model.A;
+    public AnswerLozenge B => Model.B;
+    public AnswerLozenge C => Model.C;
+    public AnswerLozenge D => Model.D;
 
     public AnswerLozenge this[AnswerID id]
     {
@@ -45,15 +42,16 @@ public sealed class LozengeViewModel : ReactiveObject
         {
             return id switch
             {
+                AnswerID.A => A,
                 AnswerID.B => B,
                 AnswerID.C => C,
                 AnswerID.D => D,
-                _ => A,
+                _ => null,
             };
         }
     }
 
-    public LifelinesPanel LifelinesPanel => _lozenge.LifelinesPanel;
+    public LifelinesPanel LifelinesPanel => Model.LifelinesPanel;
 
     public Lifeline ActivatedLifeline => _activatedLifeline.Value;
 

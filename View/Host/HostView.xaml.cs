@@ -33,9 +33,9 @@ public partial class HostView : ReactiveWindow<HostViewModel>
 
             d(this.OneWayBind(ViewModel, vm => vm.Quizbase.Quizbase, v => v.comboQuizzes.ItemsSource));
             d(this.Bind(ViewModel, vm => vm.Quizbase.SelectedQuiz, v => v.comboQuizzes.SelectedItem));
-            d(this.Bind(ViewModel, vm => vm.CurrentQuiz.Question, v => v.textQuestion.Text));
-            d(this.OneWayBind(ViewModel, vm => vm.CurrentQuiz.Answers, v => v.itemsAnswers.ItemsSource));
-            d(this.Bind(ViewModel, vm => vm.CurrentQuiz.Comment, v => v.textComment.Text));
+            d(this.Bind(ViewModel, vm => vm.Lozenge.Model.Question, v => v.textQuestion.Text));
+            d(this.OneWayBind(ViewModel, vm => vm.Lozenge.Model.Answers, v => v.itemsAnswers.ItemsSource));
+            d(this.Bind(ViewModel, vm => vm.Lozenge.Model.Comment, v => v.textComment.Text));
 
             d(this.Bind(ViewModel, vm => vm.Photo.PhotoUrlString, v => v.textPhotoUrl.Text));
             d(this.Bind(ViewModel, vm => vm.Photo.IsBigShown, v => v.checkBigPhotoShown.IsChecked));
