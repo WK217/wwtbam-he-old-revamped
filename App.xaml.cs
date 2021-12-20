@@ -3,7 +3,6 @@ using ReactiveUI;
 using Splat;
 using System;
 using System.IO;
-using System.Reactive;
 using System.Reflection;
 using System.Windows;
 using WwtbamOld.Interactions;

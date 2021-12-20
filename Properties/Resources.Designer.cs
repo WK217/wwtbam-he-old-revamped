@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WWTBAM_Home_Edition_Old_Revamped.Properties {
+namespace WwtbamOld.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace WWTBAM_Home_Edition_Old_Revamped.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WWTBAM_Home_Edition_Old_Revamped.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WwtbamOld.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
