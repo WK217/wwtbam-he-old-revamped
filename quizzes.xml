@@ -1,215 +1,154 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-
+﻿<?xml version="1.0" encoding="utf-8"?>
 <quizzes>
-  <quiz theme="Рубашки" level="1">
-    <question>
-      <text>Какие рубашки не имеют выраженной системы размеров?</text>
-    </question>
-    <answers correct="d" fifty="c">
-      <a>Детские</a>
-      <b>Форменные</b>
-      <c>Ночные</c>
-      <d>Смирительные</d>
-    </answers>
-    <comment>
-      <text>Текст комментария.</text>
-    </comment>
-  </quiz>
-  <quiz theme="Из песни слова не выкинешь" level="2">
-    <question>
-      <text>Какое действие предагается совершить в припеве песни «Дубинушка»?</text>
-    </question>
-    <answers correct="c" fifty="d">
-      <a>Ахнуть</a>
-      <b>Охнуть</b>
-      <c>Ухнуть</c>
-      <d>Ёкнуть</d>
-    </answers>
-    <comment>
-      <text>Текст комментария.</text>
-    </comment>
-  </quiz>
-  <quiz theme="Мифология" level="3">
-    <question>
-      <text>Куда критский царь Минос заточил Минотавра, обязав афинян кормить чудовище юношами и девушками?</text>
-    </question>
-    <answers correct="a" fifty="b">
-      <a>Лабиринт</a>
-      <b>Галерея</b>
-      <c>Катакомбы</c>
-      <d>Подвал</d>
-    </answers>
-    <comment>
-      <text>Текст комментария.</text>
-    </comment>
-  </quiz>
-  <quiz theme="Вина" level="4">
-    <question>
-      <text>Какое из этих вин получило в народе прозвище «бормотуха»?</text>
-    </question>
-    <answers correct="d" fifty="a">
-      <a>Сухое</a>
-      <b>Вермут</b>
-      <c>Мадера</c>
-      <d>Плодово-ягодное</d>
-    </answers>
-    <comment>
-      <text>Текст комментария.</text>
-    </comment>
-  </quiz>
-  <quiz theme="Английский язык" level="5">
-    <question>
-      <text>Какой день недели англичане называют Tuesday?</text>
-    </question>
-    <answers correct="b" fifty="a">
-      <a>Понедельник</a>
-      <b>Вторник</b>
-      <c>Среда</c>
-      <d>Четверг</d>
-    </answers>
-    <comment>
-      <text>Текст комментария.</text>
-    </comment>
-  </quiz>
-  <quiz theme="Страхование" level="6">
-    <question>
-      <text>Как в договоре страхования называется сторона, страхующая свой имущественный интерес?</text>
-    </question>
-    <answers correct="a" fifty="b">
-      <a>Страхователь</a>
-      <b>Страховальщик</b>
-      <c>Страховщик</c>
-      <d>Страхованный</d>
-    </answers>
-    <comment>
-      <text>Текст комментария.</text>
-    </comment>
-  </quiz>
-  <quiz theme="Спорт" level="7">
-    <question>
-      <text>Какое из этих массовых спортивных состязаний были учреждены организациями рабочих?</text>
-    </question>
-    <answers correct="b" fifty="d">
-      <a>Олимпиада</a>
-      <b>Спартакиада</b>
-      <c>Универсиада</c>
-      <d>Игры Доброй воли</d>
-    </answers>
-    <comment>
-      <text>Текст комментария.</text>
-    </comment>
-  </quiz>
-  <quiz theme="Литература" level="8">
-    <question>
-      <text>Как называется один из сборников повестей Н. В. Гоголя?</text>
-      <photo>http://gameshows.ru/w/images/f/f3/Ohappy_10.06.2000_01.jpg</photo>
-    </question>
-    <answers correct="c" fifty="b">
-      <a>«Баккара»</a>
-      <b>«Оазис»</b>
-      <c>«Арабески»</c>
-      <d>«Нирвана»</d>
-    </answers>
-    <comment>
-      <text>Текст комментария.</text>
-    </comment>
-  </quiz>
-  <quiz theme="Гагарин" level="9">
-    <question>
-      <text>Какое внеочередное воинское звание получил за свой полёт в космос Юрий Гагарин?</text>
-    </question>
-    <answers correct="a" fifty="d">
-      <a>Майор</a>
-      <b>Капитан</b>
-      <c>Подполковник</c>
-      <d>Генерал-лейтенант</d>
-    </answers>
-    <comment>
-      <text>Текст комментария.</text>
-    </comment>
-  </quiz>
-  <quiz theme="Римские цифры" level="10">
-    <question>
-      <text>Какой год указан в римском числительном MCMXCIX?</text>
-    </question>
-    <answers correct="c" fifty="a">
-      <a>1899</a>
-      <b>1909</b>
-      <c>1999</c>
-      <d>2009</d>
-    </answers>
-    <comment>
-      <text>Текст комментария.</text>
-    </comment>
-  </quiz>
-  <quiz theme="Этнография" level="11">
-    <question>
-      <text>Какой народ ранее назывался тунгусами?</text>
-    </question>
-    <answers correct="c" fifty="b">
-      <a>Чукчи</a>
-      <b>Калмыки</b>
-      <c>Эвенки</c>
-      <d>Якуты</d>
-    </answers>
-    <comment>
-      <text>Текст комментария.</text>
-    </comment>
-  </quiz>
-  <quiz theme="Греческий пантеон" level="12">
-    <question>
-      <text>Кто из перечисленных мифологических богов не был вооружён луком и стрелами?</text>
-    </question>
-    <answers correct="d" fifty="a">
-      <a>Купидон</a>
-      <b>Аполлон</b>
-      <c>Диана</c>
-      <d>Дионис</d>
-    </answers>
-    <comment>
-      <text>Текст комментария.</text>
-    </comment>
-  </quiz>
-  <quiz theme="Опера" level="13">
-    <question>
-      <text>Какую оперу поставил на сцене лондонского Ковент-Гардена Андрей Тарковский?</text>
-    </question>
-    <answers correct="d" fifty="a">
-      <a>«Иван Сусанин»</a>
-      <b>«Евгений Онегин»</b>
-      <c>«Пиковая дама»</c>
-      <d>«Борис Годунов»</d>
-    </answers>
-    <comment>
-      <text>Текст комментария.</text>
-    </comment>
-  </quiz>
-  <quiz theme="Геральдика" level="14">
-    <question>
-      <text>Какой из этих цветов каноническая геральдика считает дополнительным, используя его лишь в редких случаях?</text>
-    </question>
-    <answers correct="c" fifty="b">
-      <a>Зелёный</a>
-      <b>Чёрный</b>
-      <c>Пурпурный</c>
-      <d>Красный</d>
-    </answers>
-    <comment>
-      <text>Текст комментария.</text>
-    </comment>
-  </quiz>
-  <quiz theme="Российская империя" level="15">
-    <question>
-      <text>Кто был первым военным министром Российской империи?</text>
-    </question>
-    <answers correct="d" fifty="a">
-      <a>Аракчеев</a>
-      <b>Барклай-де-Толли</b>
-      <c>Коновницын</c>
-      <d>Вязмитинов</d>
-    </answers>
-    <comment>
-      <text>Текст комментария.</text>
-    </comment>
-  </quiz>
+    <quiz theme="Рубашки" level="1">
+        <question>Какие рубашки не имеют выраженной системы размеров?</question>
+        <answers correct="d" fifty="c">
+            <a>Детские</a>
+            <b>Форменные</b>
+            <c>Ночные</c>
+            <d>Смирительные</d>
+        </answers>
+        <comment>Текст комментария.</comment>
+    </quiz>
+    <quiz theme="Из песни слова не выкинешь" level="2">
+        <question>Какое действие предагается совершить в припеве песни «Дубинушка»?</question>
+        <answers correct="c" fifty="d">
+            <a>Ахнуть</a>
+            <b>Охнуть</b>
+            <c>Ухнуть</c>
+            <d>Ёкнуть</d>
+        </answers>
+        <comment>Текст комментария.</comment>
+    </quiz>
+    <quiz theme="Мифология" level="3">
+        <question>Куда критский царь Минос заточил Минотавра, обязав афинян кормить чудовище юношами и девушками?</question>
+        <answers correct="a" fifty="b">
+            <a>Лабиринт</a>
+            <b>Галерея</b>
+            <c>Катакомбы</c>
+            <d>Подвал</d>
+        </answers>
+        <comment>Текст комментария.</comment>
+    </quiz>
+    <quiz theme="Вина" level="4">
+        <question>Какое из этих вин получило в народе прозвище «бормотуха»?</question>
+        <answers correct="d" fifty="a">
+            <a>Сухое</a>
+            <b>Вермут</b>
+            <c>Мадера</c>
+            <d>Плодово-ягодное</d>
+        </answers>
+        <comment>Текст комментария.</comment>
+    </quiz>
+    <quiz theme="Английский язык" level="5">
+        <question>Какой день недели англичане называют Tuesday?</question>
+        <answers correct="b" fifty="a">
+            <a>Понедельник</a>
+            <b>Вторник</b>
+            <c>Среда</c>
+            <d>Четверг</d>
+        </answers>
+        <comment>Текст комментария.</comment>
+    </quiz>
+    <quiz theme="Страхование" level="6">
+        <question>Как в договоре страхования называется сторона, страхующая свой имущественный интерес?</question>
+        <answers correct="a" fifty="b">
+            <a>Страхователь</a>
+            <b>Страховальщик</b>
+            <c>Страховщик</c>
+            <d>Страхованный</d>
+        </answers>
+        <comment>Текст комментария.</comment>
+    </quiz>
+    <quiz theme="Спорт" level="7">
+        <question>Какое из этих массовых спортивных состязаний были учреждены организациями рабочих?</question>
+        <answers correct="b" fifty="d">
+            <a>Олимпиада</a>
+            <b>Спартакиада</b>
+            <c>Универсиада</c>
+            <d>Игры Доброй воли</d>
+        </answers>
+        <comment>Текст комментария.</comment>
+    </quiz>
+    <quiz theme="Литература" level="8">
+        <question>Как называется один из сборников повестей Н. В. Гоголя?</question>
+        <photo>http://gameshows.ru/w/images/f/f3/Ohappy_10.06.2000_01.jpg</photo>
+        <answers correct="c" fifty="b">
+            <a>«Баккара»</a>
+            <b>«Оазис»</b>
+            <c>«Арабески»</c>
+            <d>«Нирвана»</d>
+        </answers>
+        <comment>Текст комментария.</comment>
+    </quiz>
+    <quiz theme="Гагарин" level="9">
+        <question>Какое внеочередное воинское звание получил за свой полёт в космос Юрий Гагарин?</question>
+        <answers correct="a" fifty="d">
+            <a>Майор</a>
+            <b>Капитан</b>
+            <c>Подполковник</c>
+            <d>Генерал-лейтенант</d>
+        </answers>
+        <comment>Текст комментария.</comment>
+    </quiz>
+    <quiz theme="Римские цифры" level="10">
+        <question>Какой год указан в римском числительном MCMXCIX?</question>
+        <answers correct="c" fifty="a">
+            <a>1899</a>
+            <b>1909</b>
+            <c>1999</c>
+            <d>2009</d>
+        </answers>
+        <comment>Текст комментария.</comment>
+    </quiz>
+    <quiz theme="Этнография" level="11">
+        <question>Какой народ ранее назывался тунгусами?</question>
+        <answers correct="c" fifty="b">
+            <a>Чукчи</a>
+            <b>Калмыки</b>
+            <c>Эвенки</c>
+            <d>Якуты</d>
+        </answers>
+        <comment>Текст комментария.</comment>
+    </quiz>
+    <quiz theme="Греческий пантеон" level="12">
+        <question>Кто из перечисленных мифологических богов не был вооружён луком и стрелами?</question>
+        <answers correct="d" fifty="a">
+            <a>Купидон</a>
+            <b>Аполлон</b>
+            <c>Диана</c>
+            <d>Дионис</d>
+        </answers>
+        <comment>Текст комментария.</comment>
+    </quiz>
+    <quiz theme="Опера" level="13">
+        <question>Какую оперу поставил на сцене лондонского Ковент-Гардена Андрей Тарковский?</question>
+        <answers correct="d" fifty="a">
+            <a>«Иван Сусанин»</a>
+            <b>«Евгений Онегин»</b>
+            <c>«Пиковая дама»</c>
+            <d>«Борис Годунов»</d>
+        </answers>
+        <comment>Текст комментария.</comment>
+    </quiz>
+    <quiz theme="Геральдика" level="14">
+        <question>Какой из этих цветов каноническая геральдика считает дополнительным, используя его лишь в редких случаях?</question>
+        <answers correct="c" fifty="b">
+            <a>Зелёный</a>
+            <b>Чёрный</b>
+            <c>Пурпурный</c>
+            <d>Красный</d>
+        </answers>
+        <comment>Текст комментария.</comment>
+    </quiz>
+    <quiz theme="Российская империя" level="15">
+        <question>Кто был первым военным министром Российской империи?</question>
+        <answers correct="d" fifty="a">
+            <a>Аракчеев</a>
+            <b>Барклай-де-Толли</b>
+            <c>Коновницын</c>
+            <d>Вязмитинов</d>
+        </answers>
+        <comment>Текст комментария.</comment>
+    </quiz>
 </quizzes>

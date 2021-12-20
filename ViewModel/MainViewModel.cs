@@ -57,18 +57,7 @@ public sealed class MainViewModel : ReactiveObject
 
     public ReadOnlyObservableCollection<Lifeline> Lifelines => _game.Lifelines.Collection;
 
-    public Quiz CurrentQuiz
-    {
-        get => _game.CurrentQuiz;
-        set
-        {
-            if (value != _game.CurrentQuiz)
-            {
-                _game.CurrentQuiz = value;
-                this.RaisePropertyChanged(nameof(CurrentQuiz));
-            }
-        }
-    }
+    public Quiz CurrentQuiz => _game.CurrentQuiz;
 
     #endregion Properties
 

@@ -1,83 +1,108 @@
 ﻿using ReactiveUI;
-using ReactiveUI.Fody.Helpers;
 using System;
-using System.Xml;
+using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace WwtbamOld.Model;
 
-public sealed class Quiz : ReadOnlyReactiveCollection<Answer>
+public sealed class Quiz : ReactiveObject
 {
-    public Quiz(XmlNode xmlNode)
+    #region Fields
+
+    private QuizInfo _info;
+
+    private static readonly List<string> _propertiesToUpdate = new(4)
     {
-        Theme = xmlNode.Attributes["theme"]?.Value;
+        nameof(Level),
+        nameof(Theme),
+        nameof(Question),
+        nameof(Photo),
+        nameof(Correct),
+        nameof(Alternative),
+        nameof(Comment),
+    };
 
-        if (byte.TryParse(xmlNode.Attributes["level"]?.Value, out byte level))
-            Level = level;
-
-        Question = new Question(xmlNode.SelectSingleNode("question"));
-
-        var answersNode = xmlNode.SelectSingleNode("answers");
-
-        if (Enum.TryParse(answersNode.Attributes["correct"]?.Value.ToUpper(), out AnswerID correct))
-            Correct = correct;
-
-        if (Enum.TryParse(answersNode.Attributes["fifty"]?.Value.ToUpper(), out AnswerID alternative))
-            Alternative = alternative;
-
-        A = new Answer(this, AnswerID.A, answersNode.SelectSingleNode("a").InnerText.Trim());
-        B = new Answer(this, AnswerID.B, answersNode.SelectSingleNode("b").InnerText.Trim());
-        C = new Answer(this, AnswerID.C, answersNode.SelectSingleNode("c").InnerText.Trim());
-        D = new Answer(this, AnswerID.D, answersNode.SelectSingleNode("d").InnerText.Trim());
-
-        _collection.AddRange(new[] { A, B, C, D });
-
-        Comment = new Comment(xmlNode.SelectSingleNode("comment"));
-
-        this.WhenAnyValue(quiz => quiz.Correct).Subscribe(id =>
-        {
-            foreach (var answer in Collection)
-                answer.IsCorrect = answer.ID == id;
-        });
-    }
+    #endregion Fields
 
     public Quiz()
     {
-        Theme = "Тема вопроса";
-        Level = 1;
+        A = new Answer(this, AnswerID.A);
+        B = new Answer(this, AnswerID.B);
+        C = new Answer(this, AnswerID.C);
+        D = new Answer(this, AnswerID.D);
 
-        Question = new Question("Текст вопроса");
+        A.PropertyChanged += OnAnswerPropertyChanged;
+        B.PropertyChanged += OnAnswerPropertyChanged;
+        C.PropertyChanged += OnAnswerPropertyChanged;
+        D.PropertyChanged += OnAnswerPropertyChanged;
 
-        Correct = AnswerID.A;
-        Alternative = AnswerID.B;
-
-        A = new Answer(this, AnswerID.A, "Вариант A");
-        B = new Answer(this, AnswerID.B, "Вариант B");
-        C = new Answer(this, AnswerID.C, "Вариант C");
-        D = new Answer(this, AnswerID.D, "Вариант D");
-
-        _collection.AddRange(new[] { A, B, C, D });
-
-        Comment = new Comment("Комментарий");
+        Info = QuizInfo.Default;
 
         this.WhenAnyValue(quiz => quiz.Correct).Subscribe(id =>
         {
-            foreach (var answer in Collection)
-                answer.IsCorrect = answer.ID == id;
+            string propertyName = nameof(Answer.IsCorrect);
+            A.RaisePropertyChanged(propertyName);
+            B.RaisePropertyChanged(propertyName);
+            C.RaisePropertyChanged(propertyName);
+            D.RaisePropertyChanged(propertyName);
         });
     }
 
     #region Properties
 
-    [Reactive] public byte Level { get; set; }
+    public QuizInfo Info
+    {
+        get => _info;
+        set
+        {
+            if (_info != value)
+            {
+                if (_info is not null)
+                {
+                    _info.PropertyChanged -= OnQuizInfoPropertyChanged;
+                    _info.Answers.PropertyChanged -= OnAnswersPropertyChanged;
+                }
 
-    [Reactive] public string Theme { get; set; }
+                this.RaiseAndSetIfChanged(ref _info, value ?? QuizInfo.Default);
 
-    public Question Question { get; }
+                _info.PropertyChanged += OnQuizInfoPropertyChanged;
+                _info.Answers.PropertyChanged += OnAnswersPropertyChanged;
+
+                foreach (string propertyName in _propertiesToUpdate)
+                    this.RaisePropertyChanged(propertyName);
+
+                A.Text = _info.Answers.A;
+                B.Text = _info.Answers.B;
+                C.Text = _info.Answers.C;
+                D.Text = _info.Answers.D;
+
+                Correct = _info.Answers.Correct;
+                this.RaisePropertyChanged(nameof(Correct));
+            }
+        }
+    }
+
+    public byte Level { get => _info.Level; set { _info.Level = value; this.RaisePropertyChanged(); } }
+    public string Theme { get => _info.Theme; set { _info.Theme = value; this.RaisePropertyChanged(); } }
+
+    public string Question { get => _info.Question; set { _info.Question = value; this.RaisePropertyChanged(); } }
+    public string Photo { get => _info.Photo; set { _info.Photo = value; this.RaisePropertyChanged(); } }
 
     public Answer A { get; }
     public Answer B { get; }
     public Answer C { get; }
     public Answer D { get; }
+
+    public IEnumerable<Answer> Answers
+    {
+        get
+        {
+            yield return A;
+            yield return B;
+            yield return C;
+            yield return D;
+        }
+    }
 
     public Answer this[AnswerID id]
     {
@@ -88,17 +113,43 @@ public sealed class Quiz : ReadOnlyReactiveCollection<Answer>
                 AnswerID.D => D,
                 AnswerID.C => C,
                 AnswerID.B => B,
-                _ => A
+                AnswerID.A => A,
+                _ => null
             };
         }
     }
 
-    [Reactive] public AnswerID Correct { get; set; }
-    [Reactive] public AnswerID Alternative { get; set; }
+    public AnswerID Correct { get => _info.Answers.Correct; set { _info.Answers.Correct = value; this.RaisePropertyChanged(); } }
+    public AnswerID Alternative { get => _info.Answers.Alternative; set { _info.Answers.Alternative = value; this.RaisePropertyChanged(); } }
 
-    public Comment Comment { get; }
+    public string Comment { get => _info.Comment; set { _info.Comment = value; this.RaisePropertyChanged(); } }
 
     #endregion Properties
 
+    #region Methods
+
+    private void OnQuizInfoPropertyChanged(object sender, PropertyChangedEventArgs e)
+    {
+        if (_propertiesToUpdate.Contains(e.PropertyName))
+            this.RaisePropertyChanged(e.PropertyName);
+    }
+
+    private void OnAnswersPropertyChanged(object sender, PropertyChangedEventArgs e)
+    {
+        if (e.PropertyName == nameof(AnswersInfo.Correct))
+            this.RaisePropertyChanged(nameof(Correct));
+    }
+
+    private void OnAnswerPropertyChanged(object sender, PropertyChangedEventArgs e)
+    {
+        if (sender is Answer answer)
+        {
+            if (e.PropertyName == nameof(Answer.Text))
+                _info.Answers[answer.ID] = answer.Text;
+        }
+    }
+
     public override string ToString() => string.Join(" | ", Question, A, B, C, D);
+
+    #endregion Methods
 }

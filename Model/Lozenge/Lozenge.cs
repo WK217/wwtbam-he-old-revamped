@@ -25,7 +25,7 @@ public sealed class Lozenge : ReactiveObject
         C = new AnswerLozenge(_game, this, AnswerID.C);
         D = new AnswerLozenge(_game, this, AnswerID.D);
 
-        _questionText = this.WhenAnyValue(lozenge => lozenge._game.CurrentQuiz.Question.Text).ToProperty(this, nameof(QuestionText));
+        _questionText = this.WhenAnyValue(lozenge => lozenge._game.CurrentQuiz.Question).ToProperty(this, nameof(QuestionText));
         this.WhenAnyValue(lozenge => lozenge._game.CurrentQuiz).Subscribe(q =>
         {
             Locked = AnswerID.None;

@@ -19,7 +19,7 @@ public sealed class Photo : ReactiveObject
     {
         _game = game;
 
-        this.WhenAnyValue(x => x._game.CurrentQuiz.Question.Photo)
+        this.WhenAnyValue(x => x._game.CurrentQuiz.Photo)
             .ObserveOn(RxApp.MainThreadScheduler)
             .BindTo(this, x => x.PhotoUrlString);
 

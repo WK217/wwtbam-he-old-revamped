@@ -12,24 +12,18 @@ public sealed class Answer : ReactiveObject
 
     #endregion Fields
 
-    public Answer(Quiz quiz, AnswerID id, string text)
+    public Answer(Quiz quiz, AnswerID id)
     {
         _quiz = quiz;
         ID = id;
-        Text = text;
-
-        this.WhenAnyValue(answer => answer.IsCorrect).Subscribe(f =>
-        {
-            if (f)
-                _quiz.Correct = ID;
-        });
     }
 
     #region Properties
 
     public AnswerID ID { get; }
     [Reactive] public string Text { get; set; }
-    [Reactive] public bool IsCorrect { get; set; }
+
+    public bool IsCorrect { get => _quiz.Correct == ID; set { if (value) _quiz.Correct = ID; } }
 
     #endregion Properties
 

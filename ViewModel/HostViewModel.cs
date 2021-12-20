@@ -72,18 +72,7 @@ public sealed class HostViewModel : ViewModelBase
         }
     }
 
-    public Quiz CurrentQuiz
-    {
-        get => _mainViewModel.CurrentQuiz;
-        set
-        {
-            if (_mainViewModel.CurrentQuiz != value)
-            {
-                _mainViewModel.CurrentQuiz = value;
-                this.RaisePropertyChanged(nameof(CurrentQuiz));
-            }
-        }
-    }
+    public Quiz CurrentQuiz => _mainViewModel.CurrentQuiz;
 
     public LevelObject BigMoneyTree => _game.BigMoneyTree;
 

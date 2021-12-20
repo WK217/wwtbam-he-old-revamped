@@ -41,21 +41,21 @@ public sealed class QuizbaseViewModel : ReactiveObject
 
     #region Properties
 
-    public ReadOnlyObservableCollection<Quiz> Quizbase => _quizbase.Collection;
-    [Reactive] public Quiz SelectedQuiz { get; set; }
+    public ReadOnlyObservableCollection<QuizInfo> Quizbase => _quizbase.Collection;
+    [Reactive] public QuizInfo SelectedQuiz { get; set; }
 
     #endregion Properties
 
     #region Methods
 
-    private void LoadQuizbase(IEnumerable<Quiz> quizzes)
+    private void LoadQuizbase(IEnumerable<QuizInfo> quizzes)
     {
         _quizbase.Initialize(quizzes);
         if (_quizbase.Collection.Count > 0)
             SelectedQuiz = _quizbase[0];
     }
 
-    private void LoadQuizbase(Quiz quiz)
+    private void LoadQuizbase(QuizInfo quiz)
     {
         _quizbase.Initialize(quiz);
         if (_quizbase.Collection.Count > 0)
@@ -67,7 +67,7 @@ public sealed class QuizbaseViewModel : ReactiveObject
     #region Commands
 
     public ReactiveCommand<Unit, Unit> LoadDefaultQuizbaseCommand { get; }
-    public ReactiveCommand<Unit, IEnumerable<Quiz>> LoadQuizbaseFileCommand { get; }
+    public ReactiveCommand<Unit, IEnumerable<QuizInfo>> LoadQuizbaseFileCommand { get; }
 
     #endregion Commands
 }

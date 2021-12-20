@@ -5,25 +5,25 @@ using System.Reactive.Linq;
 
 namespace WwtbamOld.Model;
 
-public sealed class Quizbase : ReadOnlyReactiveCollection<Quiz>
+public sealed class Quizbase : ReadOnlyReactiveCollection<QuizInfo>
 {
     public Quizbase(Game game) : base()
     {
         Initialize(ResourceManager.LoadQuizzesDefault());
         this.WhenAnyValue(qb => qb.SelectedQuiz)
             .Where(q => q is not null)
-            .BindTo(game, game => game.CurrentQuiz);
+            .BindTo(game, game => game.CurrentQuiz.Info);
     }
 
     #region Properties
 
-    [Reactive] public Quiz SelectedQuiz { get; set; }
+    [Reactive] public QuizInfo SelectedQuiz { get; set; }
 
     #endregion Properties
 
     #region Methods
 
-    public void Initialize(IEnumerable<Quiz> collection)
+    public void Initialize(IEnumerable<QuizInfo> collection)
     {
         _collection.Clear();
         _collection.AddRange(collection);
@@ -32,7 +32,7 @@ public sealed class Quizbase : ReadOnlyReactiveCollection<Quiz>
             SelectedQuiz = _collection[0];
     }
 
-    public void Initialize(Quiz quiz)
+    public void Initialize(QuizInfo quiz)
     {
         _collection.Clear();
         _collection.Add(quiz);
@@ -40,7 +40,7 @@ public sealed class Quizbase : ReadOnlyReactiveCollection<Quiz>
         SelectedQuiz = quiz;
     }
 
-    public void Initialize(params Quiz[] quizzes) => Initialize(quizzes);
+    public void Initialize(params QuizInfo[] quizzes) => Initialize(quizzes);
 
     #endregion Methods
 }

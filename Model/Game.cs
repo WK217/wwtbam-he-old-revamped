@@ -18,6 +18,8 @@ public sealed class Game : ReactiveObject
 
     public Game()
     {
+        CurrentQuiz = new Quiz();
+
         Quizbase = new Quizbase(this);
 
         Lifelines = new Lifelines();
@@ -73,7 +75,7 @@ public sealed class Game : ReactiveObject
     #region Properties
 
     public Quizbase Quizbase { get; }
-    [Reactive] public Quiz CurrentQuiz { get; set; }
+    public Quiz CurrentQuiz { get; }
 
     public Lozenge Lozenge { get; }
 

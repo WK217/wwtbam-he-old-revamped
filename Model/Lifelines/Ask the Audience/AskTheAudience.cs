@@ -41,20 +41,10 @@ public sealed class AskTheAudience : Lifeline
                                       (a, b, c, d) => a + b + c + d)
                         .ToProperty(this, nameof(VotesSum));
 
-        A = new AskTheAudienceAnswer(this);
-        B = new AskTheAudienceAnswer(this);
-        C = new AskTheAudienceAnswer(this);
-        D = new AskTheAudienceAnswer(this);
-
-        this.WhenAnyValue(ata => ata._game.CurrentQuiz)
-            .Where(q => q is not null)
-            .Subscribe(q =>
-            {
-                A.Model = q.A;
-                B.Model = q.B;
-                C.Model = q.C;
-                D.Model = q.D;
-            });
+        A = new AskTheAudienceAnswer(this) { Model = game.CurrentQuiz.A };
+        B = new AskTheAudienceAnswer(this) { Model = game.CurrentQuiz.B };
+        C = new AskTheAudienceAnswer(this) { Model = game.CurrentQuiz.C };
+        D = new AskTheAudienceAnswer(this) { Model = game.CurrentQuiz.D };
     }
 
     #region Properties
