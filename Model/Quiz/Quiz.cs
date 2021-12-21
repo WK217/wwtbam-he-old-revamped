@@ -1,4 +1,5 @@
-﻿using System.Xml;
+﻿using System.Text.Json.Serialization;
+using System.Xml;
 using System.Xml.Serialization;
 
 namespace WwtbamOld.Model;
@@ -33,21 +34,27 @@ public sealed class Quiz : PropertyChangedBase
     #region Properties
 
     [XmlAttribute(AttributeName = "theme")]
+    [JsonPropertyName("theme")]
     public string Theme { get => _theme; set => RaiseAndSetIfChanged(ref _theme, value); }
 
     [XmlAttribute(AttributeName = "level")]
+    [JsonPropertyName("level")]
     public byte Level { get => _level; set => RaiseAndSetIfChanged(ref _level, value); }
 
     [XmlElement(ElementName = "question")]
+    [JsonPropertyName("question")]
     public string Question { get => _question; set => RaiseAndSetIfChanged(ref _question, value); }
 
     [XmlElement(ElementName = "photo")]
+    [JsonPropertyName("photo")]
     public string Photo { get => _photo; set => RaiseAndSetIfChanged(ref _photo, value); }
 
     [XmlElement(ElementName = "answers")]
+    [JsonPropertyName("answers")]
     public Answers Answers { get; init; }
 
     [XmlElement(ElementName = "comment")]
+    [JsonPropertyName("comment")]
     public string Comment { get => _comment; set => RaiseAndSetIfChanged(ref _comment, value); }
 
     public static Quiz Default { get; } =

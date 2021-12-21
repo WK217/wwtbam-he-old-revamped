@@ -30,7 +30,7 @@ public partial class App : Application
             OpenFileDialog openFileDialog = new()
             {
                 DefaultExt = ".xml",
-                Filter = "XML-файлы (*.xml)|*.xml|Все файлы (*.*)|*.*",
+                Filter = "XML/JSON-файлы (*.xml; *.json)|*.xml;*.json|Все файлы (*.*)|*.*",
                 Title = "Выбор файла пакета вопросов",
                 AddExtension = true,
                 CheckFileExists = true,

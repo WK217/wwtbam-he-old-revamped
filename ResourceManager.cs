@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Xml;
@@ -16,6 +18,14 @@ internal static class ResourceManager
     #region Вопросы
 
     private static readonly XmlSerializer _xmlSerializer = new(type: typeof(List<Quiz>), root: new XmlRootAttribute("quizzes"));
+
+    private static readonly JsonSerializerOptions _jsonSerializerOptions = new()
+    {
+        Converters = { new JsonStringEnumConverter() },
+        AllowTrailingCommas = true,
+        DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+        IgnoreReadOnlyProperties = true
+    };
 
     public static IEnumerable<Quiz> LoadQuizzesFromFile(string fileName)
     {
@@ -31,6 +41,9 @@ internal static class ResourceManager
         if (text.IsXml())
             return LoadQuizzesXml(text);
 
+        if (text.IsJson())
+            return LoadQuizzesJson(text);
+
         return null;
     }
 
@@ -43,10 +56,28 @@ internal static class ResourceManager
         return null;
     }
 
+    private static IEnumerable<Quiz> LoadQuizzesJson(string json)
+    {
+        try
+        {
+            return JsonSerializer.Deserialize<List<Quiz>>(json, _jsonSerializerOptions);
+        }
+        catch (Exception)
+        {
+            return null;
+        }
+    }
+
     private static bool IsXml(this string text)
     {
         string trimmed = text.Trim();
         return trimmed.StartsWith('<') && trimmed.EndsWith('>');
+    }
+
+    private static bool IsJson(this string text)
+    {
+        string trimmed = text.Trim();
+        return trimmed.StartsWith('{') && trimmed.EndsWith('}') || trimmed.StartsWith('[') && trimmed.EndsWith(']');
     }
 
     #endregion Вопросы

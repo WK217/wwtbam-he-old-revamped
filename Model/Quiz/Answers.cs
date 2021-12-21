@@ -1,4 +1,5 @@
 ﻿using ReactiveUI.Fody.Helpers;
+using System.Text.Json.Serialization;
 using System.Xml;
 using System.Xml.Serialization;
 
@@ -30,21 +31,27 @@ public sealed class Answers : PropertyChangedBase
     #region Properties
 
     [XmlElement(ElementName = "a")]
+    [JsonPropertyName("a")]
     public string A { get => _a; set => RaiseAndSetIfChanged(ref _a, value); }
 
     [XmlElement(ElementName = "b")]
+    [JsonPropertyName("b")]
     public string B { get => _b; set => RaiseAndSetIfChanged(ref _b, value); }
 
     [XmlElement(ElementName = "c")]
+    [JsonPropertyName("c")]
     public string C { get => _c; set => RaiseAndSetIfChanged(ref _c, value); }
 
     [XmlElement(ElementName = "d")]
+    [JsonPropertyName("d")]
     public string D { get => _d; set => RaiseAndSetIfChanged(ref _d, value); }
 
     [XmlAttribute(AttributeName = "correct")]
+    [JsonPropertyName("correct")]
     [Reactive] public AnswerID Correct { get => _correct; set => RaiseAndSetIfChanged(ref _correct, value); }
 
     [XmlAttribute(AttributeName = "fifty")]
+    [JsonPropertyName("fifty")]
     [Reactive] public AnswerID Alternative { get => _alternative; set => RaiseAndSetIfChanged(ref _alternative, value); }
 
     #endregion Properties
