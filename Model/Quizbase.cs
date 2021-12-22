@@ -9,7 +9,7 @@ public sealed class Quizbase : ReadOnlyReactiveCollection<Quiz>
 {
     public Quizbase(Game game) : base()
     {
-        Initialize(ResourceManager.LoadQuizzesDefault());
+        Initialize(SerializationManager.ReadQuizbase());
         this.WhenAnyValue(qb => qb.SelectedQuiz)
             .Where(q => q is not null)
             .BindTo(game, game => game.Lozenge.Info);

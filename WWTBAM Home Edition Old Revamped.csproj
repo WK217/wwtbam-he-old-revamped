@@ -6,7 +6,6 @@
     <LangVersion>10</LangVersion>
     <UseWPF>true</UseWPF>
     <Authors>WK217</Authors>
-    <Company />
     <Product>WWTBAM Home Edition Old Revamped</Product>
     <RootNamespace>WwtbamOld</RootNamespace>
     <AssemblyName>WWTBAM Home Edition</AssemblyName>
@@ -21,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="quizzes.json" />
     <None Remove="quizzes.xml" />
     <None Remove="Resources\Audio\wwtbam ata pre.mp3" />
     <None Remove="Resources\Audio\wwtbam ata show.mp3" />
@@ -390,6 +390,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="quizzes.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="quizzes.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -1455,6 +1458,7 @@
     <PackageReference Include="ReactiveUI.Events.WPF" Version="15.1.1" />
     <PackageReference Include="ReactiveUI.Fody" Version="17.1.9" />
     <PackageReference Include="ReactiveUI.WPF" Version="17.1.9" />
+    <PackageReference Include="YamlDotNet" Version="11.2.1" />
   </ItemGroup>
 
   <ItemGroup>

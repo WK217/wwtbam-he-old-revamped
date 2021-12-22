@@ -37,12 +37,12 @@ public partial class App : Application
 #if NET6_0_OR_GREATER
                 InitialDirectory = Path.GetFullPath(Environment.ProcessPath)
 #else
-                InitialDirectory = Path.GetFullPath(Process.GetCurrentProcess().MainModule.FileName)
+                InitialDirectory = Path.GetFullPath(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName)
 #endif
             };
 
             if (openFileDialog.ShowDialog() == true)
-                context.SetOutput(ResourceManager.LoadQuizzesFromFile(openFileDialog.FileName));
+                context.SetOutput(SerializationManager.ReadQuizbase(openFileDialog.FileName));
             else
                 context.SetOutput(null);
         });

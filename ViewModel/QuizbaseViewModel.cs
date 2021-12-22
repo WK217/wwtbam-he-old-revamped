@@ -31,7 +31,7 @@ public sealed class QuizbaseViewModel : ReactiveObject
 
         #region Commands
 
-        LoadDefaultQuizbaseCommand = ReactiveCommand.Create(() => LoadQuizbase(ResourceManager.LoadQuizzesDefault()));
+        LoadDefaultQuizbaseCommand = ReactiveCommand.Create(() => LoadQuizbase(SerializationManager.ReadQuizbase()));
 
         LoadQuizbaseFileCommand = ReactiveCommand.CreateFromObservable(() => DialogWindowInteractions.ShowOpenQuizbaseDialog.Handle(Unit.Default));
         LoadQuizbaseFileCommand.WhereNotNull()
