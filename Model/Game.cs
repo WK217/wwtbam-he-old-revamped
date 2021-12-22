@@ -56,10 +56,10 @@ public sealed class Game : ReactiveObject
             .Do(lvl => AudioManager.Instance.CurrentLevel = lvl)
             .Subscribe();
 
-        SmallMoneyTree = new LevelObject(this, ResourceManager.GetResourceGraphicsName("smt {0}", "png", "Money Trees", "Small"), lvl => lvl >= 0 && lvl <= 15);
-        BigMoneyTree = new LevelObject(this, ResourceManager.GetResourceGraphicsName("bmt {0}", "png", "Money Trees", "Big"), lvl => lvl >= 0 && lvl <= 15);
-        CurrentSum = new LevelObject(this, ResourceManager.GetResourceGraphicsName("sum {0}", "png", "Sums"), lvl => lvl >= 1 && lvl <= 14) { Level = 1 };
-        Winnings = new LevelObject(this, ResourceManager.GetResourceGraphicsName("winnings {0}", "png", "Winnings"), lvl => lvl >= 0 && lvl <= 15);
+        SmallMoneyTree = new LevelObject(ResourceManager.GetResourceGraphicsName("smt {0}", "png", "Money Trees", "Small"), lvl => lvl >= 0 && lvl <= 15);
+        BigMoneyTree = new LevelObject(ResourceManager.GetResourceGraphicsName("bmt {0}", "png", "Money Trees", "Big"), lvl => lvl >= 0 && lvl <= 15);
+        CurrentSum = new LevelObject(ResourceManager.GetResourceGraphicsName("sum {0}", "png", "Sums"), lvl => lvl >= 1 && lvl <= 14) { Level = 1 };
+        Winnings = new LevelObject(ResourceManager.GetResourceGraphicsName("winnings {0}", "png", "Winnings"), lvl => lvl >= 0 && lvl <= 15);
 
         this.WhenAnyValue(game => game.CurrentLevel)
             .Select(lvl => (byte)(lvl.Number - 1))

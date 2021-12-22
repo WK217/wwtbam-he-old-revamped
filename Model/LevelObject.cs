@@ -23,7 +23,7 @@ public class LevelObject : ReactiveObject
 
     #endregion Fields
 
-    public LevelObject(Game game, string imageNameFormat, Func<byte, bool> levelsRange)
+    public LevelObject(string imageNameFormat, Func<byte, bool> levelsRange)
     {
         _imageNameFormat = imageNameFormat;
         _levelsRange = levelsRange;
