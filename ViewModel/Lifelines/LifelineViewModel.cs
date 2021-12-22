@@ -3,13 +3,14 @@ using ReactiveUI.Fody.Helpers;
 using System;
 using System.ComponentModel;
 using System.Reactive;
+using System.Reactive.Linq;
 using System.Windows.Media;
 using WwtbamOld.Model;
 
 namespace WwtbamOld.ViewModel;
 
 [Description("Подсказка")]
-public abstract class LifelineViewModel<T> : ViewModelBase, ILifelineViewModel
+public abstract class LifelineViewModel<T> : ReactiveObject, ILifelineViewModel
     where T : Lifeline
 {
     #region Fields

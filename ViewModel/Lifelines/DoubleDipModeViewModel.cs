@@ -8,7 +8,7 @@ using WwtbamOld.Model;
 
 namespace WwtbamOld.ViewModel;
 
-public sealed class DoubleDipModeViewModel : ViewModelBase
+public sealed class DoubleDipModeViewModel : ReactiveObject
 {
     #region Fields
 

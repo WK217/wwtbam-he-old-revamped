@@ -1,15 +1,12 @@
 ﻿using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 using System;
-using System.ComponentModel;
-using System.Reactive;
 using System.Reactive.Linq;
-using System.Reflection;
 using WwtbamOld.Media.Audio;
 
 namespace WwtbamOld.ViewModel;
 
-public sealed class MediaViewModel : ViewModelBase
+public sealed class MediaViewModel : ReactiveObject
 {
     #region Fields
 

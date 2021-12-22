@@ -8,11 +8,12 @@ using WwtbamOld.Model;
 
 namespace WwtbamOld.ViewModel;
 
-public sealed class HostViewModel : ViewModelBase
+public sealed class HostViewModel : ReactiveObject
 {
     #region Fields
 
     private readonly Game _game;
+    private readonly MainViewModel _mainViewModel;
 
     #endregion Fields
 

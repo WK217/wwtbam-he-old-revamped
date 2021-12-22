@@ -4,7 +4,7 @@ using WwtbamOld.Model;
 
 namespace WwtbamOld.ViewModel;
 
-public sealed class ScreenViewModel : ViewModelBase
+public sealed class ScreenViewModel : ReactiveObject
 {
     #region Fields
 
