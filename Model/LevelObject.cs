@@ -63,7 +63,8 @@ public class LevelObject : ReactiveObject
 
         _demoSubscription = Observable.Interval(TimeSpan.FromMilliseconds(750), RxApp.MainThreadScheduler)
                                       .TakeWhile(v => _demoCounter < _demoValues.Count)
-                                      .Subscribe(v => Level = _demoValues[_demoCounter++]);
+                                      .Do(v => Level = _demoValues[_demoCounter++])
+                                      .Subscribe();
     }
 
     public void StopDemo()

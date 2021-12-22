@@ -66,7 +66,8 @@ public sealed class FiftyFifty : Lifeline
         Alternative = AnswerID.None;
 
         _pingTimerObservable = Observable.Timer(TimeSpan.FromMilliseconds(150), RxApp.MainThreadScheduler);
-        _pingTimerSubscription = _pingTimerObservable.Subscribe(x => { Execute(false); });
+        _pingTimerSubscription = _pingTimerObservable.Do(_ => Execute(false))
+                                                     .Subscribe();
     }
 
     #endregion Methods

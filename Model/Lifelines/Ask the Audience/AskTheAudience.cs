@@ -96,7 +96,8 @@ public sealed class AskTheAudience : Lifeline
 
         _voteTimerObservable = Observable.Timer(TimeSpan.FromSeconds(60), RxApp.MainThreadScheduler);
         _voteTimerSubscription?.Dispose();
-        _voteTimerSubscription = _voteTimerObservable.Subscribe(x => Deactivate(ahead: false));
+        _voteTimerSubscription = _voteTimerObservable.Do(x => Deactivate(ahead: false))
+                                                     .Subscribe();
     }
 
     public void Deactivate(bool ahead = true)

@@ -53,7 +53,8 @@ public sealed class Game : ReactiveObject
         CurrentLevel = Levels[0];
 
         this.WhenAnyValue(game => game.CurrentLevel)
-            .Subscribe(lvl => AudioManager.Instance.CurrentLevel = lvl);
+            .Do(lvl => AudioManager.Instance.CurrentLevel = lvl)
+            .Subscribe();
 
         SmallMoneyTree = new LevelObject(this, ResourceManager.GetResourceGraphicsName("smt {0}", "png", "Money Trees", "Small"), lvl => lvl >= 0 && lvl <= 15);
         BigMoneyTree = new LevelObject(this, ResourceManager.GetResourceGraphicsName("bmt {0}", "png", "Money Trees", "Big"), lvl => lvl >= 0 && lvl <= 15);
@@ -62,12 +63,13 @@ public sealed class Game : ReactiveObject
 
         this.WhenAnyValue(game => game.CurrentLevel)
             .Select(lvl => (byte)(lvl.Number - 1))
-            .Subscribe(lvl =>
+            .Do(lvl =>
             {
                 SmallMoneyTree.Level = lvl;
                 BigMoneyTree.Level = lvl;
                 CurrentSum.Level = lvl;
-            });
+            })
+            .Subscribe();
     }
 
     #region Properties
@@ -202,26 +204,28 @@ public sealed class Game : ReactiveObject
             TimeSpan timeSpanShow = TimeSpan.FromMilliseconds(revealCorrectType == RevealCorrectType.Quick ? 1500 : 2000);
             TimeSpan timeSpanHide = TimeSpan.FromMilliseconds(revealCorrectType == RevealCorrectType.Quick ? 2000 : 5000);
 
-            _showCurrentSumSubscription = Observable.Timer(timeSpanShow, RxApp.MainThreadScheduler).Subscribe(v =>
+            _showCurrentSumSubscription = Observable.Timer(timeSpanShow, RxApp.MainThreadScheduler).Do(v =>
             {
                 CurrentLevel = Levels.Collection.FirstOrDefault(lvl => lvl.Number == CurrentLevel.Number + 1);
                 Clear(CurrentLevel.Number <= 5);
                 CurrentSum.IsShown = true;
 
-                _hideCurrentSumSubscription = Observable.Timer(timeSpanHide, RxApp.MainThreadScheduler).Subscribe(v => { CurrentSum.IsShown = false; });
-            });
+                _hideCurrentSumSubscription = Observable.Timer(timeSpanHide, RxApp.MainThreadScheduler)
+                                                        .Do(v => { CurrentSum.IsShown = false; })
+                                                        .Subscribe();
+            }).Subscribe();
         }
         else
         {
             TimeSpan timeSpanShow = TimeSpan.FromMilliseconds(revealCorrectType == RevealCorrectType.Quick ? 2500 : 3000);
 
-            _showCurrentSumSubscription = Observable.Timer(timeSpanShow, RxApp.MainThreadScheduler).Subscribe(v =>
+            _showCurrentSumSubscription = Observable.Timer(timeSpanShow, RxApp.MainThreadScheduler).Do(v =>
             {
                 Winnings.Level = 15;
                 Winnings.IsShown = true;
 
                 Lozenge.IsShown = false;
-            });
+            }).Subscribe();
 
             SmallMoneyTree.IsShown = false;
             SmallMoneyTree.Level = 15;
@@ -239,7 +243,9 @@ public sealed class Game : ReactiveObject
             SmallMoneyTree.IsShown = false;
 
             Winnings.Level = (byte)(CurrentLevel.Number - 1);
-            Observable.Timer(TimeSpan.FromMilliseconds(3000), RxApp.MainThreadScheduler).Subscribe(v => { Winnings.IsShown = true; });
+            Observable.Timer(TimeSpan.FromMilliseconds(3000), RxApp.MainThreadScheduler)
+                      .Do(v => { Winnings.IsShown = true; })
+                      .Subscribe();
         }
     }
 

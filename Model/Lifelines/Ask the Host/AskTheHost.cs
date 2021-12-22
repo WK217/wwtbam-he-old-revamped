@@ -68,7 +68,8 @@ public sealed class AskTheHost : Lifeline
 
         _hideSubscription?.Dispose();
         _hideSubscription = Observable.Timer(_hideDelay, RxApp.MainThreadScheduler)
-                                      .Subscribe(_ => AudioManager.Instance.PlayBackground());
+                                      .Do(_ => AudioManager.Instance.PlayBackground())
+                                      .Subscribe();
     }
 
     public void VerifyAnswers(bool player = true)

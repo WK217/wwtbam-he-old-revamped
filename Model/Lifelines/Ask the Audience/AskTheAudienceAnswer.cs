@@ -24,14 +24,16 @@ public sealed class AskTheAudienceAnswer : ReactiveObject
                      .ToProperty(this, nameof(Share));
 
         this.WhenAnyValue(answer => answer.Model)
-            .Subscribe(model => this.RaisePropertyChanged(nameof(ID)));
+            .Do(_ => this.RaisePropertyChanged(nameof(ID)))
+            .Subscribe();
 
         _output = this.WhenAnyValue(answer => answer._lifeline.DataType, answer => answer.Votes, answer => answer.Share,
                         (type, votes, share) => type == AskTheAudienceDataType.Normal ? string.Format("{0}", Votes) : string.Format("{0:P0}", Share))
                       .ToProperty(this, nameof(Output));
 
         this.WhenAnyValue(answer => answer.Votes, answer => answer.Share)
-            .Subscribe(x => this.RaisePropertyChanged(nameof(Output)));
+            .Do(_ => this.RaisePropertyChanged(nameof(Output)))
+            .Subscribe();
     }
 
     #region Properties

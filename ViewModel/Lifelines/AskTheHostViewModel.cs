@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Reactive;
 using WwtbamOld.Model;
 using System;
+using System.Reactive.Linq;
 
 namespace WwtbamOld.ViewModel;
 
@@ -20,12 +21,13 @@ public sealed class AskTheHostViewModel : LifelineViewModel<AskTheHost>
         this.WhenAnyValue(vm => vm._model.PlayerAnswer1,
                           vm => vm._model.PlayerAnswer2,
                           vm => vm._model.HostAnswer)
-            .Subscribe(_ =>
+            .Do(_ =>
             {
                 this.RaisePropertyChanged(nameof(PlayerAnswer1));
                 this.RaisePropertyChanged(nameof(PlayerAnswer2));
                 this.RaisePropertyChanged(nameof(HostAnswer));
-            });
+            })
+            .Subscribe();
 
         VerifyAnswersPlayerCommand = ReactiveCommand.Create(() => _model.VerifyAnswers(), _model.CanVerifyPlayerAnswers);
         VerifyAnswersHostCommand = ReactiveCommand.Create(() => _model.VerifyAnswers(false), _model.CanVerifyHostAnswer);

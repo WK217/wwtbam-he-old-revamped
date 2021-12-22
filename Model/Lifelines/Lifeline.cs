@@ -118,7 +118,8 @@ public abstract class Lifeline : ReactiveObject
         AudioManager.Play(PingSound);
 
         _pingTimerObservable = Observable.Timer(TimeSpan.FromMilliseconds(300), RxApp.MainThreadScheduler);
-        _pingTimerObservable.Subscribe(v => { State = LifelineState.Enabled; });
+        _pingTimerObservable.Do(_ => State = LifelineState.Enabled)
+                            .Subscribe();
     }
 
     public abstract void Activate();

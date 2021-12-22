@@ -94,7 +94,8 @@ public abstract class TimerLifeline : Lifeline
         _remainingTime = _timerObservable.ToProperty(this, nameof(RemainingTime));
 
         _timerSubscription = _timerObservable.Where(v => v == TimeSpan.Zero || !IsTimerActive)
-                                             .Subscribe(x => Stop(ahead: false));
+                                             .Do(_ => Stop(ahead: false))
+                                             .Subscribe();
 
         _hideSubscription?.Dispose();
     }
@@ -104,11 +105,12 @@ public abstract class TimerLifeline : Lifeline
         IsTimerActive = false;
 
         _hideSubscription = Observable.Timer(_hideDelay, RxApp.MainThreadScheduler)
-                                      .Subscribe(x =>
+                                      .Do(x =>
                                       {
                                           End();
                                           AudioManager.Instance.PlayBackground();
-                                      });
+                                      })
+                                      .Subscribe();
 
         _timerSubscription?.Dispose();
 

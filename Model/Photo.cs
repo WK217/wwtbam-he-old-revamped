@@ -35,14 +35,15 @@ public sealed class Photo : ReactiveObject
 
         this.WhenAnyValue(x => x.CanShowImage)
             .ObserveOn(RxApp.MainThreadScheduler)
-            .Subscribe(x =>
+            .Do(x =>
             {
                 if (!x)
                 {
                     IsBigShown = false;
                     IsSmallShown = false;
                 }
-            });
+            })
+            .Subscribe();
     }
 
     #region Properties

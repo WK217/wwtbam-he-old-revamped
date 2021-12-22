@@ -1,6 +1,7 @@
 ﻿using ReactiveUI;
 using System;
 using System.Collections.ObjectModel;
+using System.Reactive.Linq;
 using WwtbamOld.Model;
 
 namespace WwtbamOld.ViewModel;
@@ -21,11 +22,13 @@ public sealed class MainViewModel : ReactiveObject
         Host = new HostViewModel(_game, this);
         Screen = new ScreenViewModel(_game, this);
 
-        this.WhenAnyValue(vm => vm._game.CurrentLevel).Subscribe(lvl =>
-        {
-            this.RaisePropertyChanged(nameof(CurrentLevel));
-            Host.RaisePropertyChanged(nameof(Host.CurrentLevel));
-        });
+        this.WhenAnyValue(vm => vm._game.CurrentLevel)
+            .Do(lvl =>
+            {
+                this.RaisePropertyChanged(nameof(CurrentLevel));
+                Host.RaisePropertyChanged(nameof(Host.CurrentLevel));
+            })
+            .Subscribe();
 
         CurrentLevel = Levels[0];
     }

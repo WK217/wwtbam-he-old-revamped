@@ -45,31 +45,37 @@ public sealed class Lozenge : ReactiveObject
 
         Info = Quiz.Default;
 
-        this.WhenAnyValue(quiz => quiz.Correct).Subscribe(id =>
-        {
-            string propertyName = nameof(AnswerLozenge.IsCorrect);
-            A.RaisePropertyChanged(propertyName);
-            B.RaisePropertyChanged(propertyName);
-            C.RaisePropertyChanged(propertyName);
-            D.RaisePropertyChanged(propertyName);
-        });
+        this.WhenAnyValue(quiz => quiz.Correct)
+            .Do(id =>
+            {
+                string propertyName = nameof(AnswerLozenge.IsCorrect);
+                A.RaisePropertyChanged(propertyName);
+                B.RaisePropertyChanged(propertyName);
+                C.RaisePropertyChanged(propertyName);
+                D.RaisePropertyChanged(propertyName);
+            })
+            .Subscribe();
 
-        this.WhenAnyValue(lozenge => lozenge.Info).Subscribe(q =>
-        {
-            Locked = AnswerID.None;
+        this.WhenAnyValue(lozenge => lozenge.Info)
+            .Do(q =>
+            {
+                Locked = AnswerID.None;
 
-            A.RevealCorrectType = RevealCorrectType.None;
-            B.RevealCorrectType = RevealCorrectType.None;
-            C.RevealCorrectType = RevealCorrectType.None;
-            D.RevealCorrectType = RevealCorrectType.None;
-        });
-        this.WhenAnyValue(lozenge => lozenge.Locked).Subscribe(v =>
-        {
-            A.RevealCorrectType = RevealCorrectType.None;
-            B.RevealCorrectType = RevealCorrectType.None;
-            C.RevealCorrectType = RevealCorrectType.None;
-            D.RevealCorrectType = RevealCorrectType.None;
-        });
+                A.RevealCorrectType = RevealCorrectType.None;
+                B.RevealCorrectType = RevealCorrectType.None;
+                C.RevealCorrectType = RevealCorrectType.None;
+                D.RevealCorrectType = RevealCorrectType.None;
+            })
+            .Subscribe();
+        this.WhenAnyValue(lozenge => lozenge.Locked)
+            .Do(v =>
+            {
+                A.RevealCorrectType = RevealCorrectType.None;
+                B.RevealCorrectType = RevealCorrectType.None;
+                C.RevealCorrectType = RevealCorrectType.None;
+                D.RevealCorrectType = RevealCorrectType.None;
+            })
+            .Subscribe();
 
         LifelinesPanel = new LifelinesPanel(_game.Lifelines);
 

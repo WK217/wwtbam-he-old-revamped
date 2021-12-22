@@ -39,7 +39,9 @@ public abstract class LifelineViewModel<T> : ViewModelBase, ILifelineViewModel
         this.WhenAnyValue(vm => vm._model.IsSecret).BindTo(this, x => x.IsSecret);
         this.WhenAnyValue(vm => vm.IsSecret).BindTo(this, x => x._model.IsSecret);
 
-        this.WhenAnyValue(vm => vm._model.GeneralImage).Subscribe(_ => this.RaisePropertyChanged(nameof(GeneralImage)));
+        this.WhenAnyValue(vm => vm._model.GeneralImage)
+            .Do(_ => this.RaisePropertyChanged(nameof(GeneralImage)))
+            .Subscribe();
 
         #region Commands
 

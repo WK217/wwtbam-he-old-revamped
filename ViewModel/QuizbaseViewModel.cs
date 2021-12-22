@@ -35,7 +35,8 @@ public sealed class QuizbaseViewModel : ReactiveObject
 
         LoadQuizbaseFileCommand = ReactiveCommand.CreateFromObservable(() => DialogWindowInteractions.ShowOpenQuizbaseDialog.Handle(Unit.Default));
         LoadQuizbaseFileCommand.WhereNotNull()
-                               .Subscribe(value => LoadQuizbase(value));
+                               .Do(value => LoadQuizbase(value))
+                               .Subscribe();
 
         #endregion Commands
     }

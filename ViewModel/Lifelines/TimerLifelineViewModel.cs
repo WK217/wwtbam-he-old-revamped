@@ -24,8 +24,8 @@ public class TimerLifelineViewModel : LifelineViewModel<TimerLifeline>
         this.WhenAnyValue(vm => vm._model.IsTimerShown).BindTo(this, x => x.IsTimerShown);
         this.WhenAnyValue(vm => vm.IsTimerShown).BindTo(_model, x => x.IsTimerShown);
 
-        this.WhenAnyValue(vm => vm._model.Progress).Subscribe(_ => this.RaisePropertyChanged(nameof(Progress)));
-        this.WhenAnyValue(vm => vm._model.RemainingTime).Subscribe(_ => this.RaisePropertyChanged(nameof(RemainingTime)));
+        this.WhenAnyValue(vm => vm._model.Progress).Do(_ => this.RaisePropertyChanged(nameof(Progress))).Subscribe();
+        this.WhenAnyValue(vm => vm._model.RemainingTime).Do(_ => this.RaisePropertyChanged(nameof(RemainingTime))).Subscribe();
 
         _countdown = this.WhenAnyValue(vm => vm._model.RemainingTime).Select(x => (uint)x.TotalSeconds).ToProperty(this, nameof(Countdown));
 
