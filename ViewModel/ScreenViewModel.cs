@@ -18,7 +18,8 @@ public sealed class ScreenViewModel : ReactiveObject
         _game = game;
         _mainViewModel = mainViewModel;
 
-        this.WhenAnyValue(screen => screen._mainViewModel.Host.IsLogoShown).ToProperty(this, nameof(IsLogoShown), out _isLogoShown);
+        this.WhenAnyValue(screen => screen._mainViewModel.Host.IsLogoShown)
+            .ToProperty(this, nameof(IsLogoShown), out _isLogoShown);
 
         this.WhenAnyValue(screen => screen._mainViewModel.Host.ScreenX)
             .BindTo(this, x => x.CoordinateX);

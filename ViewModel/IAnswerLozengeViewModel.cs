@@ -7,4 +7,5 @@ public interface IAnswerLozengeViewModel : IAnswer, IReactiveObject
 {
     public bool IsShown { get; }
     public bool IsLocked { get; }
+    public RevealCorrectType RevealCorrectType { get; }
 }
