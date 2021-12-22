@@ -21,79 +21,82 @@ public partial class ScreenView : ReactiveWindow<ScreenViewModel>
 
         this.WhenActivated(d =>
         {
-                #region Общее
+            #region Общее
 
-                d(this.WhenAnyValue(v => v.ViewModel).BindTo(this, v => v.DataContext));
+            d(this.WhenAnyValue(v => v.ViewModel).BindTo(this, v => v.DataContext));
 
             d(this.OneWayBind(ViewModel, vm => vm.WindowTitle, v => v.Title));
 
             d(this.Bind(ViewModel, vm => vm.CoordinateX, v => v.Left));
             d(this.Bind(ViewModel, vm => vm.CoordinateY, v => v.Top));
 
-                #endregion Общее
+            d(this.OneWayBind(ViewModel, vm => vm.Resolution.Width, v => v.Width));
+            d(this.OneWayBind(ViewModel, vm => vm.Resolution.Height, v => v.Height));
 
-                #region Lozenge
+            #endregion Общее
 
-                d(this.OneWayBind(ViewModel, vm => vm.Lozenge, v => v.lozenge.ViewModel));
+            #region Lozenge
 
-                #endregion Lozenge
+            d(this.OneWayBind(ViewModel, vm => vm.Lozenge, v => v.lozenge.ViewModel));
 
-                #region Small Money Tree
+            #endregion Lozenge
 
-                d(this.OneWayBind(ViewModel, vm => vm.SmallMoneyTree.IsShown, v => v.gridSmallMoneyTree.Visibility));
+            #region Small Money Tree
+
+            d(this.OneWayBind(ViewModel, vm => vm.SmallMoneyTree.IsShown, v => v.gridSmallMoneyTree.Visibility));
             d(this.OneWayBind(ViewModel, vm => vm.Lifelines.Collection, v => v.itemsSmtLifelineIcons.ItemsSource));
             d(this.OneWayBind(ViewModel, vm => vm.SmallMoneyTree.Image, v => v.imgSmallMoneyTree.Source));
 
-                #endregion Small Money Tree
+            #endregion Small Money Tree
 
-                #region Current Sum
+            #region Current Sum
 
-                d(this.OneWayBind(ViewModel, vm => vm.CurrentSum.IsShown, v => v.imgCurrentSum.Visibility));
+            d(this.OneWayBind(ViewModel, vm => vm.CurrentSum.IsShown, v => v.imgCurrentSum.Visibility));
             d(this.OneWayBind(ViewModel, vm => vm.CurrentSum.Image, v => v.imgCurrentSum.Source));
 
-                #endregion Current Sum
+            #endregion Current Sum
 
-                #region Winnings
+            #region Winnings
 
-                d(this.OneWayBind(ViewModel, vm => vm.Winnings.IsShown, v => v.imgWinnings.Visibility));
+            d(this.OneWayBind(ViewModel, vm => vm.Winnings.IsShown, v => v.imgWinnings.Visibility));
             d(this.OneWayBind(ViewModel, vm => vm.Winnings.Image, v => v.imgWinnings.Source));
 
-                #endregion Winnings
+            #endregion Winnings
 
-                #region Big Money Tree
+            #region Big Money Tree
 
-                d(this.OneWayBind(ViewModel, vm => vm.BigMoneyTree, v => v.gridBigMoneyTree.DataContext));
+            d(this.OneWayBind(ViewModel, vm => vm.BigMoneyTree, v => v.gridBigMoneyTree.DataContext));
             d(this.OneWayBind(ViewModel, vm => vm.Lifelines.Collection, v => v.itemsBmtLifelineIcons.ItemsSource));
             d(this.OneWayBind(ViewModel, vm => vm.BigMoneyTree.Image, v => v.imgBigMoneyTree.Source));
 
-                #endregion Big Money Tree
+            #endregion Big Money Tree
 
-                #region Lifelines
+            #region Lifelines
 
-                d(this.OneWayBind(ViewModel, vm => vm.Lifelines.Selected, v => v.controlLifeline.ViewModel));
+            d(this.OneWayBind(ViewModel, vm => vm.Lifelines.Selected, v => v.controlLifeline.ViewModel));
 
-                #endregion Lifelines
+            #endregion Lifelines
 
-                #region Big Photo
+            #region Big Photo
 
-                d(this.OneWayBind(ViewModel, vm => vm.Photo.IsBigShown, v => v.gridPhotoBig.Visibility));
+            d(this.OneWayBind(ViewModel, vm => vm.Photo.IsBigShown, v => v.gridPhotoBig.Visibility));
             d(this.OneWayBind(ViewModel, vm => vm.Photo.PhotoUrl, v => v.imgPhotoBig.Source, url => GetBitmapImageFromUrl(imgPhotoBig, url)));
 
-                #endregion Big Photo
+            #endregion Big Photo
 
-                #region Small Photo
+            #region Small Photo
 
-                d(this.OneWayBind(ViewModel, vm => vm.Photo.IsSmallShown, v => v.gridPhotoSmall.Visibility));
+            d(this.OneWayBind(ViewModel, vm => vm.Photo.IsSmallShown, v => v.gridPhotoSmall.Visibility));
             d(this.OneWayBind(ViewModel, vm => vm.Photo.PhotoUrl, v => v.imgPhotoSmall.Source, url => GetBitmapImageFromUrl(imgPhotoSmall, url)));
 
-                #endregion Small Photo
+            #endregion Small Photo
 
-                #region Logo
+            #region Logo
 
-                d(this.OneWayBind(ViewModel, vm => vm.IsLogoShown, v => v.imgLogo.Visibility));
+            d(this.OneWayBind(ViewModel, vm => vm.IsLogoShown, v => v.imgLogo.Visibility));
 
-                #endregion Logo
-            });
+            #endregion Logo
+        });
     }
 
     private static BitmapImage GetBitmapImageFromUrl(System.Windows.Controls.Image imageControl, Uri url)

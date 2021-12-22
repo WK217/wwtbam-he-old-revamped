@@ -29,6 +29,8 @@ public sealed class ScreenViewModel : ReactiveObject
             .BindTo(this, x => x.CoordinateY);
         this.WhenAnyValue(screen => screen.CoordinateY)
             .BindTo(_mainViewModel.Host, x => x.ScreenY);
+
+        Resolution = _mainViewModel.Host?.ScreenResolutions[^1];
     }
 
     #region Properties
@@ -48,6 +50,8 @@ public sealed class ScreenViewModel : ReactiveObject
 
     [Reactive] public double CoordinateX { get; set; }
     [Reactive] public double CoordinateY { get; set; }
+
+    [Reactive] public ScreenResolution Resolution { get; set; }
 
     #endregion Properties
 

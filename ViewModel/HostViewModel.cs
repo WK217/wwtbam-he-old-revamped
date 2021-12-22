@@ -1,8 +1,11 @@
 ﻿using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
+using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Reactive;
 using System.Reactive.Linq;
+using System.Reactive.Subjects;
 using WwtbamOld.Media.Audio;
 using WwtbamOld.Model;
 
@@ -35,6 +38,15 @@ public sealed class HostViewModel : ReactiveObject
         this.WhenAnyValue(vm => vm._game.HasWalkedAway).BindTo(this, x => x.HasWalkedAway);
         this.WhenAnyValue(vm => vm.HasWalkedAway).BindTo(_game, x => x.HasWalkedAway);
 
+        IConnectableObservable<ScreenResolution> selected = this.WhenAnyValue(x => x._mainViewModel.Screen.Resolution).Publish();
+        ScreenResolutions = new ReadOnlyCollection<ScreenResolution>(new List<ScreenResolution>()
+        {
+            new ScreenResolution(1366, 768, selected),
+            new ScreenResolution(1600, 900, selected),
+            new ScreenResolution(1920, 1080, selected)
+        });
+        selected.Connect();
+
         #region Commands
 
         LightsDownCommand = ReactiveCommand.Create(() => _game.LightsDown());
@@ -51,6 +63,8 @@ public sealed class HostViewModel : ReactiveObject
 
         PlayAudioCommand = ReactiveCommand.Create<Audio>(audio => AudioManager.Play(audio));
 
+        SetScreenResolutionCommand ??= ReactiveCommand.Create<ScreenResolution>(r => _mainViewModel.Screen.Resolution = r);
+
         #endregion Commands
     }
 
@@ -59,6 +73,7 @@ public sealed class HostViewModel : ReactiveObject
     public string WindowTitle => App.GetWindowTitle("Ведущий");
 
     public ReadOnlyObservableCollection<Level> Levels => _game.Levels.Collection;
+    public IReadOnlyList<ScreenResolution> ScreenResolutions { get; }
 
     public Level CurrentLevel
     {
@@ -81,8 +96,6 @@ public sealed class HostViewModel : ReactiveObject
 
     public LevelObject Winnings => _game.Winnings;
 
-    public SoundOutDevicesViewModel SoundOutDevices { get; }
-
     public Photo Photo { get; }
 
     [Reactive] public double ScreenX { get; set; }
@@ -103,14 +116,13 @@ public sealed class HostViewModel : ReactiveObject
 
     #region View Models
 
-    private readonly MainViewModel _mainViewModel;
-
     public QuizbaseViewModel Quizbase { get; }
     public LozengeViewModel Lozenge => _mainViewModel.Lozenge;
     public LifelineTypesViewModel LifelineTypes { get; }
     public LifelinesViewModel Lifelines { get; }
 
     public MediaViewModel Media { get; }
+    public SoundOutDevicesViewModel SoundOutDevices { get; }
 
     #endregion View Models
 
@@ -132,6 +144,8 @@ public sealed class HostViewModel : ReactiveObject
     public ReactiveCommand<FiftyFiftyViewModel, Unit> ShowFiftyFiftyWindowCommand { get; }
 
     public ReactiveCommand<Audio, Unit> PlayAudioCommand { get; }
+
+    public ReactiveCommand<ScreenResolution, Unit> SetScreenResolutionCommand { get; }
 
     #endregion Commands
 }

@@ -23,6 +23,10 @@ public partial class HostView : ReactiveWindow<HostViewModel>
             d(this.BindCommand(ViewModel, vm => vm.Quizbase.LoadQuizbaseFileCommand, v => v.menuLoadQuizbase));
             d(this.BindCommand(ViewModel, vm => vm.Quizbase.LoadDefaultQuizbaseCommand, v => v.menuDefaultQuizbase));
 
+            d(this.OneWayBind(ViewModel, vm => vm.ScreenResolutions, v => v.menuScreenResolutions.ItemsSource));
+            d(this.Bind(ViewModel, vm => vm.ScreenX, v => v.txtScreenLeft.Text));
+            d(this.Bind(ViewModel, vm => vm.ScreenY, v => v.txtScreenTop.Text));
+
             d(this.OneWayBind(ViewModel, vm => vm.SoundOutDevices.Collection, v => v.menuSoundOut.ItemsSource));
 
             d(this.Bind(ViewModel, vm => vm.SpoilerFree, v => v.menuSpoilerFree.IsChecked));

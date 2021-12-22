@@ -9,6 +9,10 @@
     xmlns:vm="clr-namespace:WwtbamOld.ViewModel"
     Width="1366"
     Height="768"
+    MinWidth="1366"
+    MinHeight="768"
+    MaxWidth="1920"
+    MaxHeight="1080"
     d:DataContext="{d:DesignInstance Type=vm:ScreenViewModel}"
     x:TypeArguments="vm:ScreenViewModel"
     MouseLeftButtonDown="OnMouseLeftButtonDown"
@@ -28,108 +32,42 @@
         <ImageBrush x:Name="imgBackground" />
     </Window.Background>
 
-    <Grid>
-        <!--#region Lozenge-->
-        <v:LozengeView
-            x:Name="lozenge"
-            Width="1366"
-            Height="248"
-            Margin="0,0,0,52"
-            VerticalAlignment="Bottom" />
-        <!--#endregion-->
+    <Viewbox>
+        <Grid Width="1366" Height="768">
+            <!--#region Lozenge-->
+            <v:LozengeView
+                x:Name="lozenge"
+                Width="1366"
+                Height="248"
+                Margin="0,0,0,52"
+                VerticalAlignment="Bottom" />
+            <!--#endregion-->
 
-        <!--#region Small Money Tree-->
-        <Grid
-            x:Name="gridSmallMoneyTree"
-            Margin="0,40,100,0"
-            HorizontalAlignment="Right"
-            VerticalAlignment="Top">
+            <!--#region Small Money Tree-->
+            <Grid
+                x:Name="gridSmallMoneyTree"
+                Margin="0,40,100,0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top">
 
-            <Grid.RowDefinitions>
-                <RowDefinition Height="38*" />
-                <RowDefinition Height="330*" />
-            </Grid.RowDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="38*" />
+                    <RowDefinition Height="330*" />
+                </Grid.RowDefinitions>
 
-            <ItemsControl
-                x:Name="itemsSmtLifelineIcons"
-                Grid.Row="0"
-                HorizontalAlignment="Center">
+                <ItemsControl
+                    x:Name="itemsSmtLifelineIcons"
+                    Grid.Row="0"
+                    HorizontalAlignment="Center">
 
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Viewbox
-                            Width="63"
-                            Height="38"
-                            Margin="5,0,5,15"
-                            RenderOptions.BitmapScalingMode="Fant"
-                            Stretch="UniformToFill">
-                            <Image Source="{Binding GeneralImage}" />
-                        </Viewbox>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <StackPanel Orientation="Horizontal" />
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-            </ItemsControl>
-
-            <Image
-                x:Name="imgSmallMoneyTree"
-                Grid.Row="2"
-                HorizontalAlignment="Center"
-                Stretch="None" />
-        </Grid>
-        <!--#endregion-->
-
-        <!--#region Current Sum-->
-        <Image
-            x:Name="imgCurrentSum"
-            Margin="0,0,0,100"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Bottom" />
-        <!--#endregion-->
-
-        <!--#region Winnings-->
-        <Image
-            Name="imgWinnings"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Bottom" />
-        <!--#endregion-->
-
-        <!--#region Phone a Friend / Ask the Audience-->
-        <rxui:ViewModelViewHost x:Name="controlLifeline" />
-        <!--#endregion-->
-
-        <!--#region Big Money Tree-->
-        <Grid
-            Name="gridBigMoneyTree"
-            Width="424"
-            Height="768"
-            HorizontalAlignment="Right">
-
-            <Grid.RowDefinitions>
-                <RowDefinition Height="100" />
-                <RowDefinition Height="668" />
-            </Grid.RowDefinitions>
-
-            <Image x:Name="imgBigMoneyTree" Grid.RowSpan="2" />
-
-            <Viewbox
-                Margin="18,25,10,15"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Bottom"
-                RenderOptions.BitmapScalingMode="Fant">
-                <ItemsControl x:Name="itemsBmtLifelineIcons">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <Viewbox
-                                Width="86"
-                                Height="52"
-                                Margin="5,0"
+                                Width="63"
+                                Height="38"
+                                Margin="5,0,5,15"
                                 RenderOptions.BitmapScalingMode="Fant"
-                                Stretch="Fill">
+                                Stretch="UniformToFill">
                                 <Image Source="{Binding GeneralImage}" />
                             </Viewbox>
                         </DataTemplate>
@@ -141,92 +79,160 @@
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
                 </ItemsControl>
-            </Viewbox>
 
-            <Grid.Style>
-                <Style TargetType="{x:Type Grid}">
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding IsShown}" Value="False">
-                            <DataTrigger.EnterActions>
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <ThicknessAnimation
-                                            Storyboard.TargetProperty="Margin"
-                                            To="0,0,-424,0"
-                                            Duration="0:0:1" />
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </DataTrigger.EnterActions>
+                <Image
+                    x:Name="imgSmallMoneyTree"
+                    Grid.Row="2"
+                    HorizontalAlignment="Center"
+                    Stretch="None" />
+            </Grid>
+            <!--#endregion-->
 
-                            <DataTrigger.ExitActions>
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <ThicknessAnimation
-                                            Storyboard.TargetProperty="Margin"
-                                            To="0,0,0,0"
-                                            Duration="0:0:1" />
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </DataTrigger.ExitActions>
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </Grid.Style>
-        </Grid>
-        <!--#endregion-->
-
-        <!--#region Big Photo-->
-        <Grid x:Name="gridPhotoBig">
-            <Grid.Background>
-                <ImageBrush x:Name="imgPhotoBigBackground" />
-            </Grid.Background>
-
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*" />
-                <ColumnDefinition Width="8*" />
-                <ColumnDefinition Width="1*" />
-            </Grid.ColumnDefinitions>
-
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*" />
-                <RowDefinition Height="8*" />
-                <RowDefinition Height="1*" />
-            </Grid.RowDefinitions>
-
+            <!--#region Current Sum-->
             <Image
-                x:Name="imgPhotoBig"
-                Grid.Row="1"
-                Grid.Column="1"
-                Stretch="Uniform"
-                StretchDirection="DownOnly" />
+                x:Name="imgCurrentSum"
+                Margin="0,0,0,100"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom" />
+            <!--#endregion-->
+
+            <!--#region Winnings-->
+            <Image
+                Name="imgWinnings"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom" />
+            <!--#endregion-->
+
+            <!--#region Phone a Friend / Ask the Audience-->
+            <rxui:ViewModelViewHost x:Name="controlLifeline" />
+            <!--#endregion-->
+
+            <!--#region Big Money Tree-->
+            <Grid
+                Name="gridBigMoneyTree"
+                Width="424"
+                Height="768"
+                HorizontalAlignment="Right">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100" />
+                    <RowDefinition Height="668" />
+                </Grid.RowDefinitions>
+
+                <Image x:Name="imgBigMoneyTree" Grid.RowSpan="2" />
+
+                <Viewbox
+                    Margin="18,25,10,15"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Bottom"
+                    RenderOptions.BitmapScalingMode="Fant">
+                    <ItemsControl x:Name="itemsBmtLifelineIcons">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Viewbox
+                                    Width="86"
+                                    Height="52"
+                                    Margin="5,0"
+                                    RenderOptions.BitmapScalingMode="Fant"
+                                    Stretch="Fill">
+                                    <Image Source="{Binding GeneralImage}" />
+                                </Viewbox>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Horizontal" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
+                </Viewbox>
+
+                <Grid.Style>
+                    <Style TargetType="{x:Type Grid}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsShown}" Value="False">
+                                <DataTrigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ThicknessAnimation
+                                                Storyboard.TargetProperty="Margin"
+                                                To="0,0,-424,0"
+                                                Duration="0:0:1" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </DataTrigger.EnterActions>
+
+                                <DataTrigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ThicknessAnimation
+                                                Storyboard.TargetProperty="Margin"
+                                                To="0,0,0,0"
+                                                Duration="0:0:1" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </DataTrigger.ExitActions>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Style>
+            </Grid>
+            <!--#endregion-->
+
+            <!--#region Big Photo-->
+            <Grid x:Name="gridPhotoBig">
+                <Grid.Background>
+                    <ImageBrush x:Name="imgPhotoBigBackground" />
+                </Grid.Background>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="8*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="8*" />
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+
+                <Image
+                    x:Name="imgPhotoBig"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Stretch="Uniform"
+                    StretchDirection="DownOnly" />
+            </Grid>
+            <!--#endregion-->
+
+            <!--#region Small Photo-->
+            <Grid x:Name="gridPhotoSmall">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="5.5*" />
+                    <ColumnDefinition Width="3*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="6*" />
+                    <RowDefinition Height="4*" />
+                </Grid.RowDefinitions>
+
+                <Viewbox
+                    Grid.Column="1"
+                    Margin="50,20"
+                    Stretch="Uniform"
+                    StretchDirection="DownOnly">
+                    <Image x:Name="imgPhotoSmall" />
+                </Viewbox>
+            </Grid>
+            <!--#endregion-->
+
+            <!--#region Logo-->
+            <Image x:Name="imgLogo" />
+            <!--#endregion-->
         </Grid>
-        <!--#endregion-->
-
-        <!--#region Small Photo-->
-        <Grid x:Name="gridPhotoSmall">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*" />
-                <ColumnDefinition Width="5.5*" />
-                <ColumnDefinition Width="3*" />
-            </Grid.ColumnDefinitions>
-
-            <Grid.RowDefinitions>
-                <RowDefinition Height="6*" />
-                <RowDefinition Height="4*" />
-            </Grid.RowDefinitions>
-
-            <Viewbox
-                Grid.Column="1"
-                Margin="50,20"
-                Stretch="Uniform"
-                StretchDirection="DownOnly">
-                <Image x:Name="imgPhotoSmall" />
-            </Viewbox>
-        </Grid>
-        <!--#endregion-->
-
-        <!--#region Logo-->
-        <Image x:Name="imgLogo" />
-        <!--#endregion-->
-    </Grid>
+    </Viewbox>
 </rxui:ReactiveWindow>
