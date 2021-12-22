@@ -172,7 +172,6 @@
                             <Grid Margin="5">
                                 <Grid.RowDefinitions>
                                     <RowDefinition />
-                                    <RowDefinition />
                                     <RowDefinition Height="5" />
                                     <RowDefinition />
                                 </Grid.RowDefinitions>
@@ -182,17 +181,15 @@
                                     <ColumnDefinition />
                                 </Grid.ColumnDefinitions>
 
-                                <TextBlock Grid.ColumnSpan="2">URL:</TextBlock>
                                 <TextBox
                                     x:Name="textPhotoUrl"
-                                    Grid.Row="1"
                                     Grid.ColumnSpan="2"
                                     TextWrapping="NoWrap" />
 
-                                <CheckBox x:Name="checkBigPhotoShown" Grid.Row="3">Большое</CheckBox>
+                                <CheckBox x:Name="checkBigPhotoShown" Grid.Row="2">Большое</CheckBox>
                                 <CheckBox
                                     x:Name="checkSmallPhotoShown"
-                                    Grid.Row="3"
+                                    Grid.Row="2"
                                     Grid.Column="1">
                                     Малое
                                 </CheckBox>
