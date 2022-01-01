@@ -78,7 +78,7 @@ public sealed class AskTheHost : Lifeline
 
         if (player)
         {
-            for (AnswerID id = 0; id <= AnswerID.D; id++)
+            for (AnswerID id = AnswerID.A; id <= AnswerID.D; id++)
                 _game.Lozenge[id].IsShown = correct ? (id == PlayerAnswer1 || id == PlayerAnswer2) : (id != PlayerAnswer1 && id != PlayerAnswer2);
 
             PlayerAnswer1 = AnswerID.None;

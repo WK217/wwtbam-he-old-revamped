@@ -60,7 +60,7 @@ public sealed class FiftyFifty : Lifeline
         Execute();
         AudioManager.Play(Audio.FiftyUse);
 
-        for (AnswerID id = 0; id <= AnswerID.D; id++)
+        for (AnswerID id = AnswerID.A; id <= AnswerID.D; id++)
             _game.Lozenge[id].IsShown = id == _game.Lozenge.Correct || id == Alternative;
 
         Alternative = AnswerID.None;
